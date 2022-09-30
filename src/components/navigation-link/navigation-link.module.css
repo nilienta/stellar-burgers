@@ -1,0 +1,19 @@
+.item{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 56px;
+	gap: calc(var(--offset-base-size) * 2 );
+}
+.last {
+	position: absolute;
+	right: 0px;
+}
+.link{
+	color: inherit;
+	text-decoration: none;
+	transition: var(--common-transition);
+}
+.link:hover{
+	color:var(--text-primary-color);
+}
