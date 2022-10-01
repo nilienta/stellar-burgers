@@ -1,12 +1,12 @@
-import PropTypes from "prop-types";
-import styles from "./burger-ingredients.module.css";
+import PropTypes from 'prop-types';
+import styles from './burger-ingredients.module.css';
 
-import TabWrap from "../tab-wrap/tab-wrap.js";
-import IngredientsList from "../ingredients-list/ingredients-list.js";
+import TabWrap from '../tab-wrap/tab-wrap.js';
+import IngredientsList from '../ingredients-list/ingredients-list.js';
 
 const BurgerIngredients = (props) => {
   return (
-    <article className={styles["burger-ingredients"]}>
+    <article className={styles['burger-ingredients']}>
       <span className="mb-5">
         <h1 className="text text_type_main-large">Соберите бургер</h1>
       </span>

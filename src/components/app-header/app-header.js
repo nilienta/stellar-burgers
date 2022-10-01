@@ -1,11 +1,11 @@
-import styles from "./app-header.module.css";
+import styles from './app-header.module.css';
 
-import { Logo } from "@ya.praktikum/react-developer-burger-ui-components";
-import { BurgerIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ListIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ProfileIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Logo } from '@ya.praktikum/react-developer-burger-ui-components';
+import { BurgerIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ListIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import NavigationLink from "../navigation-link/navigation-link.js";
+import NavigationLink from '../navigation-link/navigation-link.js';
 
 const AppHeader = () => {
   return (

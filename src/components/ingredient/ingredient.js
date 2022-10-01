@@ -1,12 +1,12 @@
-import clsx from "clsx";
+import clsx from 'clsx';
 
-import styles from "./ingredient.module.css";
+import styles from './ingredient.module.css';
 
-import { Counter } from "@ya.praktikum/react-developer-burger-ui-components";
-import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
+import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Ingredient = (props) => {
-  const classForPrice = clsx(styles.price, "mt-1 mb-1");
+  const classForPrice = clsx(styles.price, 'mt-1 mb-1');
   return (
     <li className={styles.ingredient}>
       <Counter count={props.count} size="default" />

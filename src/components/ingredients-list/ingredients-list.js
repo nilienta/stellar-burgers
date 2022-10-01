@@ -1,24 +1,23 @@
 /* eslint-disable semi */
-import PropTypes from "prop-types";
-import clsx from "clsx";
+import clsx from 'clsx';
 
-import styles from "./ingredients-list.module.css";
+import styles from './ingredients-list.module.css';
 
-import Ingredient from "../ingredient/ingredient.js";
+import Ingredient from '../ingredient/ingredient.js';
 
 const IngredientsList = (props) => {
   const data = props.data;
 
-  const classForSection = clsx(styles["ingredient-list"], "custom-scroll");
-  const classForList = clsx(styles.list, "mt-6 mb-10 pr-1 pl-4");
+  const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');
+  const classForList = clsx(styles.list, 'mt-6 mb-10 pr-1 pl-4');
   const bun = [];
   const main = [];
   const sauce = [];
 
   const sorting = data.forEach((item) => {
-    if (item.type === "bun") {
+    if (item.type === 'bun') {
       bun.push(item);
-    } else if (item.type === "main") {
+    } else if (item.type === 'main') {
       main.push(item);
     } else {
       sauce.push(item);

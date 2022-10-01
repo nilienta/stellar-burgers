@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const TabWrap = () => {
-  const [current, setCurrent] = React.useState("one");
+  const [current, setCurrent] = React.useState('one');
   return (
-    <div style={{ display: "flex" }} className="mt-5 mb-10">
-      <Tab value="one" active={current === "one"} onClick={setCurrent}>
+    <div style={{ display: 'flex' }} className="mt-5 mb-10">
+      <Tab value="one" active={current === 'one'} onClick={setCurrent}>
         Булки
       </Tab>
-      <Tab value="two" active={current === "two"} onClick={setCurrent}>
+      <Tab value="two" active={current === 'two'} onClick={setCurrent}>
         Соусы
       </Tab>
-      <Tab value="three" active={current === "three"} onClick={setCurrent}>
+      <Tab value="three" active={current === 'three'} onClick={setCurrent}>
         Начинки
       </Tab>
     </div>

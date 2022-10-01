@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import clsx from "clsx";
-import styles from "./burger-constructor.module.css";
+import PropTypes from 'prop-types';
+import clsx from 'clsx';
+import styles from './burger-constructor.module.css';
 
-import ConstructorElementWrap from "../constructor-element-wrap/constructor-element-wrap.js";
-import img from "../../images/temp/sauce-03.png";
+import ConstructorElementWrap from '../constructor-element-wrap/constructor-element-wrap.js';
+import img from '../../images/temp/sauce-03.png';
 
-import { Button } from "@ya.praktikum/react-developer-burger-ui-components";
-import TotalPrice from "../total-price/total-price";
+import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
+import TotalPrice from '../total-price/total-price';
 
 const BurgerConstructor = (props) => {
   const data = props.data;
-  const classForList = clsx(styles.list, "custom-scroll", "mt-4 mb-4");
-  const classForFooter = clsx(styles.footer, "mt-10 mr-3");
+  const classForList = clsx(styles.list, 'custom-scroll', 'mt-4 mb-4');
+  const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
   return (
-    <article className={styles["burger-constructor"]}>
+    <article className={styles['burger-constructor']}>
       <ConstructorElementWrap
         key="1212f3f412f3f23g3"
         type="top"
