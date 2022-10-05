@@ -1,6 +1,7 @@
 .ingredient-list{
 	width: 600px;
-	height: calc(100vh - 324px);
+	height: calc(100vh - 348px);
+	min-height: 470px;
 	overflow-x: hidden ;
 	overflow-y: scroll;
 }

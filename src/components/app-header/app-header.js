@@ -5,7 +5,7 @@ import { BurgerIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ListIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-import NavigationLink from '../navigation-link/navigation-link.js';
+import NavigationLink from './navigation-link/navigation-link.js';
 
 const AppHeader = () => {
   return (
@@ -15,22 +15,22 @@ const AppHeader = () => {
           <Logo />
         </div>
         <ul className={styles.menu}>
-          <NavigationLink text="Конструктор" link="" active="true" last="false">
+          <NavigationLink text="Конструктор" link="" active={true} last={false}>
             <BurgerIcon />
           </NavigationLink>
           <NavigationLink
             text="Лента заказов"
             link=""
-            active="false"
-            last="false"
+            active={false}
+            last={false}
           >
             <ListIcon />
           </NavigationLink>
           <NavigationLink
             text="Личный кабинет"
             link=""
-            active="false"
-            last="true"
+            active={false}
+            last={true}
           >
             <ProfileIcon />
           </NavigationLink>

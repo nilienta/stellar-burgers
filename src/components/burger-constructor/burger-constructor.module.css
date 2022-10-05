@@ -4,7 +4,8 @@
 	box-sizing: border-box;
 } 
 .list{
-	height: calc(100vh - 384px - 192px);
+	height: calc(100vh - 576px);
+	min-height: 232px;
 	overflow-y: scroll;
 	overflow-x: hidden; 
 	display: flex;

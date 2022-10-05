@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import styles from './navigation-link.module.css';
@@ -6,12 +7,12 @@ const NavigationLink = (props) => {
   const classForLi = clsx(
     styles.item,
     {
-      [styles.last]: props.last === 'true',
+      [styles.last]: props.last === true,
     },
     'ml-5 mr-5'
   );
   const classForText = clsx('text text_type_main-default', {
-    text_color_inactive: props.active === 'false',
+    text_color_inactive: props.active === false,
   });
 
   const classForLink = clsx(styles.link, { classForText });
@@ -26,6 +27,13 @@ const NavigationLink = (props) => {
       </span>
     </li>
   );
+};
+
+NavigationLink.propTypes = {
+  text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  last: PropTypes.bool,
 };
 
 export default NavigationLink;
