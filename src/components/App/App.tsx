@@ -5,7 +5,7 @@ import AppHeader from '../app-header/app-header.js';
 import BurgerIngredients from '../burger-ingredients/burger-ingredients.js';
 import BurgerConstructor from '../burger-constructor/burger-constructor.js';
 
-const SRC_DATA = 'https://norma.nomoreparties.space/api/ingredients';
+const NORMA_API = 'https://norma.nomoreparties.space/api/ingredients';
 
 const App = () => {
 	const [state, setState] = React.useState({
@@ -14,13 +14,23 @@ const App = () => {
 		data: [],
 	});
 
-	const getIngridients = () => {
-			fetch(SRC_DATA)
-			.then (res => res.json())
-			.then	(res => setState({...state, data: res.data, isLoading: false}))
-			.catch (e => setState({...state, hasError: true, isLoading: false}))
+	const checkReponse = (res: any) => {
+		return res.ok ? res.json() : res.json().then((err: any) => Promise.reject(err));
+	 };
+
+	const getIngridients = (URL_API:any) => {
+			fetch(URL_API)
+			.then(res => checkReponse(res))
+			.then	(res => setState((state) => {
+				return {...state, data: res.data}
+			 }))
+			.catch (e => setState((state) => {
+				return {...state, hasError: true }}))
+			.finally (() => setState((state) => {
+				return {...state, isLoading: false }
+			 }))
 		}
-	React.useEffect(() => {getIngridients()},[]);
+	React.useEffect(() => {getIngridients(NORMA_API)},[]);
 
 	return (
 		<>

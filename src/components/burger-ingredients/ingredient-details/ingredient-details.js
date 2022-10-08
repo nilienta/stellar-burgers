@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { PropTypesForIngredient } from '../../../prop-types';
+
 import clsx from 'clsx';
 import styles from './ingredient-details.module.css';
 
@@ -44,6 +47,19 @@ const IngredientDetails = ({ details }) => {
       </div>
     </section>
   );
+};
+
+Element.propTypes = {
+  name: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+};
+
+Composition.propTypes = {
+  elements: PropTypes.shape(PropTypesForIngredient).isRequired,
+};
+
+IngredientDetails.propTypes = {
+  details: PropTypes.shape(PropTypesForIngredient).isRequired,
 };
 
 export default IngredientDetails;

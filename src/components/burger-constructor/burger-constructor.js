@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import styles from './burger-constructor.module.css';
 
-import PropTypesForDataList from '../../prop-types.js';
+import { PropTypesForDataList } from '../../prop-types.js';
 
 import Modal from '../modal/modal';
 import OrderDetails from './order-details/order-details';
@@ -29,14 +29,14 @@ const BurgerConstructor = ({ data }) => {
 
   return (
     <article className={styles['burger-constructor']}>
-      <ConstructorElementWrap {...data[0]} type="top" isLocked={true} />
+      <ConstructorElementWrap details={data[0]} type="top" isLocked={true} />
       <ul className={classForList}>
         {data.map((item) => {
-          return <ConstructorElementWrap {...item} key={item._id} />;
+          return <ConstructorElementWrap details={item} key={item._id} />;
         })}
       </ul>
       <ConstructorElementWrap
-        {...data[data.length - 1]}
+        details={data[data.length - 1]}
         type="bottom"
         isLocked={true}
       />

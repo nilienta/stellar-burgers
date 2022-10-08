@@ -30,10 +30,11 @@ const NavigationLink = (props) => {
 };
 
 NavigationLink.propTypes = {
-  text: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  active: PropTypes.bool,
   last: PropTypes.bool,
+  active: PropTypes.bool,
+  children: PropTypes.object,
+  link: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default NavigationLink;

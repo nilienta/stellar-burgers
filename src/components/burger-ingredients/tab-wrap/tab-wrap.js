@@ -1,22 +1,46 @@
-import React from 'react';
+import { useState } from 'react';
+import clsx from 'clsx';
 
+import PropTypes from 'prop-types';
+import styles from './tab-wrap.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const TabWrap = () => {
-  const [current, setCurrent] = React.useState('one');
+const classForTab = clsx(styles['tab-wrap'], 'mt-5 mb-10');
+
+const TabWrap = ({ one, two, three }) => {
+  const [current, setCurrent] = useState('one');
+
+  const setTab = (tab) => {
+    setCurrent(tab);
+    if (tab) {
+      const tabObj = eval(tab);
+      tabObj.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div style={{ display: 'flex' }} className="mt-5 mb-10">
-      <Tab value="one" active={current === 'one'} onClick={setCurrent}>
+    <div className={classForTab}>
+      <Tab value="one" active={current === 'one'} onClick={() => setTab('one')}>
         Булки
       </Tab>
-      <Tab value="two" active={current === 'two'} onClick={setCurrent}>
+      <Tab value="two" active={current === 'two'} onClick={() => setTab('two')}>
         Соусы
       </Tab>
-      <Tab value="three" active={current === 'three'} onClick={setCurrent}>
+      <Tab
+        value="three"
+        active={current === 'three'}
+        onClick={() => setTab('three')}
+      >
         Начинки
       </Tab>
     </div>
   );
+};
+
+TabWrap.propTypes = {
+  one: PropTypes.object,
+  two: PropTypes.object,
+  three: PropTypes.object,
 };
 
 export default TabWrap;
