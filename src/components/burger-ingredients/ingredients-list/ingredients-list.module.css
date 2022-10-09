@@ -1,17 +1,11 @@
 .ingredient-list{
 	width: 600px;
 	height: calc(100vh - 348px);
-	min-height: 470px;
+	min-height: 470px; 
 	overflow-x: hidden ;
 	overflow-y: scroll;
 }
 .title {
 	width: 100%;
 	height: 30px;
-}
-.list{
-	display: flex;
-	flex-wrap: wrap;
-	column-gap: calc(var(--offset-base-size)*6);
-	row-gap: calc(var(--offset-base-size)*8);
 }

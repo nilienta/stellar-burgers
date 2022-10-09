@@ -5,12 +5,7 @@ import clsx from 'clsx';
 const classForOverlay = clsx(styles['module-overlay']);
 
 const ModalOverlay = ({ onClose }) => {
-  const checkElement = (e) => {
-    if (e.target.className === classForOverlay) {
-      onClose();
-    }
-  };
-  return <div className={classForOverlay} onClick={checkElement}></div>;
+  return <div className={classForOverlay} onClick={onClose}></div>;
 };
 
 ModalOverlay.propTypes = {

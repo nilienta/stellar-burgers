@@ -20,17 +20,13 @@ const TabWrap = ({ one, two, three }) => {
 
   return (
     <div className={classForTab}>
-      <Tab value="one" active={current === 'one'} onClick={() => setTab('one')}>
+      <Tab value="one" active={current === 'one'} onClick={setTab}>
         Булки
       </Tab>
-      <Tab value="two" active={current === 'two'} onClick={() => setTab('two')}>
+      <Tab value="two" active={current === 'two'} onClick={setTab}>
         Соусы
       </Tab>
-      <Tab
-        value="three"
-        active={current === 'three'}
-        onClick={() => setTab('three')}
-      >
+      <Tab value="three" active={current === 'three'} onClick={setTab}>
         Начинки
       </Tab>
     </div>

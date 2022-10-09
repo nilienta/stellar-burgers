@@ -15,16 +15,14 @@ const classForList = clsx(styles.list, 'custom-scroll', 'mt-4 mb-4');
 const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
 
 const BurgerConstructor = ({ data }) => {
-  const [state, setState] = React.useState({
-    visibleModal: false,
-  });
+  const [state, setState] = React.useState(false);
 
   const handleOpenModal = () => {
-    setState({ ...state, visibleModal: true });
+    setState(true);
   };
 
   const handleCloseModal = () => {
-    setState({ ...state, visibleModal: false });
+    setState(false);
   };
 
   return (
@@ -51,7 +49,7 @@ const BurgerConstructor = ({ data }) => {
           Оформить заказ
         </Button>
       </section>
-      {state.visibleModal && (
+      {state && (
         <Modal size="large" header="" onClose={handleCloseModal}>
           <OrderDetails />
         </Modal>

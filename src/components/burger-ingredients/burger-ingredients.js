@@ -15,17 +15,15 @@ const BurgerIngredients = ({ data }) => {
   const tabSauce = React.createRef();
   const tabMain = React.createRef();
 
-  const [state, setState] = React.useState({
-    visibleModal: false,
-  });
-  const [item, setItem] = React.useState({});
+  const [state, setState] = React.useState(false);
+  const [item, setItem] = React.useState(() => {});
 
-  const handleOpenModal = (src) => {
-    setState({ ...state, visibleModal: true });
+  const handleOpenModal = () => {
+    setState(true);
   };
 
   const handleCloseModal = () => {
-    setState({ ...state, visibleModal: false });
+    setState(false);
   };
 
   return (
@@ -42,7 +40,7 @@ const BurgerIngredients = ({ data }) => {
         two={tabSauce}
         three={tabMain}
       />
-      {state.visibleModal && (
+      {state && (
         <Modal
           size="medium"
           header="Детали ингредиента"

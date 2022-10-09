@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled, { keyframes } from 'styled-components';
@@ -23,22 +24,21 @@ const ZoomIn = styled.div`
 `;
 
 const Modal = ({ size, header, onClose, children }) => {
+  const handleESCclose = useCallback((e) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  }, []);
+
   useEffect(() => {
-    document.body.addEventListener(
-      'keyup',
-      (e) => {
-        if (e.key === 'Escape') {
-          onClose();
-        }
-      },
-      { once: true }
-    );
+    document.body.addEventListener('keyup', handleESCclose);
+    return () => document.body.removeEventListener('keyup', handleESCclose);
   }, []);
 
   return ReactDOM.createPortal(
     <>
       <ModalOverlay onClose={onClose} />
-      <ZoomIn className={styles.qwe}>
+      <ZoomIn className={styles.animation}>
         <div className={size === 'medium' ? classForModalM : classForModalL}>
           <ModalHeader onClose={onClose}>{header}</ModalHeader>
           {children}
