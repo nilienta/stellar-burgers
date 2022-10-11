@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { PropTypesForIngredient } from '../../../prop-types';
 import clsx from 'clsx';
 
+import { DataConstructorContext } from '../burger-context';
 import styles from './constructor-element-wrap.module.css';
 
-import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
-import { DragIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import {
+  ConstructorElement,
+  DragIcon,
+} from '@ya.praktikum/react-developer-burger-ui-components';
 
 const ConstructorElementWrap = React.memo(({ details, type, isLocked }) => {
+  const { dataConstructor, setDataConstructor } = useContext(
+    DataConstructorContext
+  );
+
   const classForList = clsx(styles.item, 'mr-1 ml-4 pl-8');
+
+  const onDelete = (id) => {
+    setDataConstructor(dataConstructor.filter((item) => item._id !== id));
+  };
 
   return (
     <li className={classForList}>
@@ -22,6 +33,9 @@ const ConstructorElementWrap = React.memo(({ details, type, isLocked }) => {
         id={details._id}
         type={type}
         isLocked={isLocked}
+        handleClose={() => {
+          onDelete(details._id);
+        }}
         text={details.name}
         price={details.price}
         thumbnail={details.image}

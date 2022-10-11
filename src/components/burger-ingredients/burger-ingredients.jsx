@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './burger-ingredients.module.css';
 
-import { PropTypesForDataList } from '../../prop-types.js';
+import { PropTypesForDataList } from '../../prop-types';
 
-import IngredientDetails from '../burger-ingredients/ingredient-details/ingredient-details';
-import Modal from '../../components/modal/modal';
+import IngredientDetails from './ingredient-details/ingredient-details';
+import Modal from '../modal/modal';
 
-import TabWrap from './tab-wrap/tab-wrap.js';
-import IngredientsList from './ingredients-list/ingredients-list.js';
+import TabWrap from './tab-wrap/tab-wrap';
+import IngredientsList from './ingredients-list/ingredients-list';
 
 const BurgerIngredients = ({ data }) => {
   const tabBun = React.createRef();

@@ -4,8 +4,7 @@ import { PropTypesForIngredient } from '../../../prop-types';
 
 import styles from './ingredient.module.css';
 
-import { Counter } from '@ya.praktikum/react-developer-burger-ui-components';
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Counter, CurrencyIcon} from '@ya.praktikum/react-developer-burger-ui-components';
 
 const Ingredient = ({ item, count, open, srcClick }) => {
   const classForPrice = clsx(styles.price, 'mt-1 mb-1');
