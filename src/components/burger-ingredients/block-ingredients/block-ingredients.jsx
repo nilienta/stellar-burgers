@@ -8,28 +8,19 @@ import Ingredient from '../ingredient/ingredient';
 
 const classForList = clsx(styles.list, 'mt-6 mb-10 pr-1 pl-4');
 
-const BlockIngredients = ({ thread, open, srcClick }) => {
-	return (
-	  <ul className={classForList}>
-		 {thread.map((item) => {
-			return (
-			  <Ingredient
-				 key={item._id}
-				 count={2}
-				 item={item}
-				 open={open}
-				 srcClick={srcClick}
-			  />
-			);
-		 })}
-	  </ul>
-	);
- };
+const BlockIngredients = ({ thread, open }) => {
+  return (
+    <ul className={classForList}>
+      {thread.map((item) => {
+        return <Ingredient key={item._id} item={item} open={open} />;
+      })}
+    </ul>
+  );
+};
 
- BlockIngredients.propTypes = {
-	thread: PropTypes.arrayOf(PropTypesForDataList).isRequired,
-	open: PropTypes.func.isRequired,
-	srcClick: PropTypes.func.isRequired,
- };
+BlockIngredients.propTypes = {
+  thread: PropTypes.arrayOf(PropTypesForDataList).isRequired,
+  open: PropTypes.func.isRequired,
+};
 
- export default BlockIngredients
+export default BlockIngredients;

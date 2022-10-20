@@ -1,8 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './burger-ingredients.module.css';
 
-import { PropTypesForDataList } from '../../prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  SET_VISIBLE_MODAL_INGREDIENT,
+  SET_INVISIBLE_MODAL_INGREDIENT,
+  SET_VISIBLE_INGREDIENT,
+  SET_BUNS,
+} from '../../services/actions/app';
 
 import IngredientDetails from './ingredient-details/ingredient-details';
 import Modal from '../modal/modal';
@@ -10,20 +14,24 @@ import Modal from '../modal/modal';
 import TabWrap from './tab-wrap/tab-wrap';
 import IngredientsList from './ingredients-list/ingredients-list';
 
-const BurgerIngredients = ({ data }) => {
-  const tabBun = React.createRef();
-  const tabSauce = React.createRef();
-  const tabMain = React.createRef();
-
-  const [state, setState] = React.useState(false);
-  const [item, setItem] = React.useState(() => {});
+const BurgerIngredients = () => {
+  const dispatch = useDispatch();
+  const { isModalIngredientOpen } = useSelector((state) => state.app);
 
   const handleOpenModal = () => {
-    setState(true);
+    dispatch({
+      type: SET_VISIBLE_MODAL_INGREDIENT,
+    });
   };
 
   const handleCloseModal = () => {
-    setState(false);
+    dispatch({
+      type: SET_INVISIBLE_MODAL_INGREDIENT,
+    });
+    dispatch({
+      type: SET_VISIBLE_INGREDIENT,
+      visibleIngredient: {},
+    });
   };
 
   return (
@@ -31,30 +39,19 @@ const BurgerIngredients = ({ data }) => {
       <span className="mb-5">
         <h1 className="text text_type_main-large">Соберите бургер</h1>
       </span>
-      <TabWrap one={tabBun} two={tabSauce} three={tabMain} />
-      <IngredientsList
-        data={data}
-        open={handleOpenModal}
-        srcClick={setItem}
-        one={tabBun}
-        two={tabSauce}
-        three={tabMain}
-      />
-      {state && (
+      <TabWrap />
+      <IngredientsList open={handleOpenModal} />
+      {isModalIngredientOpen && (
         <Modal
           size="medium"
           header="Детали ингредиента"
           onClose={handleCloseModal}
         >
-          <IngredientDetails details={item} />
+          <IngredientDetails />
         </Modal>
       )}
     </article>
   );
-};
-
-BurgerIngredients.propTypes = {
-  data: PropTypes.arrayOf(PropTypesForDataList).isRequired,
 };
 
 export default BurgerIngredients;

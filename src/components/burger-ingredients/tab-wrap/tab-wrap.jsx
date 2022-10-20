@@ -5,38 +5,61 @@ import PropTypes from 'prop-types';
 import styles from './tab-wrap.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const classForTab = clsx(styles['tab-wrap'], 'mt-5 mb-10');
+import { Link } from 'react-scroll';
 
-const TabWrap = ({ one, two, three }) => {
+const TabWrap = () => {
+  const classForTab = clsx(styles['tab-wrap'], 'mt-5 mb-10');
   const [current, setCurrent] = useState('one');
 
-  const setTab = (tab) => {
+  const onSetActive = (tab) => {
     setCurrent(tab);
-    if (tab) {
-      const tabObj = eval(tab);
-      tabObj.current.scrollIntoView({ behavior: 'smooth' });
-    }
   };
 
   return (
-    <div className={classForTab}>
-      <Tab value="one" active={current === 'one'} onClick={setTab}>
-        Булки
-      </Tab>
-      <Tab value="two" active={current === 'two'} onClick={setTab}>
-        Соусы
-      </Tab>
-      <Tab value="three" active={current === 'three'} onClick={setTab}>
-        Начинки
-      </Tab>
-    </div>
-  );
-};
+    <ul className={classForTab}>
+      <Link
+        to="buns"
+        spy={true}
+        smooth={true}
+        offset={0}
+        duration={300}
+        containerId="containerElement"
+        onSetActive={() => onSetActive('one')}
+      >
+        <Tab value="one" active={current === 'one'}>
+          Булки
+        </Tab>
+      </Link>
 
-TabWrap.propTypes = {
-  one: PropTypes.object,
-  two: PropTypes.object,
-  three: PropTypes.object,
+      <Link
+        to="sauces"
+        spy={true}
+        smooth={true}
+        offset={0}
+        duration={300}
+        containerId="containerElement"
+        onSetActive={() => onSetActive('two')}
+      >
+        <Tab value="two" active={current === 'two'}>
+          Соусы
+        </Tab>
+      </Link>
+
+      <Link
+        to="mains"
+        spy={true}
+        smooth={true}
+        offset={0}
+        duration={300}
+        containerId="containerElement"
+        onSetActive={() => onSetActive('three')}
+      >
+        <Tab value="three" active={current === 'three'}>
+          Начинки
+        </Tab>
+      </Link>
+    </ul>
+  );
 };
 
 export default TabWrap;

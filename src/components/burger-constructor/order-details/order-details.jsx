@@ -1,45 +1,42 @@
 import clsx from 'clsx';
 import styles from './order-details.module.css';
 
-import { useContext, useEffect, useState } from 'react';
-import { DataConstructorContext } from '../burger-context';
-import { CheckResponseContext } from '../../App/app-context';
+import { useEffect } from 'react';
+import getData from '../../../utils/burger-api';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { SET_NUMBER_ORDER } from '../../../services/actions/app';
 import modalDone from '../../../images/modal-done.png';
 
-const classForOrder = clsx(styles['order-details'], 'mt-9');
-const classForNumber = clsx(
-  styles['order-number'],
-  'text text_type_digits-large',
-  'mb-8'
-);
-
 const OrderDetails = () => {
-  const { checkResponse } = useContext(CheckResponseContext);
-  const { dataConstructor } = useContext(DataConstructorContext);
-  const [numberOrder, setNumberOrder] = useState('000000');
+  const classForOrder = clsx(styles['order-details'], 'mt-9');
+  const classForNumber = clsx(
+    styles['order-number'],
+    'text text_type_digits-large',
+    'mb-8'
+  );
 
-  const idIngredients = dataConstructor.map((elem) => elem._id);
+  const dispatch = useDispatch();
+  const { currentBun, currentMainsAndSauces, numberOrder } = useSelector(
+    (state) => state.app
+  );
+
+  const idIngredients = [
+    currentBun._id,
+    currentBun._id,
+    ...currentMainsAndSauces.map((elem) => elem._id),
+  ];
   const order = { ingredients: [...idIngredients] };
 
   useEffect(() => {
     if (order.ingredients.length > 0) {
       const URL_POST = 'https://norma.nomoreparties.space/api/orders';
-
-      const fetchPost = (URL, data) => {
-        fetch(URL, {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json: charset=utf-8',
-          },
+      getData(URL_POST, 'POST', order).then((res) =>
+        dispatch({
+          type: SET_NUMBER_ORDER,
+          numberOrder: String(res.order.number).padStart(6, '0'),
         })
-          .then((res) => checkResponse(res))
-          .then((res) => setNumberOrder(res.order.number))
-          .catch((e) => console.log(e));
-      };
-      fetchPost(URL_POST, order);
+      );
     }
   }, []);
 

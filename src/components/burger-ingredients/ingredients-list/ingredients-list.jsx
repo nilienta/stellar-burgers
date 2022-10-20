@@ -1,49 +1,56 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { PropTypesForDataList } from '../../../prop-types';
 import clsx from 'clsx';
+
+import { Element } from 'react-scroll';
+import { useSelector } from 'react-redux';
 
 import styles from './ingredients-list.module.css';
 
 import BlockIngredients from '../block-ingredients/block-ingredients';
 
-const IngredientsList = ({ data, open, srcClick, one, two, three }) => {
+const IngredientsList = ({ open }) => {
   const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');
+
+  const { ingredients } = useSelector((state) => state.app);
 
   const { buns, mains, sauces } = useMemo(
     () => ({
-      buns: data.filter((item) => item.type === 'bun'),
-      mains: data.filter((item) => item.type === 'main'),
-      sauces: data.filter((item) => item.type === 'sauce'),
+      buns: ingredients.filter((item) => item.type === 'bun'),
+      mains: ingredients.filter((item) => item.type === 'main'),
+      sauces: ingredients.filter((item) => item.type === 'sauce'),
     }),
-    [data]
+    [ingredients]
   );
 
   return (
-    <section className={classForSection}>
-      <span className={styles.title} ref={one}>
-        <h2 className="text text_type_main-medium">Булки</h2>
-      </span>
-      <BlockIngredients thread={buns} open={open} srcClick={srcClick} />
-      <span className={styles.title} ref={two}>
-        <h2 className="text text_type_main-medium">Соусы</h2>
-      </span>
-      <BlockIngredients thread={sauces} open={open} srcClick={srcClick} />
-      <span className={styles.title} ref={three}>
-        <h2 className="text text_type_main-medium">Начинки</h2>
-      </span>
-      <BlockIngredients thread={mains} open={open} srcClick={srcClick} />
+    <section className={classForSection} id="containerElement">
+      <Element name="buns">
+        <span className={styles.title} id="bun">
+          <h2 className="text text_type_main-medium">Булки</h2>
+        </span>
+        <BlockIngredients thread={buns} open={open} />
+      </Element>
+
+      <Element name="sauces">
+        <span className={styles.title} id="sauce">
+          <h2 className="text text_type_main-medium">Соусы</h2>
+        </span>
+        <BlockIngredients thread={sauces} open={open} />
+      </Element>
+
+      <Element name="mains">
+        <span className={styles.title} id="main">
+          <h2 className="text text_type_main-medium">Начинки</h2>
+        </span>
+        <BlockIngredients thread={mains} open={open} />
+      </Element>
     </section>
   );
 };
 
 IngredientsList.propTypes = {
-  data: PropTypes.arrayOf(PropTypesForDataList).isRequired,
   open: PropTypes.func.isRequired,
-  srcClick: PropTypes.func.isRequired,
-  one: PropTypes.object.isRequired,
-  two: PropTypes.object.isRequired,
-  three: PropTypes.object.isRequired,
 };
 
 export default IngredientsList;
