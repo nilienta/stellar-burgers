@@ -1,7 +1,11 @@
 import styles from './app-header.module.css';
 
-import { Logo, BurgerIcon, ListIcon, ProfileIcon} from '@ya.praktikum/react-developer-burger-ui-components';
-
+import {
+  Logo,
+  BurgerIcon,
+  ListIcon,
+  ProfileIcon,
+} from '@ya.praktikum/react-developer-burger-ui-components';
 
 import NavigationLink from './navigation-link/navigation-link';
 

@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './burger-constructor.module.css';
 
@@ -8,6 +8,7 @@ import OrderDetails from './order-details/order-details';
 import ConstructorElementWrap from './constructor-element-wrap/constructor-element-wrap';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from './total-price/total-price';
+import CapConstructor from './cap-constructor/cap-constructor';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrop } from 'react-dnd';
@@ -18,6 +19,7 @@ import {
 
 const BurgerConstructor = () => {
   const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
+  const classForBuns = clsx(styles.buns, 'text text_type_main-medium');
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -29,12 +31,12 @@ const BurgerConstructor = () => {
   };
 
   const dispatch = useDispatch();
-  const { ingredients, currentBun, currentMainsAndSauces } = useSelector(
+  const { currentBun, currentMainsAndSauces } = useSelector(
     (state) => state.app
   );
 
   useEffect(() => {
-    let total = currentBun.price * 2;
+    let total = currentBun.price > 0 ? currentBun.price * 2 : 0;
     if (currentMainsAndSauces.length > 0) {
       currentMainsAndSauces.map((item) => (total += item.price));
       dispatch({
@@ -66,32 +68,66 @@ const BurgerConstructor = () => {
     },
   });
 
+  const isDisableButton = currentBun.length === 0 ? true : false;
+
+  const WrapBun = () => {
+    return (
+      <section className={styles['wrap-bun']}>
+        <h1 className={classForBuns}>перенесите сюда булку</h1>
+      </section>
+    );
+  };
   return (
     <article className={styles['burger-constructor']}>
       <section
         ref={dropTargetRef}
         className={`${isHover ? styles.onHover : styles.noHover}`}
       >
-        <ConstructorElementWrap item={currentBun} type="top" isLocked={true} />
-        <ConstructorIngredientsList />
-        <ConstructorElementWrap
-          item={currentBun}
-          type="bottom"
-          isLocked={true}
-        />
-      </section>
+        {currentBun.length === 0 && currentMainsAndSauces.length === 0 ? (
+          <CapConstructor />
+        ) : (
+          <>
+            {currentBun.length !== 0 ? (
+              <ConstructorElementWrap
+                item={currentBun}
+                text={' (верх)'}
+                type="top"
+                isLocked={true}
+              />
+            ) : (
+              <WrapBun />
+            )}
 
-      <section className={classForFooter}>
-        <TotalPrice />
-        <Button
-          type="primary"
-          size="large"
-          htmlType="button"
-          onClick={handleOpenModal}
-        >
-          Оформить заказ
-        </Button>
+            <ConstructorIngredientsList />
+            {currentBun.length !== 0 ? (
+              <ConstructorElementWrap
+                item={currentBun}
+                text={' (низ)'}
+                type="bottom"
+                isLocked={true}
+              />
+            ) : (
+              <WrapBun />
+            )}
+          </>
+        )}
       </section>
+      {currentBun.length !== 0 || currentMainsAndSauces.length !== 0 ? (
+        <section className={classForFooter}>
+          <TotalPrice />
+          <Button
+            type="primary"
+            size="large"
+            htmlType="submit"
+            onClick={handleOpenModal}
+            disabled={isDisableButton}
+          >
+            Оформить заказ
+          </Button>
+        </section>
+      ) : (
+        ''
+      )}
       {modalVisible && (
         <Modal size="large" header="" onClose={handleCloseModal}>
           <OrderDetails />

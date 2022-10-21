@@ -3,26 +3,26 @@ import clsx from 'clsx';
 
 import styles from './navigation-link.module.css';
 
-const NavigationLink = (props) => {
+const NavigationLink = ({ text, link, active, last, children }) => {
   const classForLi = clsx(
     styles.item,
     {
-      [styles.last]: props.last === true,
+      [styles.last]: last === true,
     },
     'ml-5 mr-5'
   );
   const classForText = clsx('text text_type_main-default', {
-    text_color_inactive: props.active === false,
+    text_color_inactive: active === false,
   });
 
   const classForLink = clsx(styles.link, { classForText });
 
   return (
     <li className={classForLi}>
-      <div>{props.children}</div>
+      <div>{children}</div>
       <span className={classForText}>
-        <a href={props.link} className={classForLink}>
-          {props.text}
+        <a href={link} className={classForLink}>
+          {text}
         </a>
       </span>
     </li>
@@ -30,11 +30,11 @@ const NavigationLink = (props) => {
 };
 
 NavigationLink.propTypes = {
-  last: PropTypes.bool,
-  active: PropTypes.bool,
-  children: PropTypes.object,
-  link: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  last: PropTypes.bool,
+  children: PropTypes.object,
 };
 
 export default NavigationLink;

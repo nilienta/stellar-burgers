@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 
-import PropTypes from 'prop-types';
 import styles from './tab-wrap.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 

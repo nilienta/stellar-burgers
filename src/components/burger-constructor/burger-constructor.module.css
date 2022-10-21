@@ -3,6 +3,17 @@
 	width: 600px;
 	box-sizing: border-box;
 } 
+.wrap-bun{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--background-element);
+	min-height: 80px;
+	margin-left: 48px;
+	margin-right: 16px;
+	border-radius: 88px;
+	color: var(--colors-interface-error);
+}
 .footer{
 	display: flex;
 	align-items: center;
@@ -11,8 +22,14 @@
 }
 .onHover{
 	border: 1px dotted var(--colors-interface-accent);
-	border-radius: var(--common-border-radius-s);
+	border-radius: var(--common-border-radius-s); 
 }
 .noHover{
 	border: 1px solid var(--background-alt);
+}
+.buns{
+	color: transparent;    
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-image: linear-gradient(45deg,  var(--colors-interface-success) 0%, var(--colors-interface-accent) 100%);
 }

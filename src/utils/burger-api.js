@@ -14,11 +14,10 @@ const getData = (URL, method, data) => {
       },
     };
   }
-
-  const resQuery = fetch(URL, query)
-    .then(checkResponse)
-    .catch((e) => console.log(e));
-  return resQuery;
+  const request = (url, options) => {
+    return fetch(url, options).then(checkResponse);
+  };
+  return request(URL, query);
 };
 
 export default getData;

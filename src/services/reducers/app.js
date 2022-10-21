@@ -8,10 +8,13 @@ import {
   UPDATE_CONSTRUCTOR_LIST,
   DELETE_INGREDIENTS,
   SET_TOTAL_PRICE,
+  POST_ORDER_REQUEST,
   SET_NUMBER_ORDER,
+  POST_ORDER_FAILED,
   SET_VISIBLE_INGREDIENT,
   SET_VISIBLE_MODAL_INGREDIENT,
   SET_INVISIBLE_MODAL_INGREDIENT,
+  RESET_STATE,
 } from '../actions/app';
 
 const initialState = {
@@ -19,23 +22,11 @@ const initialState = {
   ingredientsRequest: true,
   ingredientsFailed: false,
 
-  currentBun: {
-    _id: '60d3b41abdacab0026a733c6',
-    name: 'Краторная булка N-200i',
-    type: 'bun',
-    proteins: 80,
-    fat: 24,
-    carbohydrates: 53,
-    calories: 420,
-    price: 1255,
-    image: 'https://code.s3.yandex.net/react/code/bun-02.png',
-    image_mobile: 'https://code.s3.yandex.net/react/code/bun-02-mobile.png',
-    image_large: 'https://code.s3.yandex.net/react/code/bun-02-large.png',
-    __v: 0,
-    dragId: 'c9069764-7286-4670-8e78-defbe12db64f',
-  },
+  currentBun: [],
   currentMainsAndSauces: [],
 
+  postOrderRequest: true,
+  postOrderFailed: false,
   totalPrice: 0,
   numberOrder: 'XXXXXX',
 
@@ -132,9 +123,26 @@ export const appReducer = (state = initialState, action) => {
         totalPrice: action.totalPrice,
       };
     }
+    case POST_ORDER_REQUEST: {
+      return {
+        ...state,
+        postOrderRequest: true,
+        postOrderFailed: false,
+      };
+    }
+    case POST_ORDER_FAILED: {
+      return {
+        ...state,
+        numberOrder: 'XXXXXX',
+        postOrderRequest: false,
+        postOrderFailed: true,
+      };
+    }
     case SET_NUMBER_ORDER: {
       return {
         ...state,
+        postOrderRequest: false,
+        postOrderFailed: false,
         numberOrder: action.numberOrder,
       };
     }
@@ -154,6 +162,17 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         isModalIngredientOpen: false,
+      };
+    }
+    case RESET_STATE: {
+      return {
+        ...state,
+        currentMainsAndSauces: [],
+        currentBun: [],
+        ingredients: [...state.ingredients].map((item) => ({
+          ...item,
+          count: 0,
+        })),
       };
     }
     default: {

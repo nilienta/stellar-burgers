@@ -6,9 +6,9 @@ import clsx from 'clsx';
 import styles from './block-ingredients.module.css';
 import Ingredient from '../ingredient/ingredient';
 
-const classForList = clsx(styles.list, 'mt-6 mb-10 pr-1 pl-4');
-
 const BlockIngredients = ({ thread, open }) => {
+  const classForList = clsx(styles.list, 'mt-6 mb-10 pr-1 pl-4');
+
   return (
     <ul className={classForList}>
       {thread.map((item) => {

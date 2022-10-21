@@ -5,7 +5,6 @@ import {
   SET_VISIBLE_MODAL_INGREDIENT,
   SET_INVISIBLE_MODAL_INGREDIENT,
   SET_VISIBLE_INGREDIENT,
-  SET_BUNS,
 } from '../../services/actions/app';
 
 import IngredientDetails from './ingredient-details/ingredient-details';

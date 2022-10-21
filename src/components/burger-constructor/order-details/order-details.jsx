@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import styles from './order-details.module.css';
 
 import { useEffect } from 'react';
-import getData from '../../../utils/burger-api';
+import { postOrder } from '../../../services/actions/app';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { SET_NUMBER_ORDER } from '../../../services/actions/app';
+import { BASE_URL } from '../../../services/actions/app';
 import modalDone from '../../../images/modal-done.png';
 
 const OrderDetails = () => {
@@ -30,15 +30,11 @@ const OrderDetails = () => {
 
   useEffect(() => {
     if (order.ingredients.length > 0) {
-      const URL_POST = 'https://norma.nomoreparties.space/api/orders';
-      getData(URL_POST, 'POST', order).then((res) =>
-        dispatch({
-          type: SET_NUMBER_ORDER,
-          numberOrder: String(res.order.number).padStart(6, '0'),
-        })
-      );
+      dispatch(postOrder(URL_POST, order));
     }
   }, []);
+
+  const URL_POST = BASE_URL + '/orders';
 
   return (
     <section className={classForOrder}>

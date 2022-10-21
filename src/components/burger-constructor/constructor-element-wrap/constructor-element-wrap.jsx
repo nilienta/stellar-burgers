@@ -15,14 +15,14 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const ConstructorElementWrap = React.memo(
-  ({ index, item, type, isLocked, moveCard }) => {
+  ({ index, item, text, type, isLocked, moveCard }) => {
     const classForList = clsx(styles.item, 'mr-1 ml-4 pl-8');
     const dispatch = useDispatch();
+    const positionText = item.name + (text !== undefined ? text : '');
 
     const onDelete = () => {
       dispatch({
         type: DELETE_INGREDIENTS,
-        id: item._id,
         item: item,
         dragId: item.dragId,
       });
@@ -119,7 +119,7 @@ const ConstructorElementWrap = React.memo(
           handleClose={() => {
             onDelete(item.dragId);
           }}
-          text={item.name}
+          text={positionText}
           price={item.price}
           thumbnail={item.image}
         />
@@ -131,6 +131,7 @@ const ConstructorElementWrap = React.memo(
 ConstructorElementWrap.propTypes = {
   index: PropTypes.number,
   item: PropTypes.shape(PropTypesForIngredient).isRequired,
+  text: PropTypes.string,
   type: PropTypes.string,
   isLocked: PropTypes.bool,
   moveCard: PropTypes.func,

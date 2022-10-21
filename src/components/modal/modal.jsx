@@ -8,11 +8,11 @@ import styles from './modal.module.css';
 import ModalOverlay from './modalOverlay/modal-overlay';
 import ModalHeader from './modal-header/modal-header';
 
-const modalRoot = document.getElementById('modal-root');
-const classForModalM = clsx(styles.modal, 'pt-10 pr-10 pb-15 pl-10');
-const classForModalL = clsx(styles.modal, 'pt-15 pr-10 pb-30 pl-10');
-
 const Modal = ({ size, header, onClose, children }) => {
+  const modalRoot = document.getElementById('modal-root');
+  const classForModalM = clsx(styles.modal, 'pt-10 pr-10 pb-15 pl-10');
+  const classForModalL = clsx(styles.modal, 'pt-15 pr-10 pb-30 pl-10');
+
   useEffect(() => {
     const handleESCclose = (e) => {
       if (e.key === 'Escape') {

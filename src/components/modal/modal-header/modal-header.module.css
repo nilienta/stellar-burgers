@@ -1,14 +1,14 @@
-.header{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 720px
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 720px;
 }
-.cross{
-	width: 24px;
-	height: 24px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
+.cross {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }

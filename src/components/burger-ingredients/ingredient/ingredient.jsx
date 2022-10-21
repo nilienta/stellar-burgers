@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { PropTypesForIngredient } from '../../../prop-types';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SET_VISIBLE_INGREDIENT } from '../../../services/actions/app';
 import styles from './ingredient.module.css';
 import { useDrag } from 'react-dnd';
