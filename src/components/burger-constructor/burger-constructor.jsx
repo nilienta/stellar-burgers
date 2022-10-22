@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './burger-constructor.module.css';
 
@@ -15,25 +15,29 @@ import { useDrop } from 'react-dnd';
 import {
   SET_TOTAL_PRICE,
   MODIFY_CONSTRUCTOR_INGREDIENTS,
+  SET_VISIBLE_MODAL_CONSTRUCTOR,
+  SET_INVISIBLE_MODAL_CONSTRUCTOR,
 } from '../../services/actions/app';
 
 const BurgerConstructor = () => {
   const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
   const classForBuns = clsx(styles.buns, 'text text_type_main-medium');
 
-  const [modalVisible, setModalVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { currentBun, currentMainsAndSauces, isModalConstructorOpen } =
+    useSelector((state) => state.app);
 
   const handleOpenModal = () => {
-    setModalVisible(true);
-  };
-  const handleCloseModal = () => {
-    setModalVisible(false);
+    dispatch({
+      type: SET_VISIBLE_MODAL_CONSTRUCTOR,
+    });
   };
 
-  const dispatch = useDispatch();
-  const { currentBun, currentMainsAndSauces } = useSelector(
-    (state) => state.app
-  );
+  const handleCloseModal = () => {
+    dispatch({
+      type: SET_INVISIBLE_MODAL_CONSTRUCTOR,
+    });
+  };
 
   useEffect(() => {
     let total = currentBun.price > 0 ? currentBun.price * 2 : 0;
@@ -128,7 +132,7 @@ const BurgerConstructor = () => {
       ) : (
         ''
       )}
-      {modalVisible && (
+      {isModalConstructorOpen && (
         <Modal size="large" header="" onClose={handleCloseModal}>
           <OrderDetails />
         </Modal>

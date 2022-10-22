@@ -14,6 +14,8 @@ import {
   SET_VISIBLE_INGREDIENT,
   SET_VISIBLE_MODAL_INGREDIENT,
   SET_INVISIBLE_MODAL_INGREDIENT,
+  SET_VISIBLE_MODAL_CONSTRUCTOR,
+  SET_INVISIBLE_MODAL_CONSTRUCTOR,
   RESET_STATE,
 } from '../actions/app';
 
@@ -32,6 +34,7 @@ const initialState = {
 
   visibleIngredient: {},
   isModalIngredientOpen: false,
+  isModalConstructorOpen: false,
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -162,6 +165,18 @@ export const appReducer = (state = initialState, action) => {
       return {
         ...state,
         isModalIngredientOpen: false,
+      };
+    }
+    case SET_VISIBLE_MODAL_CONSTRUCTOR: {
+      return {
+        ...state,
+        isModalConstructorOpen: true,
+      };
+    }
+    case SET_INVISIBLE_MODAL_CONSTRUCTOR: {
+      return {
+        ...state,
+        isModalConstructorOpen: false,
       };
     }
     case RESET_STATE: {
