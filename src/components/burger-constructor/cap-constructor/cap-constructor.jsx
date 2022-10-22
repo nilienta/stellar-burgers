@@ -1,7 +1,7 @@
 import styles from './cap-constructor.module.css';
 import clsx from 'clsx';
 
-import IconBurger from '../icon-burger/icon-burger';
+import IconBurger from './icon-burger/icon-burger';
 
 const CapConstructor = () => {
   const classForWrapper = clsx(styles.wrapper, 'pt-10 pr-10 pb-10 pl-10');

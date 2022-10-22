@@ -54,12 +54,13 @@ export function postOrder(URL_POST, order) {
           dispatch({
             type: RESET_STATE,
           });
-        } else {
-          dispatch({
-            type: POST_ORDER_FAILED,
-          });
         }
       })
-      .catch((e) => console.log(e));
+      .catch((error) =>
+        dispatch({
+          type: POST_ORDER_FAILED,
+          error,
+        })
+      );
   };
 }

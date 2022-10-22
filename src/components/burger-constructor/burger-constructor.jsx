@@ -7,7 +7,7 @@ import ConstructorIngredientsList from './constructor-ingredients-list/construct
 import OrderDetails from './order-details/order-details';
 import ConstructorElementWrap from './constructor-element-wrap/constructor-element-wrap';
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import TotalPrice from './total-price/total-price';
+import TotalPrice from './order-details/total-price/total-price';
 import CapConstructor from './cap-constructor/cap-constructor';
 
 import { useDispatch, useSelector } from 'react-redux';
