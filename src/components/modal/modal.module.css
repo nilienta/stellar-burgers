@@ -16,3 +16,16 @@
   justify-content: center;
   flex-direction: column;
 }
+.modal-open {
+  animation: addAnimation 0.1s linear;
+}
+@keyframes addAnimation {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

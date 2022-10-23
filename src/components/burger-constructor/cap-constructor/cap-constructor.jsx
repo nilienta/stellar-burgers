@@ -10,9 +10,9 @@ const CapConstructor = () => {
   return (
     <section className={classForWrapper}>
       <div className={styles['burger-row']}>
-        <IconBurger color="white" size="80" />
-        <IconBurger color="var(--colors-interface-success)" size="80" />
-        <IconBurger color="var(--colors-interface-accent)" size="80" />
+        <IconBurger color="white" size={80} />
+        <IconBurger color="var(--colors-interface-success)" size={80} />
+        <IconBurger color="var(--colors-interface-accent)" size={80} />
       </div>
       <h1 className={classForTitle}>
         Перенесите сюда ингредиенты для вашего бургера
