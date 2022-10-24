@@ -1,12 +1,13 @@
- .item{
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: space-between; 
- }
- .icon {  
-	position: absolute;
-	left: 0px;
-	width: 24px;
-	height: 24px;
- }
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: grab;
+}
+.icon {
+  position: absolute;
+  left: 0px;
+  width: 24px;
+  height: 24px;
+}

@@ -1,4 +1,5 @@
-.burger-ingredients{
-	margin: calc(var(--offset-base-size) * 10) auto calc(var(--offset-base-size) * 10) 0px;
-	width: 600px;
+.burger-ingredients {
+  margin: calc(var(--offset-base-size) * 10) auto
+    calc(var(--offset-base-size) * 10) 0px;
+  width: 600px;
 }
