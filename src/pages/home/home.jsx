@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import styles from './app.module.css';
+import styles from './home.module.css';
 
-import AppHeader from '../app-header/app-header';
-import BurgerIngredients from '../burger-ingredients/burger-ingredients';
-import BurgerConstructor from '../burger-constructor/burger-constructor';
+import Header from '../../components/header/header';
+import BurgerIngredients from '../../components/burger-ingredients/burger-ingredients';
+import BurgerConstructor from '../../components/burger-constructor/burger-constructor';
 
 import { getIngredients } from '../../services/actions/app';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,10 +12,8 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { BASE_URL } from '../../services/actions/app';
 
-const App = () => {
-  const { ingredientsRequest, ingredientsFailed } = useSelector(
-    (state) => state.app
-  );
+const HomePage = () => {
+  const { ingredients } = useSelector((state) => state.app);
 
   const NORMA_API = BASE_URL + '/ingredients';
   const dispatch = useDispatch();
@@ -25,9 +23,9 @@ const App = () => {
 
   return (
     <>
-      <AppHeader />
+      <Header />
       <main className={styles.main}>
-        {!ingredientsRequest && !ingredientsFailed && (
+        {ingredients.length > 0 && (
           <DndProvider backend={HTML5Backend}>
             <BurgerIngredients />
             <BurgerConstructor />
@@ -38,4 +36,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default HomePage;

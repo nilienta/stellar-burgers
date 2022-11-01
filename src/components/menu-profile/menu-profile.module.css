@@ -1,0 +1,33 @@
+.nav {
+  width: 320px;
+}
+.link {
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  transition: var(--common-transition);
+}
+.link:hover {
+  color: var(---text-primary-color);
+}
+.link--active {
+  color: var(---text-primary-color);
+}
+.text {
+  opacity: 0.4;
+}
+.button {
+  cursor: pointer;
+  width: 100%;
+  height: 64px;
+  background-color: transparent;
+  padding: 0px;
+  border: 0px;
+  color: var(--text-inactive-color);
+  text-align: left;
+}
+.button:hover {
+  color: var(--colors-interface-error);
+}

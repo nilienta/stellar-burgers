@@ -90,6 +90,10 @@ export const appReducer = (state = initialState, action) => {
             currentBun: action.item,
             ingredients: [...newBun],
           };
+        } else {
+          return {
+            ...state,
+          };
         }
       } else {
         return {
@@ -106,7 +110,7 @@ export const appReducer = (state = initialState, action) => {
     case UPDATE_CONSTRUCTOR_LIST: {
       return {
         ...state,
-        currentMainsAndSauces: [...action.currentMainsAndSauces],
+        currentMainsAndSauces: [...(action.currentMainsAndSauces || [])],
       };
     }
     case DELETE_INGREDIENTS: {

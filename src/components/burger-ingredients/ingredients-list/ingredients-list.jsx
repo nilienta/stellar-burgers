@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import { Element } from 'react-scroll';
@@ -9,7 +8,7 @@ import styles from './ingredients-list.module.css';
 
 import BlockIngredients from '../block-ingredients/block-ingredients';
 
-const IngredientsList = ({ open }) => {
+const IngredientsList = () => {
   const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');
 
   const { ingredients } = useSelector((state) => state.app);
@@ -29,14 +28,14 @@ const IngredientsList = ({ open }) => {
         <span className={styles.title} id="bun">
           <h2 className="text text_type_main-medium">Булки</h2>
         </span>
-        <BlockIngredients thread={buns} open={open} />
+        <BlockIngredients thread={buns} />
       </Element>
 
       <Element name="sauces">
         <span className={styles.title} id="sauce">
           <h2 className="text text_type_main-medium">Соусы</h2>
         </span>
-        <BlockIngredients thread={sauces} open={open} />
+        <BlockIngredients thread={sauces} />
       </Element>
 
       <Element name="mains">
@@ -47,10 +46,6 @@ const IngredientsList = ({ open }) => {
       </Element>
     </section>
   );
-};
-
-IngredientsList.propTypes = {
-  open: PropTypes.func.isRequired,
 };
 
 export default IngredientsList;

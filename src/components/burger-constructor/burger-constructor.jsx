@@ -26,6 +26,7 @@ const BurgerConstructor = () => {
   const dispatch = useDispatch();
   const { currentBun, currentMainsAndSauces, isModalConstructorOpen } =
     useSelector((state) => state.app);
+  const { isAuth } = useSelector((state) => state.auth);
 
   const handleOpenModal = () => {
     dispatch({
@@ -72,8 +73,7 @@ const BurgerConstructor = () => {
     },
   });
 
-  const isDisableButton = currentBun.length === 0 ? true : false;
-
+  const isDisableButton = !isAuth || currentBun.length === 0 ? true : false;
   const WrapBun = () => {
     return (
       <section className={styles['wrap-bun']}>

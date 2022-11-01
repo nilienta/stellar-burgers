@@ -1,4 +1,4 @@
-import getData from '../../utils/burger-api';
+import { getData } from '../../utils/burger-api';
 export const GET_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
 export const GET_INGREDIENTS_FAILED = 'GET_INGREDIENTS_FAILED';
@@ -33,13 +33,14 @@ export function getIngredients(URL_API) {
             type: GET_INGREDIENTS_SUCCESS,
             ingredients: res.data,
           });
-        } else {
-          dispatch({
-            type: GET_INGREDIENTS_FAILED,
-          });
         }
       })
-      .catch((e) => console.log(e));
+      .catch((err) => {
+        dispatch({
+          type: GET_INGREDIENTS_FAILED,
+        });
+        console.log(err.message);
+      });
   };
 }
 export function postOrder(URL_POST, order) {

@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './components/app/app';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
@@ -25,11 +24,9 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 reportWebVitals();

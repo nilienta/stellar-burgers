@@ -1,4 +1,4 @@
-import styles from './app-header.module.css';
+import styles from './header.module.css';
 
 import {
   Logo,
@@ -9,7 +9,7 @@ import {
 
 import NavigationLink from './navigation-link/navigation-link';
 
-const AppHeader = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.inner}>
@@ -17,21 +17,21 @@ const AppHeader = () => {
           <Logo />
         </div>
         <ul className={styles.menu}>
-          <NavigationLink text="Конструктор" link="" active={true} last={false}>
+          <NavigationLink text="Конструктор" link="/" exact={true} last={false}>
             <BurgerIcon />
           </NavigationLink>
           <NavigationLink
             text="Лента заказов"
-            link=""
-            active={false}
+            link="/changeLink"
+            exact={false}
             last={false}
           >
             <ListIcon />
           </NavigationLink>
           <NavigationLink
             text="Личный кабинет"
-            link=""
-            active={false}
+            link="/profile"
+            exact={false}
             last={true}
           >
             <ProfileIcon />
@@ -42,4 +42,4 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+export default Header;
