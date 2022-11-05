@@ -18,6 +18,7 @@ import {
   SET_VISIBLE_MODAL_CONSTRUCTOR,
   SET_INVISIBLE_MODAL_CONSTRUCTOR,
 } from '../../services/actions/app';
+import { useHistory } from 'react-router-dom';
 
 const BurgerConstructor = () => {
   const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
@@ -28,10 +29,16 @@ const BurgerConstructor = () => {
     useSelector((state) => state.app);
   const { isAuth } = useSelector((state) => state.auth);
 
+  const history = useHistory();
   const handleOpenModal = () => {
-    dispatch({
-      type: SET_VISIBLE_MODAL_CONSTRUCTOR,
-    });
+    if (isAuth) {
+      dispatch({
+        type: SET_VISIBLE_MODAL_CONSTRUCTOR,
+      });
+    } else {
+      //replace не сохраняет в историю страницу на которой нажата была кнопка (нельзя ходить по стрелочкам)
+      history.push('/login');
+    }
   };
 
   const handleCloseModal = () => {
@@ -73,7 +80,7 @@ const BurgerConstructor = () => {
     },
   });
 
-  const isDisableButton = !isAuth || currentBun.length === 0 ? true : false;
+  const isDisableButton = currentBun.length === 0 ? true : false;
   const WrapBun = () => {
     return (
       <section className={styles['wrap-bun']}>

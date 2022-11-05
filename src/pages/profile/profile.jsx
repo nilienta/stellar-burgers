@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './profile.module.css';
-import Header from '../../components/header/header';
 import {
   Input,
   EmailInput,
@@ -94,78 +93,70 @@ const ProfilePage = () => {
   };
 
   return (
-    <>
-      <Header />
-      <div className={`${styles.wrapper}`}>
-        <main className={`${styles.main}`}>
-          <MenuProfile />
-          <section className={styles.container}>
-            <form className={styles.form}>
-              <Input
-                placeholder="Имя"
-                onChange={onChange}
-                value={form.name}
-                name={'name'}
-                autoComplete="on"
-                type={'text'}
-                icon={'EditIcon'}
-                ref={nameRef}
-                onBlur={onBlurName}
-                onFocus={onFocusName}
-                error={errorName}
-                disabled={fieldDisabledName}
-                onIconClick={onIconClickName}
-                errorText={'Ой, произошла ошибка!'}
-                extraClass={styles.input}
-              />
-              <EmailInput
-                placeholder="Логин"
-                onChange={onChange}
-                value={form.email}
-                name={'email'}
-                isIcon={true}
-                autoComplete="on"
-              />
-              <Input
-                placeholder="Пароль"
-                onChange={onChange}
-                value={form.password}
-                name={'password'}
-                autoComplete="on"
-                type={'password'}
-                icon={'EditIcon'}
-                ref={passwordRef}
-                onBlur={onBlurPassword}
-                onFocus={onFocusPassword}
-                error={errorPassword}
-                disabled={fieldDisabledPassword}
-                onIconClick={onIconClickPassword}
-                errorText={'Ой, произошла ошибка!'}
-                extraClass={styles.input}
-              />
-              <section className={styles.footer}>
-                <Button
-                  onClick={onReset}
-                  type="secondary"
-                  size="large"
-                  htmlType="reset"
-                >
-                  Отмена
-                </Button>
-                <Button
-                  onClick={onSave}
-                  type="primary"
-                  size="large"
-                  htmlType="submit"
-                >
-                  Сохранить
-                </Button>
-              </section>
-            </form>
-          </section>
-        </main>
-      </div>
-    </>
+    <div className={`${styles.wrapper}`}>
+      <main className={`${styles.main}`}>
+        <MenuProfile />
+        <section className={styles.container}>
+          <form className={styles.form} onSubmit={onSave}>
+            <Input
+              placeholder="Имя"
+              onChange={onChange}
+              value={form.name}
+              name={'name'}
+              autoComplete="on"
+              type={'text'}
+              icon={'EditIcon'}
+              ref={nameRef}
+              onBlur={onBlurName}
+              onFocus={onFocusName}
+              error={errorName}
+              disabled={fieldDisabledName}
+              onIconClick={onIconClickName}
+              errorText={'Ой, произошла ошибка!'}
+              extraClass={styles.input}
+            />
+            <EmailInput
+              placeholder="Логин"
+              onChange={onChange}
+              value={form.email}
+              name={'email'}
+              isIcon={true}
+              autoComplete="on"
+            />
+            <Input
+              placeholder="Пароль"
+              onChange={onChange}
+              value={form.password}
+              name={'password'}
+              autoComplete="on"
+              type={'password'}
+              icon={'EditIcon'}
+              ref={passwordRef}
+              onBlur={onBlurPassword}
+              onFocus={onFocusPassword}
+              error={errorPassword}
+              disabled={fieldDisabledPassword}
+              onIconClick={onIconClickPassword}
+              errorText={'Ой, произошла ошибка!'}
+              extraClass={styles.input}
+            />
+            <section className={styles.footer}>
+              <Button
+                onClick={onReset}
+                type="secondary"
+                size="large"
+                htmlType="reset"
+              >
+                Отмена
+              </Button>
+              <Button type="primary" size="large" htmlType="submit">
+                Сохранить
+              </Button>
+            </section>
+          </form>
+        </section>
+      </main>
+    </div>
   );
 };
 

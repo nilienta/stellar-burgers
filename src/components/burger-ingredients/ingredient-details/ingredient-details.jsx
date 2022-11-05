@@ -1,11 +1,8 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getIngredients } from '../../../services/actions/app';
+import { useSelector } from 'react-redux';
 import clsx from 'clsx';
 import styles from './ingredient-details.module.css';
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from '../../../services/actions/app';
 
 const Element = ({ name, count }) => {
   const classForElement = clsx(
@@ -23,11 +20,6 @@ const Element = ({ name, count }) => {
 const IngredientDetails = () => {
   const classForDescription = clsx(styles.description, 'mt-4 mb-8');
 
-  const dispatch = useDispatch();
-  const NORMA_API = BASE_URL + '/ingredients';
-  useEffect(() => {
-    dispatch(getIngredients(NORMA_API));
-  }, []);
   const { ingredients } = useSelector((state) => state.app);
 
   const { id } = useParams();

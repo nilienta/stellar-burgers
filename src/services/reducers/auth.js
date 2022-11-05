@@ -44,7 +44,7 @@ const authInitialState = {
   user: null,
   accessToken: null,
   refreshToken: null,
-  possibleEmail: null,
+  possibleEmail: '',
 
   prevLocation: '/',
   emailExists: false,
@@ -52,9 +52,6 @@ const authInitialState = {
   isAuth: false,
   loader: false,
   fail: false,
-
-  getDataRequest: true,
-  getDataFailed: false,
 };
 
 export const authReducer = (state = authInitialState, action) => {
@@ -125,15 +122,15 @@ export const authReducer = (state = authInitialState, action) => {
     case GET_USER_DATA_REQUEST: {
       return {
         ...state,
-        getDataRequest: true,
-        getDataFailed: false,
+        loader: true,
+        fail: false,
       };
     }
     case GET_USER_DATA_SUCCESS: {
       return {
         ...state,
-        getDataRequest: false,
-        getDataFailed: false,
+        loader: false,
+        fail: false,
         user: action.user,
         isAuth: true,
         accessToken: action.accessToken,
@@ -143,8 +140,8 @@ export const authReducer = (state = authInitialState, action) => {
     case GET_USER_DATA_FAILED: {
       return {
         ...state,
-        getDataRequest: false,
-        getDataFailed: true,
+        loader: false,
+        fail: true,
       };
     }
     case CHANGE_USER_DATA_REQUEST: {

@@ -1,8 +1,9 @@
-.wrap {
+.main {
   position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: row;
   width: 100vw;
   height: 100vh;
   min-width: 1240px;

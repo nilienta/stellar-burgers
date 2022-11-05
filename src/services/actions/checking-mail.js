@@ -1,5 +1,5 @@
 import { BASE_URL } from './app';
-import { requestDefault } from '../../utils/burger-api';
+import { getData } from '../../utils/burger-api';
 
 export const SEND_EMAIL_FOR_PASSWORD_REQUEST =
   'SEND_EMAIL_FOR_PASSWORD_REQUEST';
@@ -12,7 +12,7 @@ export function checkingEmail(email) {
     dispatch({
       type: SEND_EMAIL_FOR_PASSWORD_REQUEST,
     });
-    requestDefault(`${BASE_URL}/password-reset`, email)
+    getData(`${BASE_URL}/password-reset`, 'POST', email)
       .then((res) => {
         if (res && res.success) {
           dispatch({

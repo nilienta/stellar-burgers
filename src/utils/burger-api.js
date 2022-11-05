@@ -1,23 +1,11 @@
-import { getCookie } from '../services/utils';
+import { getCookie } from './cookie';
 
 export const checkResponse = (res) => {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
-export const request = (url, options = defaultOptions) => {
+export const request = (url, options) => {
   return fetch(url, options).then(checkResponse);
-};
-
-export const requestDefault = (url, data) => {
-  return fetch(url, defaultOptions(data)).then(checkResponse);
-};
-
-export const requestDefaultToken = (url) => {
-  return fetch(url, defaultOptionsToken()).then(checkResponse);
-};
-
-export const requestDefaultPatch = (url, form) => {
-  return fetch(url, defaultOptionsPatch(form)).then(checkResponse);
 };
 
 export const defaultOptions = (data = {}) => {
@@ -35,37 +23,27 @@ export const defaultOptions = (data = {}) => {
   };
 };
 
-export const defaultOptionsToken = () => {
-  return {
-    method: 'GET',
+export const getData = (URL, method, data, token = false) => {
+  let query = {
+    method: method,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + getCookie('accessToken'),
     },
   };
-};
-
-export const defaultOptionsPatch = (form) => {
-  return {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + getCookie('accessToken'),
-    },
-    body: JSON.stringify(form),
-  };
-};
-export const getData = (URL, method, data) => {
-  let query = undefined;
-  if (method === 'POST') {
+  if (token) {
     query = {
-      method: 'POST',
-      body: JSON.stringify(data),
+      ...query,
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json: charset=utf-8',
+        ...query.headers,
+        Authorization: 'Bearer ' + getCookie('accessToken'),
       },
     };
+  }
+  if (method === 'PATCH') {
+    query = { ...query, body: JSON.stringify(data) };
+  }
+  if (method === 'POST') {
+    query = defaultOptions(data);
   }
   return request(URL, query);
 };

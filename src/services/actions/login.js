@@ -1,10 +1,6 @@
 import { BASE_URL } from './app';
-import {
-  requestDefault,
-  requestDefaultToken,
-  requestDefaultPatch,
-} from '../../utils/burger-api';
-import { getCookie, setCookie } from '../utils';
+import { getData } from '../../utils/burger-api';
+import { getCookie, setCookie } from '../../utils/cookie';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -30,10 +26,17 @@ const updateToken = (afterRefresh) => (dispatch) => {
   const body = {
     token: getCookie('refreshToken'),
   };
-  requestDefault(`${BASE_URL}/auth/token`, body).then((res) => {
-    saveTokens(res.refreshToken, res.accessToken.split('Bearer ')[1]);
-    dispatch(afterRefresh);
-  });
+  getData(`${BASE_URL}/auth/token`, 'POST', body)
+    .then((res) => {
+      saveTokens(res.refreshToken, res.accessToken.split('Bearer ')[1]);
+      dispatch(afterRefresh);
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_USER_DATA_FAILED,
+        textError: err.message,
+      });
+    });
 };
 
 export const getUser = () => (dispatch) => {
@@ -42,7 +45,7 @@ export const getUser = () => (dispatch) => {
   dispatch({
     type: GET_USER_DATA_REQUEST,
   });
-  requestDefaultToken(`${BASE_URL}/auth/user`)
+  getData(`${BASE_URL}/auth/user`, 'GET', {}, true)
     .then((res) => {
       dispatch({
         type: GET_USER_DATA_SUCCESS,
@@ -68,7 +71,7 @@ export function signIn(form) {
     dispatch({
       type: LOGIN_REQUEST,
     });
-    requestDefault(`${BASE_URL}/auth/login`, form)
+    getData(`${BASE_URL}/auth/login`, 'POST', form)
       .then((res) => {
         if (res && res.success) {
           dispatch({
@@ -96,7 +99,7 @@ export function signOut(refreshToken) {
     dispatch({
       type: LOGOUT_REQUEST,
     });
-    requestDefault(`${BASE_URL}/auth/logout`, body)
+    getData(`${BASE_URL}/auth/logout`, 'POST', body)
       .then((res) => {
         if (res && res.success) {
           dispatch({
@@ -118,7 +121,7 @@ export function updateUserData(form) {
     dispatch({
       type: CHANGE_USER_DATA_REQUEST,
     });
-    requestDefaultPatch(`${BASE_URL}/auth/user`, form)
+    getData(`${BASE_URL}/auth/user`, 'PATCH', form, true)
       .then((res) => {
         if (res && res.success) {
           dispatch({

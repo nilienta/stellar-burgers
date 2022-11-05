@@ -8,24 +8,13 @@ const MenuProfile = () => {
   const dispatch = useDispatch();
   const { refreshToken } = useSelector((state) => state.auth);
 
-  let logout = useCallback(
+  const logout = useCallback(
     (e) => {
       e.preventDefault();
       dispatch(signOut(refreshToken));
     },
     [refreshToken]
   );
-
-  const { isAuth } = useSelector((state) => state.auth);
-  if (!isAuth) {
-    return (
-      <Redirect
-        to={{
-          pathname: '/login',
-        }}
-      />
-    );
-  }
 
   return (
     <nav className={styles.nav}>

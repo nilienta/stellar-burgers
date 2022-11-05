@@ -6,7 +6,7 @@ import {
   ListIcon,
   ProfileIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import { Link } from 'react-router-dom';
 import NavigationLink from './navigation-link/navigation-link';
 
 const Header = () => {
@@ -14,7 +14,9 @@ const Header = () => {
     <header className={styles.header}>
       <nav className={styles.inner}>
         <div className={styles.logo}>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <ul className={styles.menu}>
           <NavigationLink text="Конструктор" link="/" exact={true} last={false}>

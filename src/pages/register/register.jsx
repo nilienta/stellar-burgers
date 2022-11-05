@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { register } from '../../services/actions/register';
 import styles from './register.module.css';
-import Header from '../../components/header/header';
 import {
   Input,
   Button,
@@ -26,7 +25,7 @@ const RegisterPage = () => {
     });
   };
 
-  let registration = useCallback(
+  const registration = useCallback(
     (e) => {
       e.preventDefault();
       dispatch(register(form));
@@ -46,52 +45,44 @@ const RegisterPage = () => {
     );
   }
   return (
-    <>
-      <Header />
-      <div className={styles.wrapper}>
-        <div className={styles.container}>
-          <form className={styles.form}>
-            <h1 className="text text_type_main-medium">Регистрация</h1>
-            <Input
-              placeholder="Имя"
-              type={'text'}
-              value={form.name}
-              name={'name'}
-              onChange={onChange}
-              autoComplete="on"
-            />
-            <EmailInput
-              placeholder="Email"
-              onChange={onChange}
-              value={form.email}
-              name={'email'}
-              autoComplete="on"
-            />
-            <PasswordInput
-              placeholder="Пароль"
-              onChange={onChange}
-              value={form.password}
-              name={'password'}
-              autoComplete="on"
-            />
-            <Button
-              onClick={registration}
-              type="primary"
-              size="large"
-              htmlType="submit"
-            >
-              Зарегистрироваться
-            </Button>
-          </form>
-          <p className="text text_type_main-default text_color_inactive mt-20">
-            Уже зарегистрированы?{' '}
-            <Link to="/login" className={styles.link}>
-              Войти
-            </Link>
-          </p>
-        </div>
+    <div className={styles.wrapper}>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={registration}>
+          <h1 className="text text_type_main-medium">Регистрация</h1>
+          <Input
+            placeholder="Имя"
+            type={'text'}
+            value={form.name}
+            name={'name'}
+            onChange={onChange}
+            autoComplete="on"
+          />
+          <EmailInput
+            placeholder="Email"
+            onChange={onChange}
+            value={form.email}
+            name={'email'}
+            autoComplete="on"
+          />
+          <PasswordInput
+            placeholder="Пароль"
+            onChange={onChange}
+            value={form.password}
+            name={'password'}
+            autoComplete="on"
+          />
+          <Button type="primary" size="large" htmlType="submit">
+            Зарегистрироваться
+          </Button>
+        </form>
+        <p className="text text_type_main-default text_color_inactive mt-20">
+          Уже зарегистрированы?{' '}
+          <Link to="/login" className={styles.link}>
+            Войти
+          </Link>
+        </p>
       </div>
-    </>
+    </div>
   );
 };
 

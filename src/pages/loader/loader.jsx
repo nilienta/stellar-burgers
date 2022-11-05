@@ -1,13 +1,17 @@
-import IconBurger from '../../components/burger-constructor/cap-constructor/icon-burger/icon-burger';
 import styles from './loader.module.css';
+import ReactLoading from 'react-loading';
 
 const Loader = () => {
   return (
-    <div className={styles.wrap}>
-      <section className={styles.main}>
-        <IconBurger size={200} color="var(--colors-interface-success)" />
-      </section>
-    </div>
+    <section className={styles.main}>
+      <ReactLoading
+        className={'Loader'}
+        type={'spin'}
+        color="var(    --colors-interface-accent)"
+        height={'15%'}
+        width={'15%'}
+      />
+    </section>
   );
 };
 

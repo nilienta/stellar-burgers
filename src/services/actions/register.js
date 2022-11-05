@@ -1,5 +1,5 @@
 import { BASE_URL } from './app';
-import { requestDefault } from '../../utils/burger-api';
+import { getData } from '../../utils/burger-api';
 
 export const REGISTER_REQUEST = 'REGISTER_REQUEST';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -10,7 +10,7 @@ export function register(form) {
     dispatch({
       type: REGISTER_REQUEST,
     });
-    requestDefault(`${BASE_URL}/auth/register`, form)
+    getData(`${BASE_URL}/auth/register`, 'POST', form)
       .then((res) => {
         if (res && res.success) {
           dispatch({
