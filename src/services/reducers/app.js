@@ -37,7 +37,7 @@ const initialState = {
   isModalConstructorOpen: false,
 };
 
-export const appReducer = (state = initialState, action) => {
+export const appReducer = (state = initialState, action) => { 
   switch (action.type) {
     case GET_INGREDIENTS_REQUEST: {
       return {

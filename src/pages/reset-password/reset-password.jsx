@@ -9,27 +9,22 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { passwordSaveReset } from '../../services/actions/reset-password';
+import { useForm } from '../../components/hooks/useForm';
 
 const ResetPasswordPage = () => {
   const dispatch = useDispatch();
 
-  const [form, setValue] = useState({
+  const { values, handleChange } = useForm({
     password: '',
-    accessToken: '',
+    token: '',
   });
-
-  const onChange = (e) => {
-    setValue(() => {
-      return { ...form, [e.target.name]: e.target.value };
-    });
-  };
 
   const resetPassword = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(passwordSaveReset(form));
+      dispatch(passwordSaveReset(values));
     },
-    [form]
+    [values]
   );
   const { isAuth, emailExists } = useSelector((state) => state.auth);
 
@@ -59,17 +54,17 @@ const ResetPasswordPage = () => {
           <h1 className="text text_type_main-medium">Восстановление пароля</h1>
           <PasswordInput
             placeholder="Введите новый пароль"
-            onChange={onChange}
-            value={form.password}
+            onChange={handleChange}
+            value={values.password}
             name={'password'}
             autoComplete="on"
           />
           <Input
             placeholder="Введите код из письма"
             type={'text'}
-            value={form.accessToken}
-            name={'accessToken'}
-            onChange={onChange}
+            value={values.token}
+            name={'token'}
+            onChange={handleChange}
             autoComplete="on"
           />
           <Button type="primary" size="large" htmlType="submit">

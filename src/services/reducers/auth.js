@@ -65,7 +65,7 @@ export const authReducer = (state = authInitialState, action) => {
     }
     case LOGIN_SUCCESS: {
       setCookie('accessToken', action.accessToken.split('Bearer ')[1]);
-      setCookie('refreshToken', action.refreshToken);
+      localStorage.setItem('refreshToken', action.refreshToken);
       return {
         ...state,
         loader: false,
@@ -94,7 +94,7 @@ export const authReducer = (state = authInitialState, action) => {
     }
     case REGISTER_SUCCESS: {
       setCookie('accessToken', action.accessToken.split('Bearer ')[1]);
-      setCookie('refreshToken', action.refreshToken);
+      localStorage.setItem('refreshToken', action.refreshToken);
       return {
         ...state,
         loader: false,

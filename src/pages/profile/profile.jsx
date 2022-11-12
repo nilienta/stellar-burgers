@@ -9,6 +9,7 @@ import {
 import MenuProfile from '../../components/menu-profile/menu-profile';
 import { validateForm } from '../../utils/validate-form';
 import { updateUserData } from '../../services/actions/login';
+import { useForm } from '../../components/hooks/useForm';
 
 const ProfilePage = () => {
   const [fieldDisabledName, setDisabledName] = useState(true);
@@ -24,13 +25,7 @@ const ProfilePage = () => {
     name: name,
   };
 
-  const [form, setValue] = useState(initialState);
-
-  const onChange = (e) => {
-    setValue(() => {
-      return { ...form, [e.target.name]: e.target.value };
-    });
-  };
+  const { values, handleChange, setValues } = useForm(initialState);
 
   const validateFieldName = (type, value) => {
     setErrorName(!validateForm(type, value));
@@ -75,8 +70,8 @@ const ProfilePage = () => {
     setDisabledPassword(true);
   };
   const body = {
-    email: form.email,
-    name: form.name,
+    email: values.email,
+    name: values.name,
   };
   const dispatch = useDispatch();
   const onSave = (e) => {
@@ -87,7 +82,7 @@ const ProfilePage = () => {
   };
   const onReset = (e) => {
     e.preventDefault();
-    setValue(initialState);
+    setValues(initialState);
     setErrorName(false);
     setErrorPassword(false);
   };
@@ -100,8 +95,8 @@ const ProfilePage = () => {
           <form className={styles.form} onSubmit={onSave}>
             <Input
               placeholder="Имя"
-              onChange={onChange}
-              value={form.name}
+              onChange={handleChange}
+              value={values.name}
               name={'name'}
               autoComplete="on"
               type={'text'}
@@ -117,16 +112,16 @@ const ProfilePage = () => {
             />
             <EmailInput
               placeholder="Логин"
-              onChange={onChange}
-              value={form.email}
+              onChange={handleChange}
+              value={values.email}
               name={'email'}
               isIcon={true}
               autoComplete="on"
             />
             <Input
               placeholder="Пароль"
-              onChange={onChange}
-              value={form.password}
+              onChange={handleChange}
+              value={values.password}
               name={'password'}
               autoComplete="on"
               type={'password'}

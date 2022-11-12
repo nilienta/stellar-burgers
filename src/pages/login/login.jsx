@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 import { SET_POSSIBLE_EMAIL } from '../../services/actions/login';
@@ -11,32 +11,29 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { signIn } from '../../services/actions/login';
+import { useForm } from '../../components/hooks/useForm';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const [form, setValue] = useState({
+  const { values, handleChange } = useForm({
     email: 'anml@yandex.ru',
     password: 'password1!',
     name: 'Username',
   });
 
-  const onChange = (e) => {
-    setValue({ ...form, [e.target.name]: e.target.value });
-  };
-
   const { isAuth, loader } = useSelector((state) => state.auth);
   const login = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(signIn(form));
+      dispatch(signIn(values));
       dispatch({
         type: SET_POSSIBLE_EMAIL,
-        possibleEmail: form.email,
+        possibleEmail: values.email,
       });
     },
-    [form]
+    [values]
   );
 
   if (isAuth) {
@@ -55,15 +52,15 @@ const LoginPage = () => {
                 <h1 className="text text_type_main-medium">Вход</h1>
                 <EmailInput
                   placeholder="Email"
-                  onChange={onChange}
-                  value={form.email}
+                  onChange={handleChange}
+                  value={values.email}
                   name={'email'}
                   autoComplete="on"
                 />
                 <PasswordInput
                   placeholder="Пароль"
-                  onChange={onChange}
-                  value={form.password}
+                  onChange={handleChange}
+                  value={values.password}
                   name={'password'}
                   autoComplete="on"
                 />

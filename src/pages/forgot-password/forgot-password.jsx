@@ -8,6 +8,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { checkingEmail } from '../../services/actions/checking-mail';
+import { useForm } from '../../components/hooks/useForm';
 
 const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
@@ -17,12 +18,16 @@ const ForgotPasswordPage = () => {
   );
   const [value, setValue] = useState({ email: possibleEmail });
 
+  const { values, handleChange } = useForm({
+    email: possibleEmail,
+  });
+
   const forgotPassword = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(checkingEmail(value));
+      dispatch(checkingEmail(values));
     },
-    [value]
+    [values]
   );
   if (emailExists) {
     return (
@@ -51,8 +56,9 @@ const ForgotPasswordPage = () => {
           <h1 className="text text_type_main-medium">Восстановление пароля</h1>
           <EmailInput
             placeholder="Укажите e-mail"
-            onChange={(e) => setValue({ email: e.target.value })}
-            value={value.email}
+            // onChange={(e) => setValue({ email: e.target.value })}
+            onChange={handleChange}
+            value={values.email}
             name={'email'}
             autoComplete="on"
           />

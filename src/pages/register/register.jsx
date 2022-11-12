@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { register } from '../../services/actions/register';
@@ -10,27 +10,22 @@ import {
   PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
+import { useForm } from '../../components/hooks/useForm';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
-  const [form, setValue] = useState({
+  const { values, handleChange } = useForm({
     email: '',
     password: '',
     name: '',
   });
 
-  const onChange = (e) => {
-    setValue(() => {
-      return { ...form, [e.target.name]: e.target.value };
-    });
-  };
-
   const registration = useCallback(
     (e) => {
       e.preventDefault();
-      dispatch(register(form));
+      dispatch(register(values));
     },
-    [form]
+    [values]
   );
 
   const { isAuth } = useSelector((state) => state.auth);
@@ -52,22 +47,22 @@ const RegisterPage = () => {
           <Input
             placeholder="Имя"
             type={'text'}
-            value={form.name}
+            value={values.name}
             name={'name'}
-            onChange={onChange}
+            onChange={handleChange}
             autoComplete="on"
           />
           <EmailInput
             placeholder="Email"
-            onChange={onChange}
-            value={form.email}
+            onChange={handleChange}
+            value={values.email}
             name={'email'}
             autoComplete="on"
           />
           <PasswordInput
             placeholder="Пароль"
-            onChange={onChange}
-            value={form.password}
+            onChange={handleChange}
+            value={values.password}
             name={'password'}
             autoComplete="on"
           />

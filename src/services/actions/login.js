@@ -19,12 +19,12 @@ export const CHANGE_USER_DATA_FAILED = 'CHANGE_USER_DATA_FAILED';
 
 const saveTokens = (refreshToken, accessToken) => {
   setCookie('accessToken', accessToken);
-  setCookie('refreshToken', refreshToken);
+  localStorage.setItem('refreshToken', refreshToken);
 };
 
 const updateToken = (afterRefresh) => (dispatch) => {
   const body = {
-    token: getCookie('refreshToken'),
+    token: localStorage.getItem('refreshToken'),
   };
   getData(`${BASE_URL}/auth/token`, 'POST', body)
     .then((res) => {
@@ -41,7 +41,7 @@ const updateToken = (afterRefresh) => (dispatch) => {
 
 export const getUser = () => (dispatch) => {
   const accessToken = getCookie('accessToken');
-  const refreshToken = getCookie('refreshToken');
+  const refreshToken = localStorage.getItem('refreshToken');
   dispatch({
     type: GET_USER_DATA_REQUEST,
   });
