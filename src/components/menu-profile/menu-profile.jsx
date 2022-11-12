@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './menu-profile.module.css';
 import { NavLink } from 'react-router-dom';
@@ -57,4 +57,4 @@ const MenuProfile = () => {
   );
 };
 
-export default MenuProfile;
+export default React.memo(MenuProfile);

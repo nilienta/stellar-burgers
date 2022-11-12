@@ -1,3 +1,4 @@
+import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { PropTypesForIngredient } from '../../../prop-types';
@@ -68,4 +69,4 @@ Ingredient.propTypes = {
   item: PropTypes.shape(PropTypesForIngredient).isRequired,
 };
 
-export default Ingredient;
+export default React.memo(Ingredient);

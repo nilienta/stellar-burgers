@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import styles from './order-details.module.css';
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { postOrder } from '../../../services/actions/app';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -57,4 +57,4 @@ const OrderDetails = () => {
   );
 };
 
-export default OrderDetails;
+export default React.memo(OrderDetails);

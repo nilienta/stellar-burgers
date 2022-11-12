@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { PropTypesForDataList } from '../../../prop-types';
 
@@ -22,4 +23,4 @@ BlockIngredients.propTypes = {
   thread: PropTypes.arrayOf(PropTypesForDataList).isRequired,
 };
 
-export default BlockIngredients;
+export default React.memo(BlockIngredients);

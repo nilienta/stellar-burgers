@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
 import styles from './constructor-ingredients-list.module.css';
 
@@ -57,4 +57,4 @@ const ConstructorIngredientsList = () => {
   );
 };
 
-export default ConstructorIngredientsList;
+export default React.memo(ConstructorIngredientsList);

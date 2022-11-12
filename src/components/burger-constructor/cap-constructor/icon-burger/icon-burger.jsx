@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const IconBurger = ({ color, size }) => {
@@ -23,4 +24,4 @@ IconBurger.propTypes = {
   size: PropTypes.number.isRequired,
 };
 
-export default IconBurger;
+export default React.memo(IconBurger);

@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './modal-header.module.css';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
@@ -20,4 +21,4 @@ ModalHeader.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
-export default ModalHeader;
+export default React.memo(ModalHeader);

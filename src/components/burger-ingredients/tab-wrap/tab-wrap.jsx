@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import clsx from 'clsx';
 
@@ -61,4 +62,4 @@ const TabWrap = () => {
   );
 };
 
-export default TabWrap;
+export default React.memo(TabWrap);

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import PropTypes from 'prop-types';
@@ -50,4 +50,4 @@ Modal.propTypes = {
   children: PropTypes.object.isRequired,
 };
 
-export default Modal;
+export default React.memo(Modal);

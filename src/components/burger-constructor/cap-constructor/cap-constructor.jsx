@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './cap-constructor.module.css';
 import clsx from 'clsx';
 
@@ -21,4 +22,4 @@ const CapConstructor = () => {
   );
 };
 
-export default CapConstructor;
+export default React.memo(CapConstructor);

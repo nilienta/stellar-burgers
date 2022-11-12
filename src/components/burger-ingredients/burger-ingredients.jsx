@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './burger-ingredients.module.css';
 import TabWrap from './tab-wrap/tab-wrap';
 import IngredientsList from './ingredients-list/ingredients-list';
@@ -14,4 +15,4 @@ const BurgerIngredients = () => {
   );
 };
 
-export default BurgerIngredients;
+export default React.memo(BurgerIngredients);

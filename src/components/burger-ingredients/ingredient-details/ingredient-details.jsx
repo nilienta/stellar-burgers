@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import clsx from 'clsx';
@@ -57,4 +58,4 @@ Element.propTypes = {
   count: PropTypes.number.isRequired,
 };
 
-export default IngredientDetails;
+export default React.memo(IngredientDetails);

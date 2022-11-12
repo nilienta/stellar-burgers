@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './burger-constructor.module.css';
 
@@ -148,4 +148,4 @@ const BurgerConstructor = () => {
   );
 };
 
-export default BurgerConstructor;
+export default React.memo(BurgerConstructor);

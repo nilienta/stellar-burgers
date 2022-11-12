@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
@@ -41,4 +42,4 @@ NavigationLink.propTypes = {
   children: PropTypes.object,
 };
 
-export default NavigationLink;
+export default React.memo(NavigationLink);

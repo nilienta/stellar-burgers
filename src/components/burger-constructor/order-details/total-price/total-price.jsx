@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './total-price.module.css';
 
@@ -13,4 +14,4 @@ const TotalPrice = () => {
   );
 };
 
-export default TotalPrice;
+export default React.memo(TotalPrice);
