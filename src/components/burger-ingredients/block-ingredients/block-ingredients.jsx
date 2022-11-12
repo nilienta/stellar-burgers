@@ -6,13 +6,13 @@ import clsx from 'clsx';
 import styles from './block-ingredients.module.css';
 import Ingredient from '../ingredient/ingredient';
 
-const BlockIngredients = ({ thread, open }) => {
+const BlockIngredients = ({ thread }) => {
   const classForList = clsx(styles.list, 'mt-6 mb-10 pr-1 pl-4');
 
   return (
     <ul className={classForList}>
       {thread.map((item) => {
-        return <Ingredient key={item._id} item={item} open={open} />;
+        return <Ingredient key={item._id} item={item} />;
       })}
     </ul>
   );
@@ -20,7 +20,6 @@ const BlockIngredients = ({ thread, open }) => {
 
 BlockIngredients.propTypes = {
   thread: PropTypes.arrayOf(PropTypesForDataList).isRequired,
-  open: PropTypes.func.isRequired,
 };
 
 export default BlockIngredients;

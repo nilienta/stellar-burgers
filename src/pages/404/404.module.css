@@ -1,0 +1,27 @@
+.wrap {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  min-width: 1240px;
+}
+.main {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}

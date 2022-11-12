@@ -10,10 +10,13 @@
   right: 0px;
 }
 .link {
-  color: inherit;
+  color: var(--text-inactive-color);
   text-decoration: none;
   transition: var(--common-transition);
 }
 .link:hover {
+  color: var(--text-primary-color);
+}
+.link--active {
   color: var(--text-primary-color);
 }

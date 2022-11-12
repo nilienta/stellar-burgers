@@ -21,7 +21,9 @@
   gap: calc(var(--offset-base-size) * 2);
 }
 .logo {
+  cursor: pointer;
   position: absolute;
+  z-index: 10;
   left: 475px;
   top: 19px;
 }

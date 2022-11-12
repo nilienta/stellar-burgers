@@ -1,4 +1,4 @@
-import styles from './app-header.module.css';
+import styles from './header.module.css';
 
 import {
   Logo,
@@ -6,32 +6,34 @@ import {
   ListIcon,
   ProfileIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-
+import { Link } from 'react-router-dom';
 import NavigationLink from './navigation-link/navigation-link';
 
-const AppHeader = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <nav className={styles.inner}>
         <div className={styles.logo}>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
         <ul className={styles.menu}>
-          <NavigationLink text="Конструктор" link="" active={true} last={false}>
+          <NavigationLink text="Конструктор" link="/" exact={true} last={false}>
             <BurgerIcon />
           </NavigationLink>
           <NavigationLink
             text="Лента заказов"
-            link=""
-            active={false}
+            link="/changeLink"
+            exact={false}
             last={false}
           >
             <ListIcon />
           </NavigationLink>
           <NavigationLink
             text="Личный кабинет"
-            link=""
-            active={false}
+            link="/profile"
+            exact={false}
             last={true}
           >
             <ProfileIcon />
@@ -42,4 +44,4 @@ const AppHeader = () => {
   );
 };
 
-export default AppHeader;
+export default Header;

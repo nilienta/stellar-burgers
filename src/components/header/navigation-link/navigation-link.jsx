@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import styles from './navigation-link.module.css';
+import { NavLink } from 'react-router-dom';
 
-const NavigationLink = ({ text, link, active, last, children }) => {
+const NavigationLink = ({ text, link, last, children, exact }) => {
   const classForLi = clsx(
     styles.item,
     {
@@ -11,9 +12,7 @@ const NavigationLink = ({ text, link, active, last, children }) => {
     },
     'ml-5 mr-5'
   );
-  const classForText = clsx('text text_type_main-default', {
-    text_color_inactive: active === false,
-  });
+  const classForText = clsx('text text_type_main-default');
 
   const classForLink = clsx(styles.link, { classForText });
 
@@ -21,9 +20,14 @@ const NavigationLink = ({ text, link, active, last, children }) => {
     <li className={classForLi}>
       <div>{children}</div>
       <span className={classForText}>
-        <a href={link} className={classForLink}>
+        <NavLink
+          to={link}
+          exact={exact}
+          className={classForLink}
+          activeClassName={styles['link--active']}
+        >
           {text}
-        </a>
+        </NavLink>
       </span>
     </li>
   );
@@ -32,8 +36,8 @@ const NavigationLink = ({ text, link, active, last, children }) => {
 NavigationLink.propTypes = {
   text: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  active: PropTypes.bool,
   last: PropTypes.bool,
+  exact: PropTypes.bool,
   children: PropTypes.object,
 };
 
