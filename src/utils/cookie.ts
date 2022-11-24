@@ -10,26 +10,25 @@ export const getCookie = (name: string): string | undefined => {
 };
 
 type TCookieProps = {
-  expires?: any;
+  expires?: string | number | boolean;
 } & { [propName: number]: string | number | boolean };
 
 export const setCookie = (
   name: string,
-  value: any,
-  props?: TCookieProps
-): void => {
-  console.log(typeof props?.expires);
-  props = props || {};
+  value: string | null,
+  props: TCookieProps = {}
+) => {
   let exp = props.expires;
+  // для удаление cookie
   if (typeof exp == 'number' && exp) {
     const d = new Date();
     d.setTime(d.getTime() + exp * 1000);
-    exp = props.expires = d;
+    props.expires = d.toUTCString();
   }
-  if (exp && exp.toUTCString) {
-    props.expires = exp.toUTCString();
+  // для установление cookie
+  if (typeof value === 'string') {
+    value = encodeURIComponent(value);
   }
-  value = encodeURIComponent(value);
   let updatedCookie = name + '=' + value;
   for (const propName in props) {
     updatedCookie += '; ' + propName;
@@ -41,6 +40,6 @@ export const setCookie = (
   document.cookie = updatedCookie;
 };
 
-export const deleteCookie = (name: string): void => {
+export const deleteCookie = (name: string) => {
   setCookie(name, null, { expires: -1 });
 };

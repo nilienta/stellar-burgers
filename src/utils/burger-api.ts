@@ -1,16 +1,17 @@
 import { getCookie } from './cookie';
 
-export const checkResponse = (res: any) => {
+export const checkResponse = (res: Response) => {
   return res.ok
     ? res.json()
     : res.json().then((err: Error) => Promise.reject(err));
 };
 
-export const request = (url: string, options: Object) => {
-  return fetch(url, options).then(checkResponse);
+export const request = async (url: string, options: Object) => {
+  const res = await fetch(url, options);
+  return checkResponse(res);
 };
 
-export const defaultOptions = (data = {}) => {
+export const defaultOptions = (data = {}): RequestInit => {
   return {
     method: 'POST',
     mode: 'cors',
@@ -31,7 +32,7 @@ export const getData = (
   data?: Object,
   token = false
 ) => {
-  let query: any = {
+  let query: RequestInit = {
     method: method,
     headers: {
       'Content-Type': 'application/json',

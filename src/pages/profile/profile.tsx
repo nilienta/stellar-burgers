@@ -26,33 +26,33 @@ const ProfilePage: FC = () => {
 
   const { values, handleChange, setValues } = useForm(initialState);
 
-  const validateFieldName = (type: string, value: string): void => {
+  const validateFieldName = (type: string, value: string) => {
     setErrorName(!validateForm(type, value));
   };
-  const validateFieldPassword = (type: string, value: string): void => {
+  const validateFieldPassword = (type: string, value: string) => {
     setErrorPassword(!validateForm(type, value));
   };
 
   const nameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
-  const onIconClickName = (): void => {
+  const onIconClickName = () => {
     setDisabledName(false);
     setTimeout(() => nameRef.current?.focus(), 0);
   };
-  const onIconClickPassword = (): void => {
+  const onIconClickPassword = () => {
     setDisabledPassword(false);
     setTimeout(() => passwordRef.current?.focus(), 0);
   };
 
-  const onFocusName = (): void => {
+  const onFocusName = () => {
     setErrorName(false);
   };
-  const onFocusPassword = (): void => {
+  const onFocusPassword = () => {
     setErrorPassword(false);
   };
 
-  const onBlurName = (e: FocusEvent<HTMLInputElement>): void => {
+  const onBlurName = (e: FocusEvent<HTMLInputElement>) => {
     if (e.target.value) {
       validateFieldName(e.target.type, e.target.value);
     } else {
@@ -60,7 +60,7 @@ const ProfilePage: FC = () => {
     }
     setDisabledName(true);
   };
-  const onBlurPassword = (e: FocusEvent<HTMLInputElement>): void => {
+  const onBlurPassword = (e: FocusEvent<HTMLInputElement>) => {
     if (e.target.value) {
       validateFieldPassword(e.target.type, e.target.value);
     } else {

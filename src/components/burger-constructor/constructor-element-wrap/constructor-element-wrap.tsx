@@ -34,7 +34,7 @@ const ConstructorElementWrap: FC<TConstructorElementWrap> = ({
   const dispatch = useAppDispatch();
   const positionText = item.name + (text !== undefined ? text : '');
 
-  const onDelete = (dragId?: string): void => {
+  const onDelete = (dragId?: string) => {
     dispatch({
       type: DELETE_INGREDIENTS,
       item: item,

@@ -10,7 +10,8 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from './order-details/total-price/total-price';
 import CapConstructor from './cap-constructor/cap-constructor';
 
-import { useAppDispatch, useAppSelector, TIngredient } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { TIngredient } from '../../utils/types';
 
 import { useDrop } from 'react-dnd';
 import {
@@ -33,7 +34,7 @@ const BurgerConstructor: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
 
   const history = useHistory();
-  const handleOpenModal = (): void => {
+  const handleOpenModal = () => {
     if (isAuth) {
       dispatch({
         type: SET_VISIBLE_MODAL_CONSTRUCTOR,
@@ -44,7 +45,7 @@ const BurgerConstructor: FC = () => {
     }
   };
 
-  const handleCloseModal = (): void => {
+  const handleCloseModal = () => {
     dispatch({
       type: SET_INVISIBLE_MODAL_CONSTRUCTOR,
     });
@@ -72,7 +73,7 @@ const BurgerConstructor: FC = () => {
     collect: (monitor) => ({
       isHover: monitor.isOver(),
     }),
-    drop(item: any) {
+    drop: (item: TIngredient) => {
       dispatch({
         type: MODIFY_CONSTRUCTOR_INGREDIENTS,
         item: {

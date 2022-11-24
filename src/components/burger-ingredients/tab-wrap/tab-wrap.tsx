@@ -13,7 +13,7 @@ const TabWrap: FC = () => {
   const classForTab = clsx(styles['tab-wrap'], 'mt-5 mb-10');
   const [current, setCurrent] = useState('one');
 
-  const onSetActive = (tab: TTab): void => {
+  const onSetActive = (tab: TTab) => {
     setCurrent(tab);
   };
 

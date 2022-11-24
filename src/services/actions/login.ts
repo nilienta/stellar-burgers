@@ -27,7 +27,6 @@ const saveTokens = (refreshToken: string, accessToken: string) => {
 const updateToken =
   (afterRefresh: (dispatch: AppDispatch) => void) =>
   (dispatch: Dispatch<TAuthAction | ((dispatch: AppDispatch) => void)>) => {
-    console.log(typeof afterRefresh);
     const body = {
       token: localStorage.getItem('refreshToken'),
     };
