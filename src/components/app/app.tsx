@@ -24,7 +24,6 @@ import IngredientDetails from '../burger-ingredients/ingredient-details/ingredie
 import Header from '../header/header';
 import { BASE_URL } from '../../services/actions/app';
 import { getIngredients } from '../../services/actions/app';
-import { AppDispatch } from '../..';
 import { Location } from 'history';
 
 type LocationState = {

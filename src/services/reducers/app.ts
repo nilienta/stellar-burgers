@@ -105,7 +105,7 @@ export const appReducer = (
           currentMainsAndSauces: [...state.currentMainsAndSauces, action.item!],
           ingredients: [...state.ingredients].map((item) =>
             item._id === action.item!._id
-              ? { ...item, count: item.count! > 0 ? ++item.count! : 1 }
+              ? { ...item, count: item.count! > 0 ? item.count! + 1 : 1 }
               : item
           ),
         };
@@ -125,7 +125,7 @@ export const appReducer = (
         ),
         ingredients: [...state.ingredients].map((item) =>
           item._id === action.item!._id
-            ? { ...item, count: --item.count! }
+            ? { ...item, count: item.count! - 1 }
             : item
         ),
       };
