@@ -53,7 +53,7 @@ const ConstructorElementWrap: FC<TConstructorElementWrap> = ({
     },
     // Вызывается, когда перетаскиваемый элемент оказывается над ингредиентом,
     // индекс которого у нас задан в пропсах props.index
-    hover(item: any, monitor) {
+    hover(item: { id: string; index: number } | any, monitor) {
       if (!ref.current) {
         return;
       }

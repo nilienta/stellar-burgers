@@ -1,7 +1,6 @@
 import { getData } from '../../utils/burger-api';
 import { TAppAction } from '../../utils/types';
 import { Dispatch } from 'react';
-import { TIngredient } from '../../utils/types';
 
 export const GET_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
