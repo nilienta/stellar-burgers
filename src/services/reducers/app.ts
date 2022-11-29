@@ -12,7 +12,6 @@ import {
   POST_ORDER_REQUEST,
   SET_NUMBER_ORDER,
   POST_ORDER_FAILED,
-  SET_VISIBLE_INGREDIENT,
   SET_VISIBLE_MODAL_INGREDIENT,
   SET_INVISIBLE_MODAL_INGREDIENT,
   SET_VISIBLE_MODAL_CONSTRUCTOR,
@@ -157,12 +156,6 @@ export const appReducer = (
         postOrderRequest: false,
         postOrderFailed: false,
         numberOrder: action.numberOrder!,
-      };
-    }
-    case SET_VISIBLE_INGREDIENT: {
-      return {
-        ...state,
-        visibleIngredient: action.visibleIngredient!,
       };
     }
     case SET_VISIBLE_MODAL_INGREDIENT: {

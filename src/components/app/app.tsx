@@ -13,10 +13,7 @@ import IngredientPage from '../../pages/ingredient/ingredient';
 import NotFound404 from '../../pages/404/404';
 import { ProtectedRoute } from '../protected-route';
 import { getUser } from '../../services/actions/login';
-import {
-  SET_INVISIBLE_MODAL_INGREDIENT,
-  SET_VISIBLE_INGREDIENT,
-} from '../../services/actions/app';
+import { SET_INVISIBLE_MODAL_INGREDIENT } from '../../services/actions/app';
 import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import Modal from '../modal/modal';
@@ -51,10 +48,6 @@ export default function App() {
     const handleModalClose = () => {
       dispatch({
         type: SET_INVISIBLE_MODAL_INGREDIENT,
-      });
-      dispatch({
-        type: SET_VISIBLE_INGREDIENT,
-        visibleIngredient: {},
       });
       history.goBack();
     };
