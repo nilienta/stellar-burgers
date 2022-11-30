@@ -4,10 +4,10 @@ import { Dispatch } from 'react';
 
 export const GET_INGREDIENTS_REQUEST = 'GET_INGREDIENTS_REQUEST';
 export const GET_INGREDIENTS_SUCCESS = 'GET_INGREDIENTS_SUCCESS';
-export const GET_INGREDIENTS_FAILED = 'GET_INGREDIENTS_FAILED';
+export const GET_INGREDIENTS_FAILED: 'GET_INGREDIENTS_FAILED' =
+  'GET_INGREDIENTS_FAILED';
 export const SET_BUNS = 'SET_BUNS';
-export const SET_MAINS_AND_SAUCES: 'SET_MAINS_AND_SAUCES' =
-  'SET_MAINS_AND_SAUCES';
+export const SET_MAINS_AND_SAUCES = 'SET_MAINS_AND_SAUCES';
 export const MODIFY_CONSTRUCTOR_INGREDIENTS = 'MODIFY_CONSTRUCTOR_INGREDIENTS';
 export const UPDATE_CONSTRUCTOR_LIST = 'UPDATE_CONSTRUCTOR_LIST';
 export const DELETE_INGREDIENTS = 'DELETE_INGREDIENTS';
@@ -23,6 +23,22 @@ export const SET_INVISIBLE_MODAL_CONSTRUCTOR =
 export const RESET_STATE = 'RESET_STATE';
 
 export const BASE_URL = 'https://norma.nomoreparties.space/api';
+
+export type TOrderActions =
+  | typeof GET_INGREDIENTS_SUCCESS
+  | typeof GET_INGREDIENTS_FAILED;
+
+function iTakeFoo(foo: 'foo') {}
+const any: 'foo' = 'foo';
+const test = {
+  someProp: any,
+};
+iTakeFoo(test.someProp);
+
+function identity<T>(arg: T): T {
+  return arg;
+}
+const efwf = identity('fdsfs');
 
 export const getIngredients = (URL_API: string) => {
   return (dispatch: Dispatch<TAppAction>) => {

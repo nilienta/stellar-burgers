@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import styles from './previous-order.module.css';
+import React, { FC } from 'react';
+import styles from './order-line.module.css';
 import orderIcon from '../../images/ingredients.png';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const PreviousOrder: FC = () => {
+const OrderLine: FC<{ needStatus: boolean }> = ({ needStatus }) => {
   return (
     <section className={styles.container}>
       <div className={styles['data-line']}>
@@ -13,10 +13,14 @@ const PreviousOrder: FC = () => {
         </p>
       </div>
       <div className={styles.info}>
-        <h1 className="text text_type_main-medium">
+        <p className="text text_type_main-medium">
           Death Star Starship Main бургер
-        </h1>
-        <p className="text text_type_main-default">Создан</p>
+        </p>
+        {needStatus ? (
+          <p className="text text_type_main-default">Создан</p>
+        ) : (
+          <></>
+        )}
       </div>
       <div className={styles['data-line']}>
         <img src={orderIcon} alt="Previous order" />
@@ -29,4 +33,4 @@ const PreviousOrder: FC = () => {
   );
 };
 
-export default PreviousOrder;
+export default React.memo(OrderLine);

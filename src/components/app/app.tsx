@@ -7,6 +7,7 @@ import LoginPage from '../../pages/login/login';
 import RegisterPage from '../../pages/register/register';
 import ForgotPasswordPage from '../../pages/forgot-password/forgot-password';
 import ResetPasswordPage from '../../pages/reset-password/reset-password';
+import OrderFeedPage from '../../pages/order-feed/order-feed';
 import ProfilePage from '../../pages/profile/profile';
 import OrderHistoryPage from '../../pages/order-history/order-history';
 import IngredientPage from '../../pages/ingredient/ingredient';
@@ -72,6 +73,12 @@ export default function App() {
           </Route>
           <Route path="/reset-password" exact={true}>
             <ResetPasswordPage />
+          </Route>
+          <Route path="/feed" exact={true}>
+            <OrderFeedPage />
+          </Route>
+          <Route path="/feed/:id" exact={true}>
+            <OrderFeedPage />
           </Route>
           <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
