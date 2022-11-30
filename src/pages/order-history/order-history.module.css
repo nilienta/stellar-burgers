@@ -1,13 +1,16 @@
 .wrapper {
   width: 1240px;
   margin: 0px auto;
-  margin-top: 264px;
+  margin-top: 208px;
 }
 .main {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
+  gap: calc(var(--offset-base-size) * 15);
+  margin: 0px auto;
   max-width: 860px;
+  min-width: 1240px;
 }
 .nav {
   width: 320px;
@@ -30,11 +33,17 @@
 }
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 480px;
-  left: 760px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
   text-align: center;
+  gap: calc(var(--offset-base-size) * 6);
+  margin-top: -80px;
+  min-width: 860px;
+  height: calc(100vh - 154px);
+  min-height: 470px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .form {
   display: flex;
