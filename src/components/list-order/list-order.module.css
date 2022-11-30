@@ -8,9 +8,12 @@
   min-width: 600px;
   box-sizing: border-box;
   width: 100%;
-  padding-right: calc(var(--offset-base-size) * 4);
-  height: calc(100vh - 248px);
+  padding-right: calc(var(--offset-base-size) * 2);
+  /* height: calc(100vh - 188px); */
   min-height: 470px;
   overflow-x: hidden;
   overflow-y: scroll;
+}
+.container::-webkit-scrollbar-track {
+  margin-bottom: 60px;
 }

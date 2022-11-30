@@ -5,13 +5,13 @@ import ListOrder from '../../components/list-order/list-order';
 
 const OrderHistoryPage: FC = () => {
   return (
-    <div className={`${styles.wrapper}`}>
-      <main className={`${styles.main}`}>
+    <div className={styles.wrapper}>
+      <div className={styles.main}>
         <article className="mt-20">
           <MenuProfile />
         </article>
         <ListOrder needStatus={true} />
-      </main>
+      </div>
     </div>
   );
 };

@@ -13,5 +13,5 @@
   display: flex;
   justify-content: flex-start;
   gap: calc(var(--offset-base-size) * 15);
-  margin-bottom: calc(100vh * 0.05);
+  height: calc(100vh - 188px);
 }
