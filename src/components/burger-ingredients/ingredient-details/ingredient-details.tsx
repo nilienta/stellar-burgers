@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useAppSelector, TIngredient } from '../../../utils/types';
+import { useAppSelector } from '../../../utils/types';
 import clsx from 'clsx';
 import styles from './ingredient-details.module.css';
 import { useParams } from 'react-router-dom';

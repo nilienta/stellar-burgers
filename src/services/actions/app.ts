@@ -24,21 +24,22 @@ export const RESET_STATE = 'RESET_STATE';
 
 export const BASE_URL = 'https://norma.nomoreparties.space/api';
 
-export type TOrderActions =
-  | typeof GET_INGREDIENTS_SUCCESS
-  | typeof GET_INGREDIENTS_FAILED;
+// для размышлений
+// export type TOrderActions =
+//   | typeof GET_INGREDIENTS_SUCCESS
+//   | typeof GET_INGREDIENTS_FAILED;
 
-function iTakeFoo(foo: 'foo') {}
-const any: 'foo' = 'foo';
-const test = {
-  someProp: any,
-};
-iTakeFoo(test.someProp);
+// function iTakeFoo(foo: 'foo') {}
+// const any: 'foo' = 'foo';
+// const test = {
+//   someProp: any,
+// };
+// iTakeFoo(test.someProp);
 
-function identity<T>(arg: T): T {
-  return arg;
-}
-const efwf = identity('fdsfs');
+// function identity<T>(arg: T): T {
+//   return arg;
+// }
+// const efwf = identity('fdsfs');
 
 export const getIngredients = (URL_API: string) => {
   return (dispatch: Dispatch<TAppAction>) => {

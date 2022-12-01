@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch, TIngredient } from '../../utils/types';
+import { useAppSelector, useAppDispatch } from '../../utils/types';
 import { getCookie } from '../../utils/cookie';
 import HomePage from '../../pages/home/home';
 import LoginPage from '../../pages/login/login';
@@ -10,7 +10,8 @@ import ResetPasswordPage from '../../pages/reset-password/reset-password';
 import OrderFeedPage from '../../pages/order-feed/order-feed';
 import ProfilePage from '../../pages/profile/profile';
 import OrderHistoryPage from '../../pages/order-history/order-history';
-import IngredientPage from '../../pages/ingredient/ingredient';
+import OrderPage from '../../pages/order/order';
+import IngredientPage from '../../pages/ingredient/ingredient-page';
 import NotFound404 from '../../pages/404/404';
 import { ProtectedRoute } from '../protected-route';
 import { getUser } from '../../services/actions/login';
@@ -62,6 +63,9 @@ export default function App() {
           <Route path="/" exact={true}>
             <HomePage />
           </Route>
+          <Route path="/ingredients/:id" exact={true}>
+            <IngredientPage />
+          </Route>
           <Route path="/login" exact={true}>
             <LoginPage />
           </Route>
@@ -78,7 +82,7 @@ export default function App() {
             <OrderFeedPage />
           </Route>
           <Route path="/feed/:id" exact={true}>
-            <OrderFeedPage />
+            <OrderPage />
           </Route>
           <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
@@ -86,9 +90,9 @@ export default function App() {
           <ProtectedRoute path="/profile/orders" exact={true}>
             <OrderHistoryPage />
           </ProtectedRoute>
-          <Route path="/ingredients/:id" exact={true}>
-            <IngredientPage />
-          </Route>
+          <ProtectedRoute path="/profile/orders/:id" exact={true}>
+            <OrderPage />
+          </ProtectedRoute>
           <Route>
             <NotFound404 />
           </Route>
