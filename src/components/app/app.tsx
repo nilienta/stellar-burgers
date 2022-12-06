@@ -11,6 +11,7 @@ import OrderFeedPage from '../../pages/order-feed/order-feed';
 import ProfilePage from '../../pages/profile/profile';
 import OrderHistoryPage from '../../pages/order-history/order-history';
 import OrderPage from '../../pages/order/order';
+import Order from '../order/order';
 import IngredientPage from '../../pages/ingredient/ingredient-page';
 import NotFound404 from '../../pages/404/404';
 import { ProtectedRoute } from '../protected-route';
@@ -55,6 +56,8 @@ export default function App() {
     };
 
     const { ingredients } = useAppSelector((state) => state.app);
+    const { orders } = useAppSelector((state) => state.ws);
+    const ordersToken = useAppSelector((state) => state.wsToken.orders);
 
     return (
       <>
@@ -103,10 +106,41 @@ export default function App() {
             children={
               <Modal
                 onClose={handleModalClose}
-                size="medium"
+                pSize="medium"
                 header="Детали ингредиента"
+                typeHeader="string"
               >
                 <IngredientDetails />
+              </Modal>
+            }
+          />
+        )}
+        {orders !== undefined && orders.length > 0 && background && (
+          <Route
+            path="/feed/:id"
+            children={
+              <Modal
+                onClose={handleModalClose}
+                pSize="small"
+                header="ID"
+                typeHeader="number"
+              >
+                <Order />
+              </Modal>
+            }
+          />
+        )}
+        {ordersToken !== undefined && ordersToken.length > 0 && background && (
+          <ProtectedRoute
+            path="/profile/orders/:id"
+            children={
+              <Modal
+                onClose={handleModalClose}
+                pSize="small"
+                header="ID"
+                typeHeader="number"
+              >
+                <Order />
               </Modal>
             }
           />
