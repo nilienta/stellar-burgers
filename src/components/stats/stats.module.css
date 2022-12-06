@@ -18,11 +18,12 @@
 }
 .list-number {
   min-height: 105px;
-  max-height: calc(25vh - 63px);
+  max-height: calc(15vh);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   gap: var(--offset-base-size);
+  column-gap: calc(var(--offset-base-size) * 6);
   overflow: hidden;
 }
 .row {
