@@ -1,10 +1,16 @@
 import { getCookie } from '../../utils/cookie';
+import { Dispatch } from 'redux';
+import { TWsAction } from '../types/types';
+import { TWsTokenServerActions } from '../types/types';
 
-export const socketMiddlewareToken = (wsUrlToken, wsActionsToken) => {
-  return (store) => {
-    let socket = null;
+export const socketMiddlewareToken = (
+  wsUrlToken: string,
+  wsActionsToken: TWsTokenServerActions
+) => {
+  return (store: { getState: Function; dispatch: Dispatch }) => {
+    let socket: WebSocket | null = null;
     const accessToken = getCookie('accessToken');
-    return (next) => (action) => {
+    return (next: Function) => (action: TWsAction) => {
       const { dispatch } = store;
       const { type, payload } = action;
       const { wsInit, wsSendMessage, onOpen, onClose, onError, onMessage } =
@@ -18,11 +24,11 @@ export const socketMiddlewareToken = (wsUrlToken, wsActionsToken) => {
           dispatch({ type: onOpen });
         };
 
-        socket.onerror = () => {
-          dispatch({ type: onError });
+        socket.onerror = (event: Event) => {
+          dispatch({ type: onError, payload: event });
         };
 
-        socket.onmessage = (event) => {
+        socket.onmessage = (event: MessageEvent) => {
           const { data } = event;
           const parsedData = JSON.parse(data);
           const { success, ...restParsedData } = parsedData;
@@ -30,8 +36,8 @@ export const socketMiddlewareToken = (wsUrlToken, wsActionsToken) => {
           dispatch({ type: onMessage, payload: restParsedData });
         };
 
-        socket.onclose = () => {
-          dispatch({ type: onClose });
+        socket.onclose = (event: CloseEvent) => {
+          dispatch({ type: onClose, payload: event });
         };
 
         if (type === wsSendMessage) {

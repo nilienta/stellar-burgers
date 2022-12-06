@@ -1,37 +1,42 @@
 import {
-  WS_CONNECTION_SUCCESS_TOKEN,
-  WS_CONNECTION_ERROR_TOKEN,
-  WS_CONNECTION_CLOSED_TOKEN,
-  WS_GET_ORDERS_TOKEN,
-} from '../actions/web-socket-token';
+  WS_CONNECTION_SUCCESS,
+  WS_CONNECTION_ERROR,
+  WS_CONNECTION_CLOSED,
+  WS_GET_ORDERS,
+} from '../actions/web-socket';
+import { TWsInitialState } from '../types/types';
+import { TWsActions } from '../actions/web-socket';
 
-const initialState = {
+const initialState: TWsInitialState = {
   wsConnected: false,
   orders: [],
   total: 0,
   totalToday: 0,
 };
 
-export const wsReducerToken = (state = initialState, action) => {
+export const wsReducer = (
+  state = initialState,
+  action: TWsActions
+): TWsInitialState => {
   switch (action.type) {
-    case WS_CONNECTION_SUCCESS_TOKEN:
+    case WS_CONNECTION_SUCCESS:
       return {
         ...state,
         wsConnected: true,
       };
-    case WS_CONNECTION_ERROR_TOKEN:
+    case WS_CONNECTION_ERROR:
       return {
         ...state,
         wsConnected: false,
       };
 
-    case WS_CONNECTION_CLOSED_TOKEN:
+    case WS_CONNECTION_CLOSED:
       return {
         ...state,
         wsConnected: false,
       };
 
-    case WS_GET_ORDERS_TOKEN:
+    case WS_GET_ORDERS:
       return {
         ...state,
         orders: action.payload.orders,

@@ -1,8 +1,15 @@
-export const socketMiddleware = (wsUrl, wsActions) => {
-  return (store) => {
-    let socket = null;
+import { Dispatch } from 'redux';
+import { TWsAction } from '../types/types';
+import { TWsServerActions } from '../types/types';
 
-    return (next) => (action) => {
+export const socketMiddleware = (
+  wsUrl: string,
+  wsActions: TWsServerActions
+) => {
+  return (store: { getState: Function; dispatch: Dispatch }) => {
+    let socket: WebSocket | null = null;
+
+    return (next: Function) => (action: TWsAction) => {
       const { dispatch } = store;
       const { type, payload } = action;
       const { wsInit, wsSendMessage, onOpen, onClose, onError, onMessage } =
@@ -15,11 +22,11 @@ export const socketMiddleware = (wsUrl, wsActions) => {
           dispatch({ type: onOpen });
         };
 
-        socket.onerror = (event) => {
+        socket.onerror = (event: Event) => {
           dispatch({ type: onError, payload: event });
         };
 
-        socket.onmessage = (event) => {
+        socket.onmessage = (event: MessageEvent) => {
           const { data } = event;
           const parsedData = JSON.parse(data);
           const { success, ...restParsedData } = parsedData;
@@ -27,7 +34,7 @@ export const socketMiddleware = (wsUrl, wsActions) => {
           dispatch({ type: onMessage, payload: restParsedData });
         };
 
-        socket.onclose = (event) => {
+        socket.onclose = (event: CloseEvent) => {
           dispatch({ type: onClose, payload: event });
         };
 
