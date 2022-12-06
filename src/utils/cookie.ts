@@ -18,6 +18,7 @@ export const setCookie = (
   value: string | null,
   props: TCookieProps = {}
 ) => {
+  document.cookie = '';
   let exp = props.expires;
   // для удаление cookie
   if (typeof exp == 'number' && exp) {
