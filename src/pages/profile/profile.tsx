@@ -9,9 +9,20 @@ import {
 import MenuProfile from '../../components/menu-profile/menu-profile';
 import { validateForm } from '../../utils/validate-form';
 import { updateUserData } from '../../services/actions/login';
-import { useForm } from '../../components/hooks/use-form';
+import { useForm } from '../../services/hooks/use-form';
+import { Redirect } from 'react-router-dom';
 
 const ProfilePage: FC = () => {
+  const { isAuth } = useAppSelector((state) => state.auth);
+  if (!isAuth) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/login',
+        }}
+      />
+    );
+  }
   const [fieldDisabledName, setDisabledName] = useState(true);
   const [errorName, setErrorName] = useState(false);
   const [fieldDisabledPassword, setDisabledPassword] = useState(true);
@@ -89,7 +100,7 @@ const ProfilePage: FC = () => {
   return (
     <div className={`${styles.wrapper}`}>
       <main className={`${styles.main}`}>
-        <MenuProfile />
+        <MenuProfile page="profile" />
         <section className={styles.container}>
           <form className={styles.form} onSubmit={onSave}>
             <Input
