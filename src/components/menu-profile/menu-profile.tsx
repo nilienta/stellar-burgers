@@ -4,7 +4,7 @@ import styles from './menu-profile.module.css';
 import { NavLink } from 'react-router-dom';
 import { signOut } from '../../services/actions/login';
 
-const MenuProfile: FC = () => {
+const MenuProfile: FC<{ page: 'profile' | 'history' }> = ({ page }) => {
   const dispatch = useAppDispatch();
   const { refreshToken } = useAppSelector((state) => state.auth);
 
@@ -16,6 +16,12 @@ const MenuProfile: FC = () => {
     [refreshToken, dispatch]
   );
 
+  let description = '';
+  if (page === 'profile') {
+    description = 'В этом разделе вы можете изменить свои персональные данные';
+  } else if (page === 'history') {
+    description = 'В этом разделе вы можете просмотреть свою историю заказов';
+  }
   return (
     <nav className={styles.nav}>
       <ul>
@@ -51,7 +57,7 @@ const MenuProfile: FC = () => {
       <p
         className={`text text_type_main-default text_color_inactive mt-20 ${styles.text}`}
       >
-        В этом разделе вы можете изменить свои персональные данные
+        {description}
       </p>
     </nav>
   );
