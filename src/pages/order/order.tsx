@@ -1,48 +1,51 @@
-import React, { FC } from 'react';
-import clsx from 'clsx';
+import { FC, useEffect } from 'react';
 import styles from './order.module.css';
-import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import CompositionLine from '../../components/composition-line/composition-line';
+import Order from '../../components/order/order';
+import { useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
+import { WS_CONNECTION_START } from '../../services/actions/web-socket';
+import { searchItemById } from '../../utils/order-processing';
+import { useParams } from 'react-router-dom';
+
+type LocationState = {
+  background?: Location;
+};
 
 const OrderPage: FC = () => {
+  const location = useLocation<LocationState>();
+  const background = location.state && location.state.background;
+  const { id }: { id: string } = useParams();
+  let order = searchItemById(id);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch({ type: WS_CONNECTION_START });
+    dispatch({ type: WS_CONNECTION_START_TOKEN });
+  }, [dispatch]);
+
   return (
-    <main className={styles.main}>
-      <section className={styles.container}>
-        <div className={styles['order-number']}>
-          <p className="text text_type_digits-default mb-10">#034535</p>
-        </div>
-        <p className="text text_type_main-medium mb-3">
-          Death Star Starship Main бургер
-        </p>
-        <p className="text text_type_main-default text_color_success mb-15">
-          Создан
-        </p>
-        <p className="text text_type_main-medium mb-6">Состав:</p>
-        <section className={clsx(styles.composition, 'custom-scroll', 'mb-10')}>
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-          <CompositionLine />
-        </section>
-        <div className={styles['data-line']}>
-          <p className="text text_type_main-default text_color_inactive">
-            Сегодня, 16:20
-          </p>
-          <div className={styles.price}>
-            <p className="text text_type_digits-default">480</p>
-            <CurrencyIcon type="primary" />
-          </div>
-        </div>
-      </section>
-    </main>
+    <>
+      {!background ? (
+        order && (
+          <>
+            <main className={styles.main}>
+              <section className={styles.container}>
+                <div className={styles['order-number']}>
+                  <p className="text text_type_digits-default mb-10">
+                    {`#${order.number}`}
+                  </p>
+                </div>
+                <Order />
+              </section>
+            </main>
+          </>
+        )
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 
-export default React.memo(OrderPage);
+export default OrderPage;
