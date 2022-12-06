@@ -7,6 +7,7 @@ const setTime = (dateOrder: string) => {
   const dataDay = Math.floor(
     Math.abs((+data - +createdAt) / (3600 * 24 * (10 ^ -3)))
   );
+
   let dataDayDef: string;
   if (dataDay === 0) {
     dataDayDef = 'Сегодня';

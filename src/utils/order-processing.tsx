@@ -13,7 +13,7 @@ export const getStatus = (status: string) => {
     return (
       <p className="text text_type_main-default">Статус пока не известен</p>
     );
-  }
+  } 
 };
 export const searchItemById = (id: string) => {
   const ordersHistory = useAppSelector((state) => state.wsToken.orders);
