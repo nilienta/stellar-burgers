@@ -5,7 +5,7 @@ import { getCookie } from '../utils/cookie';
 import Loader from '../pages/loader/loader';
 
 export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
-  const { isAuth } = useAppSelector((state) => state.auth);
+  const { isAuth, loader } = useAppSelector((state) => state.auth);
   const location = useLocation();
   const isAuthorized = getCookie('accessToken');
 
@@ -18,6 +18,10 @@ export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
   }
 
   if (!isAuth && isAuthorized) {
+    return <Loader />;
+  }
+
+  if (loader) {
     return <Loader />;
   }
 
