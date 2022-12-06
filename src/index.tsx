@@ -27,7 +27,6 @@ import {
 const wsUrl = 'wss://norma.nomoreparties.space/orders/all';
 const wsUrlToken = 'wss://norma.nomoreparties.space/orders';
 
-//FIXME убрать дубликат кода
 const wsActions = {
   wsInit: WS_CONNECTION_START,
   wsSendMessage: WS_SEND_MESSAGE,

@@ -56,7 +56,7 @@ const Modal: FC<TModal> = ({
 
     // FIXME сделать асинхронную функцию
     const item = searchItemById(id);
-    headerText = `#${item.number}`;
+    headerText = `#${item!.number}`;
   }
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import styles from './order.module.css';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import CompositionLine from './composition-line/composition-line';
 import { useParams } from 'react-router-dom';
-import { useAppSelector } from '../../utils/types';
+import { useAppSelector } from '../../services/types/types';
 import setTime from '../../utils/date';
 import {
   getArrayOrderIngredients,
@@ -12,7 +12,7 @@ import {
 } from '../../utils/order-processing';
 import { searchItemById } from '../../utils/order-processing';
 import { getTotalPriceForOrder } from '../../utils/order-processing';
-import { TIngredient } from '../../utils/types';
+import { TIngredient } from '../../services/types/types';
 
 const Order: FC = () => {
   const { id }: { id: string } = useParams();

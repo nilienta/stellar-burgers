@@ -1,4 +1,4 @@
-import type { TAppInitialState, TAppAction } from '../../utils/types';
+import type { TAppInitialState, TAppAction } from '../types/types';
 import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,

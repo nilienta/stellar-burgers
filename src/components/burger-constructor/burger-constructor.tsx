@@ -10,8 +10,8 @@ import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from './order-details/total-price/total-price';
 import CapConstructor from './cap-constructor/cap-constructor';
 
-import { useAppDispatch, useAppSelector } from '../../utils/types';
-import { TIngredient } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
+import { TIngredient } from '../../services/types/types';
 
 import { useDrop } from 'react-dnd';
 import {

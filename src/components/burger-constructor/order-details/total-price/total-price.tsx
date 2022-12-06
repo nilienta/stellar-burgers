@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useAppSelector } from '../../../../utils/types';
+import { useAppSelector } from '../../../../services/types/types';
 import styles from './total-price.module.css';
 
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';

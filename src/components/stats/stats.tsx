@@ -1,8 +1,8 @@
 import React, { FC, useMemo } from 'react';
 import styles from './stats.module.css';
 import clsx from 'clsx';
-import { TCurrentOrder } from '../../utils/types';
-import { useAppSelector } from '../../utils/types';
+import { TCurrentOrder } from '../../services/types/types';
+import { useAppSelector } from '../../services/types/types';
 
 const Stats: FC = () => {
   const { totalToday, total, orders } = useAppSelector((state) => state.ws);

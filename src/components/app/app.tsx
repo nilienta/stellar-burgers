@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../utils/types';
+import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import { getCookie } from '../../utils/cookie';
 import HomePage from '../../pages/home/home';
 import LoginPage from '../../pages/login/login';
@@ -15,7 +15,7 @@ import Order from '../order/order';
 import IngredientPage from '../../pages/ingredient/ingredient-page';
 import NotFound404 from '../../pages/404/404';
 import { ProtectedRoute } from '../protected-route';
-import { getUser } from '../../services/actions/login';
+import { getUser } from '../../services/actions/get-user-data';
 import { SET_INVISIBLE_MODAL_INGREDIENT } from '../../services/actions/app';
 import { useLocation } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';

@@ -6,7 +6,7 @@ import styles from './ingredients-list.module.css';
 
 import BlockIngredients from '../block-ingredients/block-ingredients';
 
-import { useAppSelector } from '../../../utils/types';
+import { useAppSelector } from '../../../services/types/types';
 
 const IngredientsList: FC = () => {
   const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');

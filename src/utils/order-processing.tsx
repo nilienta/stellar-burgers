@@ -1,4 +1,4 @@
-import { useAppSelector } from './types';
+import { TCurrentOrder, useAppSelector } from '../services/types/types';
 
 export const getStatus = (status: string) => {
   if (status === 'done') {
@@ -13,16 +13,18 @@ export const getStatus = (status: string) => {
     return (
       <p className="text text_type_main-default">Статус пока не известен</p>
     );
-  } 
+  }
 };
 export const searchItemById = (id: string) => {
   const ordersHistory = useAppSelector((state) => state.wsToken.orders);
   const orders = useAppSelector((state) => state.ws.orders);
 
   const historySearch = ordersHistory
-    ? ordersHistory!.find((el: any) => el._id === id)
-    : [];
-  const feedSearch = orders ? orders!.find((el: any) => el._id === id) : [];
+    ? ordersHistory!.find((el: TCurrentOrder) => el._id === id)
+    : undefined;
+  const feedSearch = orders
+    ? orders!.find((el: TCurrentOrder) => el._id === id)
+    : undefined;
 
   return feedSearch ? feedSearch : historySearch;
 };

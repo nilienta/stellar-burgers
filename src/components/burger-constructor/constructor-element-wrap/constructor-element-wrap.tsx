@@ -1,5 +1,5 @@
 import React, { useRef, SyntheticEvent, FC } from 'react';
-import { useAppDispatch } from '../../../utils/types';
+import { useAppDispatch } from '../../../services/types/types';
 import clsx from 'clsx';
 
 import styles from './constructor-element-wrap.module.css';
@@ -11,7 +11,7 @@ import {
   ConstructorElement,
   DragIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { TIngredient } from '../../../utils/types';
+import { TIngredient } from '../../../services/types/types';
 
 type TConstructorElementWrap = {
   index?: number;

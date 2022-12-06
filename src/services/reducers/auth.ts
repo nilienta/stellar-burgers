@@ -1,4 +1,5 @@
-import { TAuthInitialState, TAuthAction } from '../../utils/types';
+import { TAuthInitialState } from '../types/types';
+import { TAuthActions } from '../types/types-auth';
 
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILED } from '../actions/login';
 import { SET_POSSIBLE_EMAIL } from '../actions/login';
@@ -25,21 +26,20 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
-} from '../actions/login';
+} from '../actions/logout';
 
 import {
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
   GET_USER_DATA_FAILED,
-} from '../actions/login';
+} from '../actions/get-user-data';
 
 import {
   CHANGE_USER_DATA_REQUEST,
   CHANGE_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_FAILED,
-} from '../actions/login';
+} from '../actions/change-user-data';
 
-import { SET_LOCATION } from '../actions/login';
 import { setCookie, deleteCookie } from '../../utils/cookie';
 
 const authInitialState: TAuthInitialState = {
@@ -48,7 +48,6 @@ const authInitialState: TAuthInitialState = {
   refreshToken: null,
   possibleEmail: '',
 
-  prevLocation: '/',
   emailExists: false,
 
   isAuth: false,
@@ -58,7 +57,7 @@ const authInitialState: TAuthInitialState = {
 
 export const authReducer = (
   state = authInitialState,
-  action: TAuthAction
+  action: TAuthActions
 ): TAuthInitialState => {
   switch (action.type) {
     case LOGIN_REQUEST: {
@@ -238,12 +237,6 @@ export const authReducer = (
         ...state,
         fail: true,
         loader: false,
-      };
-    }
-    case SET_LOCATION: {
-      return {
-        ...state,
-        prevLocation: action.prevLocation!,
       };
     }
     default: {

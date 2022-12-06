@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import styles from './order-history.module.css';
 import MenuProfile from '../../components/menu-profile/menu-profile';
 import ListOrder from '../../components/list-order/list-order';
-import { useAppSelector, useAppDispatch } from '../../utils/types';
+import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
 import { Redirect } from 'react-router-dom';
 

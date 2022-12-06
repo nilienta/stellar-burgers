@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import clsx from 'clsx';
 import styles from './list-order.module.css';
 import OrderLine from './order-line/order-line';
-import { TCurrentOrder } from '../../utils/types';
+import { TCurrentOrder } from '../../services/types/types';
 
 const ListOrder: FC<{ needStatus: boolean; list: TCurrentOrder[] }> = ({
   needStatus,

@@ -1,5 +1,5 @@
 import { useCallback, FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { Redirect, useLocation } from 'react-router-dom';
 import { SET_POSSIBLE_EMAIL } from '../../services/actions/login';
 import styles from './login.module.css';

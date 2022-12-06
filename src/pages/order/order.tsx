@@ -2,7 +2,7 @@ import { FC, useEffect } from 'react';
 import styles from './order.module.css';
 import Order from '../../components/order/order';
 import { useLocation } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
 import { WS_CONNECTION_START } from '../../services/actions/web-socket';
 import { searchItemById } from '../../utils/order-processing';

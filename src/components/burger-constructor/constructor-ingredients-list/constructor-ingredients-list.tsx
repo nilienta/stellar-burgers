@@ -4,8 +4,8 @@ import styles from './constructor-ingredients-list.module.css';
 
 import ConstructorElementWrap from '../constructor-element-wrap/constructor-element-wrap';
 
-import { useAppSelector, useAppDispatch } from '../../../utils/types';
-import { TIngredient } from '../../../utils/types';
+import { useAppSelector, useAppDispatch } from '../../../services/types/types';
+import { TIngredient } from '../../../services/types/types';
 import { UPDATE_CONSTRUCTOR_LIST } from '../../../services/actions/app';
 
 const ConstructorIngredientsList: FC = () => {

@@ -4,7 +4,7 @@ import styles from './order-details.module.css';
 import React, { useEffect, FC } from 'react';
 import { postOrder } from '../../../services/actions/app';
 
-import { useAppDispatch, useAppSelector } from '../../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../../services/types/types';
 import { BASE_URL } from '../../../services/actions/app';
 import modalDone from '../../../images/modal-done.png';
 

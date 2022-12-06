@@ -1,5 +1,5 @@
 import { useState, useRef, FC, FocusEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import styles from './profile.module.css';
 import {
   Input,
@@ -8,7 +8,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import MenuProfile from '../../components/menu-profile/menu-profile';
 import { validateForm } from '../../utils/validate-form';
-import { updateUserData } from '../../services/actions/login';
+import { updateUserData } from '../../services/actions/change-user-data';
 import { useForm } from '../../services/hooks/use-form';
 import { Redirect } from 'react-router-dom';
 

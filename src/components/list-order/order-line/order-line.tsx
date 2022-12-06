@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import styles from './order-line.module.css';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
-import { TCurrentOrder } from '../../../utils/types';
+import { TCurrentOrder } from '../../../services/types/types';
 import setTime from '../../../utils/date';
 import { useLocation } from 'react-router-dom';
 import {

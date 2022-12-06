@@ -1,5 +1,5 @@
 import { useCallback, useState, FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { Redirect } from 'react-router-dom';
 import styles from './forgot-password.module.css';
 import {

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styles from './composition-line.module.css';
 import clsx from 'clsx';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { TIngredient } from '../../../utils/types';
+import { TIngredient } from '../../../services/types/types';
 
 const CompositionLine: FC<{ item: TIngredient; count: number }> = ({
   item,

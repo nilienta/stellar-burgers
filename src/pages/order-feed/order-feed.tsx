@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../utils/types';
+import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START } from '../../services/actions/web-socket';
 import styles from './order-feed.module.css';
 import ListOrder from '../../components/list-order/list-order';

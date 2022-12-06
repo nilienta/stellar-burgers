@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { useAppSelector } from '../utils/types';
+import { useAppSelector } from '../services/types/types';
 import { Route, Redirect, useLocation, RouteProps } from 'react-router-dom';
 import { getCookie } from '../utils/cookie';
 import Loader from '../pages/loader/loader';
