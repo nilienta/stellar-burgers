@@ -2,21 +2,22 @@ import React, { FC } from 'react';
 import styles from './composition-line.module.css';
 import clsx from 'clsx';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import { TIngredient } from '../../../utils/types';
 
-const CompositionLine: FC = () => {
+const CompositionLine: FC<{ item: TIngredient; count: number }> = ({
+  item,
+  count,
+}) => {
   return (
     <section className={styles.wrap}>
       <div className={styles.icon}>
-        <img
-          src="https://code.s3.yandex.net/react/code/bun-02-mobile.png"
-          alt=""
-        />
+        <img src={item.image_mobile} alt="" />
       </div>
       <p className={clsx('text text_type_main-default', styles.text)}>
-        Флюоресцентная булка R2-D3
+        {item.name}
       </p>
       <div className={styles.price}>
-        <p className="text text_type_digits-default">2 x 20</p>
+        <p className="text text_type_digits-default">{`${count} x ${item.price}`}</p>
         <CurrencyIcon type="primary" />
       </div>
     </section>

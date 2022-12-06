@@ -35,3 +35,44 @@
   color: var(---text-primary-color);
   width: 100%;
 }
+.icons {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+.icon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  background: linear-gradient(var(--background-alt) 0 0) padding-box,
+    linear-gradient(25deg, #9408b4 6.1%, #0a1f94 112.48%) border-box;
+  border-radius: 100%;
+  overflow: hidden;
+  z-index: 2;
+}
+.icon:not(:last-child) {
+  margin-left: -16px;
+}
+.icon img {
+  height: 100%;
+  position: relative;
+  left: -50%;
+  background-color: var(--background-alt);
+}
+.icon-last img {
+  z-index: 0;
+}
+.icon-last span {
+  background: #1c1c2199;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: 100%;
+  z-index: 1;
+}
