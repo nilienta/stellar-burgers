@@ -20,6 +20,7 @@ export const defaultOptions = (data = {}): RequestInit => {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + getCookie('accessToken'),
     },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
