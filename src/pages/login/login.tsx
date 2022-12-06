@@ -11,7 +11,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { signIn } from '../../services/actions/login';
-import { useForm } from '../../components/hooks/use-form';
+import { useForm } from '../../services/hooks/use-form';
 
 type LocationState = {
   background?: Location;

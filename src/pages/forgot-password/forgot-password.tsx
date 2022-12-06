@@ -8,7 +8,7 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { checkingEmail } from '../../services/actions/checking-mail';
-import { useForm } from '../../components/hooks/use-form';
+import { useForm } from '../../services/hooks/use-form';
 
 const ForgotPasswordPage: FC = () => {
   const dispatch = useAppDispatch();
