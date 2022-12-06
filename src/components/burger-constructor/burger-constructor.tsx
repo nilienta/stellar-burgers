@@ -146,7 +146,12 @@ const BurgerConstructor: FC = () => {
         ''
       )}
       {isModalConstructorOpen && (
-        <Modal size="large" header="" onClose={handleCloseModal}>
+        <Modal
+          pSize="large"
+          header=""
+          typeHeader="string"
+          onClose={handleCloseModal}
+        >
           <OrderDetails />
         </Modal>
       )}
