@@ -32,7 +32,6 @@ const initialState: TAppInitialState = {
   totalPrice: 0,
   numberOrder: 'XXXXXX',
 
-  visibleIngredient: {},
   isModalIngredientOpen: false,
   isModalConstructorOpen: false,
 };

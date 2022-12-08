@@ -1,4 +1,3 @@
-import ingredient from '../components/burger-ingredients/ingredient/ingredient';
 import { getCookie } from './cookie';
 
 export const checkResponse = (res: Response) => {

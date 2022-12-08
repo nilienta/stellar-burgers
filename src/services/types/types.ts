@@ -32,7 +32,6 @@ export type TAppInitialState = {
   totalPrice?: number;
   numberOrder: string;
 
-  visibleIngredient: object;
   isModalIngredientOpen: boolean;
   isModalConstructorOpen: boolean;
 };
@@ -46,7 +45,6 @@ export type TAppAction = {
   dragId?: string;
   totalPrice?: number;
   numberOrder?: string;
-  visibleIngredient?: object;
   error?: Error;
 };
 

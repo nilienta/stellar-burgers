@@ -9,15 +9,15 @@ export const socketMiddlewareToken = (
 ) => {
   return (store: { getState: Function; dispatch: Dispatch }) => {
     let socket: WebSocket | null = null;
-    const accessToken = getCookie('accessToken');
     return (next: Function) => (action: TWsAction) => {
       const { dispatch } = store;
       const { type, payload } = action;
       const { wsInit, wsSendMessage, onOpen, onClose, onError, onMessage } =
         wsActionsToken;
-
       if (type === wsInit) {
-        socket = new WebSocket(`${wsUrlToken}?token=${accessToken}`);
+        socket = new WebSocket(
+          `${wsUrlToken}?token=${getCookie('accessToken')}`
+        );
       }
       if (socket) {
         socket.onopen = () => {

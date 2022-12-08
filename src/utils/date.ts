@@ -8,14 +8,12 @@ const setTime = (dateOrder: string) => {
     Math.abs((+data - +createdAt) / (3600 * 24 * (10 ^ -3)))
   );
 
-  let dataDayDef: string;
-  if (dataDay === 0) {
-    dataDayDef = 'Сегодня';
-  } else if (dataDay === 1) {
-    dataDayDef = 'Вчера';
-  } else {
-    dataDayDef = `${dataDay} дн. назад`;
-  }
+  const dataDayDef =
+    dataDay === 0
+      ? 'Сегодня'
+      : dataDay === 1
+      ? 'Вчера'
+      : `${dataDay} дн. назад`;
   return `${dataDayDef},${dataTime}`;
 };
 export default setTime;

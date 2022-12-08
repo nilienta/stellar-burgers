@@ -11,12 +11,12 @@ import {
   getTotalPriceForOrder,
   getArrayOrderIngredients,
 } from '../../../utils/order-processing';
+import { TIngredient } from '../../../services/types/types';
 
 const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
   needStatus,
   order,
 }) => {
-  // FIXME сделать асинхронную функцию
   const arrIngredients = getArrayOrderIngredients(order);
   const unique = Array.from(new Set(arrIngredients));
   const status = getStatus(order.status);
@@ -49,7 +49,7 @@ const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
             </div>
             <div className={styles['data-line']}>
               <div className={styles.icons}>
-                {unique.reverse().map((src: any, index: number) => {
+                {unique.reverse().map((src: TIngredient, index: number) => {
                   const otherItem = unique.length - 5;
                   if (index < 6) {
                     return (

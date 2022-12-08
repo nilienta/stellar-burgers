@@ -2,6 +2,7 @@ import { Dispatch } from 'redux';
 import { TWsAction } from '../types/types';
 import { TWsServerActions } from '../types/types';
 
+// FIXME иногда выдает ошибку при замене any на TWsServerActions,а иногда нет
 export const socketMiddleware = (
   wsUrl: string,
   wsActions: TWsServerActions

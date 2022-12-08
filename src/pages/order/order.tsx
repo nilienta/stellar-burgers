@@ -16,7 +16,7 @@ const OrderPage: FC = () => {
   const location = useLocation<LocationState>();
   const background = location.state && location.state.background;
   const { id }: { id: string } = useParams();
-  let order = searchItemById(id);
+  const order = searchItemById(id);
 
   const dispatch = useAppDispatch();
   useEffect(() => {

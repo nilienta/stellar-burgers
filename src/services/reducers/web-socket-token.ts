@@ -39,7 +39,7 @@ export const wsReducerToken = (
     case WS_GET_ORDERS_TOKEN:
       return {
         ...state,
-        orders: action.payload.orders,
+        orders: action.payload.orders.reverse(),
         total: action.payload.total,
         totalToday: action.payload.totalToday,
       };

@@ -1,4 +1,8 @@
-import { TCurrentOrder, useAppSelector } from '../services/types/types';
+import {
+  TCurrentOrder,
+  useAppSelector,
+  TIngredient,
+} from '../services/types/types';
 
 export const getStatus = (status: string) => {
   if (status === 'done') {
@@ -29,13 +33,13 @@ export const searchItemById = (id: string) => {
   return feedSearch ? feedSearch : historySearch;
 };
 
-export const getTotalPriceForOrder = (order: any) => {
+export const getTotalPriceForOrder = (order: TCurrentOrder) => {
   const { ingredients } = useAppSelector((state) => state.app);
   let totalPrice: number = 0;
   if (ingredients && ingredients.length > 0) {
     const composition = order.ingredients;
-    composition.map((ID: any) => {
-      let item = ingredients.find((el) => el._id === ID);
+    composition.map((ID: string) => {
+      const item = ingredients.find((el) => el._id === ID);
       if (item) {
         totalPrice += item.price!;
       }
@@ -44,13 +48,13 @@ export const getTotalPriceForOrder = (order: any) => {
   return totalPrice;
 };
 
-export const getArrayOrderIngredients = (order: any) => {
+export const getArrayOrderIngredients = (order: TCurrentOrder) => {
   const { ingredients } = useAppSelector((state) => state.app);
-  let arrOrderIngredients: object[] = [];
+  const arrOrderIngredients: TIngredient[] = [];
   if (ingredients !== undefined && ingredients.length > 0) {
     const composition = order.ingredients;
-    composition.map((ID: any) => {
-      let item = ingredients.find((el) => el._id === ID);
+    composition.map((ID: string) => {
+      const item = ingredients.find((el) => el._id === ID);
       if (item) {
         arrOrderIngredients.push(item);
       }

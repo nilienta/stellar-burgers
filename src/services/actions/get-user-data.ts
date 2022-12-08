@@ -2,9 +2,8 @@ import { BASE_URL } from './app';
 import { getData } from '../../utils/burger-api';
 import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
-import { setCookie, getCookie } from '../../utils/cookie';
+import { setCookie, getCookie, deleteCookie } from '../../utils/cookie';
 import { AppDispatch } from '../..';
-import { deleteCookie } from '../../utils/cookie';
 
 export const GET_USER_DATA_REQUEST: 'GET_USER_DATA_REQUEST' =
   'GET_USER_DATA_REQUEST';
@@ -32,8 +31,8 @@ export type TGetUserDataActions =
   | IGetUserDataSuccessAction
   | IGetUserDataFailedAction;
 
-// плодяться ассес токен на страницах профиля и истории
 const saveTokens = (refreshToken: string, accessToken: string) => {
+  deleteCookie('accessToken');
   setCookie('accessToken', accessToken);
   localStorage.setItem('refreshToken', refreshToken);
 };

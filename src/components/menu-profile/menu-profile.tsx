@@ -16,12 +16,17 @@ const MenuProfile: FC<{ page: 'profile' | 'history' }> = ({ page }) => {
     [refreshToken, dispatch]
   );
 
-  let description = '';
-  if (page === 'profile') {
-    description = 'В этом разделе вы можете изменить свои персональные данные';
-  } else if (page === 'history') {
-    description = 'В этом разделе вы можете просмотреть свою историю заказов';
-  }
+  const descriptionProfile =
+    'В этом разделе вы можете изменить свои персональные данные';
+  const descriptionHistory =
+    'В этом разделе вы можете просмотреть свою историю заказов';
+  const description =
+    page === 'profile'
+      ? descriptionProfile
+      : page === 'history'
+      ? descriptionHistory
+      : '';
+
   return (
     <nav className={styles.nav}>
       <ul>

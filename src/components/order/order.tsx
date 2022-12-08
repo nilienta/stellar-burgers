@@ -16,23 +16,18 @@ import { TIngredient } from '../../services/types/types';
 
 const Order: FC = () => {
   const { id }: { id: string } = useParams();
+  const order = searchItemById(id);
 
-  //FIXME сделать асинхронную функцию
-  let order = searchItemById(id);
-  let status;
-  if (order) {
-    status = getStatus(order.status);
-  }
+  const status = order ? getStatus(order.status) : '';
+  const totalPrice = order ? getTotalPriceForOrder(order) : 0;
 
-  const totalPrice = getTotalPriceForOrder(order);
-
-  const arrOrderIngredients = getArrayOrderIngredients(order);
-  let arrCount: any = {};
-  const objNameCount = arrOrderIngredients.map((Ingredient: any) => {
-    if (arrCount[Ingredient._id]) {
+  const arrOrderIngredients = order ? getArrayOrderIngredients(order) : [];
+  let arrCount: { [id: string]: number } = {};
+  const objNameCount = arrOrderIngredients.map((Ingredient: TIngredient) => {
+    if (Ingredient._id && arrCount[Ingredient._id]) {
       const currentCount = arrCount[Ingredient._id] + 1;
       arrCount = { ...arrCount, [Ingredient._id]: currentCount };
-    } else {
+    } else if (Ingredient._id) {
       arrCount = { ...arrCount, [Ingredient._id]: 1 };
     }
   });

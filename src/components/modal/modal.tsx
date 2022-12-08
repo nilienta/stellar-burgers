@@ -41,23 +41,20 @@ const Modal: FC<TModal> = ({
     styles['modal-open'],
     'pt-15 pr-10 pb-30 pl-10'
   );
-  let currentSize: string;
-  if (pSize === 'small') {
-    currentSize = classForModalS;
-  } else if (pSize === 'medium') {
-    currentSize = classForModalM;
-  } else {
-    currentSize = classForModalL;
-  }
 
-  let headerText: string = header;
-  if (header === 'ID') {
+  const currentSize =
+    pSize === 'small'
+      ? classForModalS
+      : pSize === 'medium'
+      ? classForModalM
+      : classForModalL;
+
+  const getHeaderText = () => {
     const { id }: { id: string } = useParams();
-
-    // FIXME сделать асинхронную функцию
     const item = searchItemById(id);
-    headerText = `#${item!.number}`;
-  }
+    return `#${item!.number}`;
+  };
+  const headerText = header === 'ID' ? getHeaderText() : header;
 
   useEffect(() => {
     const handleESCclose = (e: KeyboardEvent) => {
