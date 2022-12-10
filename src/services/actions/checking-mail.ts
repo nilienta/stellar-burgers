@@ -18,6 +18,7 @@ export interface ISendEmailSuccessAction {
 }
 export interface ISendEmailFailedAction {
   readonly type: typeof SEND_EMAIL_FOR_PASSWORD_FAILED;
+  readonly textError: string;
 }
 
 export type TSendEmailActions =
@@ -38,11 +39,11 @@ export const checkingEmail = (email: { email?: string }) => {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: SEND_EMAIL_FOR_PASSWORD_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };

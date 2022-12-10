@@ -18,6 +18,7 @@ export interface IRegisterSuccessAction {
 }
 export interface IRegisterFailedAction {
   readonly type: typeof REGISTER_FAILED;
+  readonly textError: string;
 }
 
 export type TRegisterActions =
@@ -45,11 +46,11 @@ export const register = (form: {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: REGISTER_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };

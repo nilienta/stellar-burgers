@@ -19,6 +19,7 @@ export interface ILoginSuccessAction {
 }
 export interface ILoginFailedAction {
   readonly type: typeof LOGIN_FAILED;
+  readonly textError: string;
 }
 
 export type TLoginActions =
@@ -51,11 +52,11 @@ export const signIn = (form: {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: LOGIN_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };

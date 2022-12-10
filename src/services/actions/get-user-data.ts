@@ -47,10 +47,10 @@ const updateToken =
         saveTokens(res.refreshToken, res.accessToken.split('Bearer ')[1]);
         dispatch(afterRefresh);
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: GET_USER_DATA_FAILED,
-          textError: err.message,
+          textError: error.message,
         });
       });
   };
@@ -70,13 +70,13 @@ export const getUser = () => (dispatch: AppDispatch) => {
         refreshToken: refreshToken,
       });
     })
-    .catch((err) => {
-      if (err.message === 'jwt expired') {
+    .catch((error) => {
+      if (error.message === 'jwt expired') {
         dispatch(updateToken(getUser()));
       } else {
         dispatch({
           type: GET_USER_DATA_FAILED,
-          textError: err.message,
+          textError: error.message,
         });
       }
     });

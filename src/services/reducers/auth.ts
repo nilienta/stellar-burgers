@@ -53,6 +53,7 @@ const authInitialState: TAuthInitialState = {
   isAuth: false,
   loader: false,
   fail: false,
+  textError: '',
 };
 
 export const authReducer = (
@@ -65,6 +66,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case LOGIN_SUCCESS: {
@@ -85,6 +87,7 @@ export const authReducer = (
       return {
         ...state,
         fail: true,
+        textError: action.textError,
         isAuth: false,
         loader: false,
       };
@@ -94,6 +97,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case REGISTER_SUCCESS: {
@@ -113,6 +117,7 @@ export const authReducer = (
       return {
         ...state,
         fail: true,
+        textError: action.textError,
         isAuth: false,
         loader: false,
       };
@@ -128,6 +133,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case GET_USER_DATA_SUCCESS: {
@@ -146,6 +152,7 @@ export const authReducer = (
         ...state,
         loader: false,
         fail: true,
+        textError: action.textError,
       };
     }
     case CHANGE_USER_DATA_REQUEST: {
@@ -153,6 +160,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case CHANGE_USER_DATA_SUCCESS: {
@@ -168,6 +176,7 @@ export const authReducer = (
         ...state,
         loader: false,
         fail: true,
+        textError: action.textError,
       };
     }
     case SEND_EMAIL_FOR_PASSWORD_REQUEST: {
@@ -175,6 +184,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case SEND_EMAIL_FOR_PASSWORD_SUCCESS: {
@@ -190,6 +200,7 @@ export const authReducer = (
         ...state,
         fail: true,
         loader: false,
+        textError: action.textError,
       };
     }
     case RESET_PASSWORD_REQUEST: {
@@ -197,6 +208,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case RESET_PASSWORD_SUCCESS: {
@@ -210,6 +222,7 @@ export const authReducer = (
       return {
         ...state,
         fail: true,
+        textError: action.textError,
         loader: false,
       };
     }
@@ -218,6 +231,7 @@ export const authReducer = (
         ...state,
         loader: true,
         fail: false,
+        textError: '',
       };
     }
     case LOGOUT_SUCCESS: {
@@ -236,6 +250,7 @@ export const authReducer = (
       return {
         ...state,
         fail: true,
+        textError: action.textError,
         loader: false,
       };
     }

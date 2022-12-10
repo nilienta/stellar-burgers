@@ -18,6 +18,7 @@ export interface IChangeUserDataSuccessAction {
 }
 export interface IChangeUserDataFailedAction {
   readonly type: typeof CHANGE_USER_DATA_FAILED;
+  readonly textError: string;
 }
 
 export type TChangeUserDataActions =
@@ -39,11 +40,11 @@ export const updateUserData = (form: { name?: string; email?: string }) => {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: CHANGE_USER_DATA_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };

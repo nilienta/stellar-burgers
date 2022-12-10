@@ -49,6 +49,7 @@ export type TAuthInitialState = {
   isAuth: boolean;
   loader: boolean;
   fail: boolean;
+  textError: string;
 };
 
 export type TCurrentOrder = {

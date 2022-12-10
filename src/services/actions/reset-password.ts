@@ -18,6 +18,7 @@ export interface IResetPassSuccessAction {
 }
 export interface IResetPassFailedAction {
   readonly type: typeof RESET_PASSWORD_FAILED;
+  readonly textError: string;
 }
 
 export type TResetPassActions =
@@ -41,11 +42,11 @@ export const passwordSaveReset = (form: {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: RESET_PASSWORD_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };

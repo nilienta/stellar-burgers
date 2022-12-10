@@ -15,6 +15,7 @@ export interface ILogoutSuccessAction {
 }
 export interface ILogoutFailedAction {
   readonly type: typeof LOGOUT_FAILED;
+  readonly textError: string;
 }
 
 export type TLogoutActions =
@@ -38,11 +39,11 @@ export const signOut = (refreshToken: string) => {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: LOGOUT_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };
