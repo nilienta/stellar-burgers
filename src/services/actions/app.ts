@@ -1,5 +1,5 @@
 import { getData } from '../../utils/burger-api';
-import { TAppAction, TIngredient } from '../types/types';
+import { TIngredient } from '../types/types';
 import { Dispatch } from 'react';
 
 export const GET_INGREDIENTS_REQUEST: 'GET_INGREDIENTS_REQUEST' =
@@ -8,6 +8,7 @@ export const GET_INGREDIENTS_SUCCESS: 'GET_INGREDIENTS_SUCCESS' =
   'GET_INGREDIENTS_SUCCESS';
 export const GET_INGREDIENTS_FAILED: 'GET_INGREDIENTS_FAILED' =
   'GET_INGREDIENTS_FAILED';
+
 export const SET_BUNS: 'SET_BUNS' = 'SET_BUNS';
 export const SET_MAINS_AND_SAUCES: 'SET_MAINS_AND_SAUCES' =
   'SET_MAINS_AND_SAUCES';
@@ -17,9 +18,11 @@ export const UPDATE_CONSTRUCTOR_LIST: 'UPDATE_CONSTRUCTOR_LIST' =
   'UPDATE_CONSTRUCTOR_LIST';
 export const DELETE_INGREDIENTS: 'DELETE_INGREDIENTS' = 'DELETE_INGREDIENTS';
 export const SET_TOTAL_PRICE: 'SET_TOTAL_PRICE' = 'SET_TOTAL_PRICE';
+
 export const POST_ORDER_REQUEST: 'POST_ORDER_REQUEST' = 'POST_ORDER_REQUEST';
 export const SET_NUMBER_ORDER: 'SET_NUMBER_ORDER' = 'SET_NUMBER_ORDER';
 export const POST_ORDER_FAILED: 'POST_ORDER_FAILED' = 'POST_ORDER_FAILED';
+
 export const SET_VISIBLE_MODAL_INGREDIENT: 'SET_VISIBLE_MODAL_INGREDIENT' =
   'SET_VISIBLE_MODAL_INGREDIENT';
 export const SET_INVISIBLE_MODAL_INGREDIENT: 'SET_INVISIBLE_MODAL_INGREDIENT' =
@@ -28,6 +31,7 @@ export const SET_VISIBLE_MODAL_CONSTRUCTOR: 'SET_VISIBLE_MODAL_CONSTRUCTOR' =
   'SET_VISIBLE_MODAL_CONSTRUCTOR';
 export const SET_INVISIBLE_MODAL_CONSTRUCTOR: 'SET_INVISIBLE_MODAL_CONSTRUCTOR' =
   'SET_INVISIBLE_MODAL_CONSTRUCTOR';
+
 export const RESET_STATE: 'RESET_STATE' = 'RESET_STATE';
 
 export const BASE_URL: string = 'https://norma.nomoreparties.space/api';
@@ -37,16 +41,101 @@ export interface IGetIngredientsRequestAction {
 }
 export interface IGetIngredientsSuccessAction {
   readonly type: typeof GET_INGREDIENTS_SUCCESS;
-  readonly ingredients: ReadonlyArray<TIngredient>;
+  readonly ingredients: Array<TIngredient>;
 }
 export interface IGetIngredientsFailedAction {
   readonly type: typeof GET_INGREDIENTS_FAILED;
+  readonly textError: string;
 }
 
 export type TIngredientsActions =
   | IGetIngredientsRequestAction
   | IGetIngredientsSuccessAction
   | IGetIngredientsFailedAction;
+
+export interface ISenBunsAction {
+  readonly type: typeof SET_BUNS;
+}
+export interface ISetMainsAndSaucesAction {
+  readonly type: typeof SET_MAINS_AND_SAUCES;
+  readonly mainsAndSauces: Array<TIngredient>;
+}
+export interface IModifyConstructorIngredientsAction {
+  readonly type: typeof MODIFY_CONSTRUCTOR_INGREDIENTS;
+  readonly item: TIngredient;
+  readonly ingredients: ReadonlyArray<TIngredient>;
+  readonly currentBun: TIngredient;
+  readonly currentMainsAndSauces: ReadonlyArray<TIngredient>;
+}
+export interface IUpdateConstructorListAction {
+  readonly type: typeof UPDATE_CONSTRUCTOR_LIST;
+  readonly currentMainsAndSauces: ReadonlyArray<TIngredient>;
+}
+export interface IDeleteIngredientsAction {
+  readonly type: typeof DELETE_INGREDIENTS;
+  readonly item: TIngredient;
+  readonly ingredients: ReadonlyArray<TIngredient>;
+  readonly currentMainsAndSauces: ReadonlyArray<TIngredient>;
+  readonly dragId: string;
+}
+export interface ISetTotalPriceAction {
+  readonly type: typeof SET_TOTAL_PRICE;
+  readonly totalPrice: number;
+}
+
+export type TConstructorActions =
+  | ISenBunsAction
+  | ISetMainsAndSaucesAction
+  | IModifyConstructorIngredientsAction
+  | IUpdateConstructorListAction
+  | IDeleteIngredientsAction
+  | ISetTotalPriceAction;
+
+export interface IPostOrderRequestAction {
+  readonly type: typeof POST_ORDER_REQUEST;
+}
+export interface ISetNumberOrderAction {
+  readonly type: typeof SET_NUMBER_ORDER;
+  readonly numberOrder: string;
+}
+export interface IPostOrderFailedAction {
+  readonly type: typeof POST_ORDER_FAILED;
+  readonly textError: string;
+}
+
+export type TAddOrderActions =
+  | IPostOrderRequestAction
+  | ISetNumberOrderAction
+  | IPostOrderFailedAction;
+
+export interface ISetVisibleIngredientAction {
+  readonly type: typeof SET_VISIBLE_MODAL_INGREDIENT;
+}
+export interface ISetInvisibleIngredientAction {
+  readonly type: typeof SET_INVISIBLE_MODAL_INGREDIENT;
+}
+export interface ISetVisibleModalAction {
+  readonly type: typeof SET_VISIBLE_MODAL_CONSTRUCTOR;
+}
+export interface ISetInvisibleModalAction {
+  readonly type: typeof SET_INVISIBLE_MODAL_CONSTRUCTOR;
+}
+
+export type TVisibleModalActions =
+  | ISetVisibleIngredientAction
+  | ISetInvisibleIngredientAction
+  | ISetVisibleModalAction
+  | ISetInvisibleModalAction;
+
+export type TResetStateAction = {
+  readonly type: typeof RESET_STATE;
+};
+export type TAppAction =
+  | TIngredientsActions
+  | TConstructorActions
+  | TAddOrderActions
+  | TVisibleModalActions
+  | TResetStateAction;
 
 // для размышлений
 // export type TOrderActions =
@@ -79,11 +168,11 @@ export const getIngredients = (URL_API: string) => {
           });
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         dispatch({
           type: GET_INGREDIENTS_FAILED,
+          textError: error.message,
         });
-        console.log(err.message);
       });
   };
 };
@@ -110,7 +199,7 @@ export const postOrder = (
       .catch((error) =>
         dispatch({
           type: POST_ORDER_FAILED,
-          error,
+          textError: error.message,
         })
       );
   };

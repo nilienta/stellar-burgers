@@ -19,10 +19,12 @@ export type TIngredient = {
   count?: number;
   dragId?: string;
 };
+
 export type TAppInitialState = {
   ingredients: TIngredient[];
   ingredientsRequest: boolean;
   ingredientsFailed: boolean;
+  textError: string;
 
   currentBun: TIngredient;
   currentMainsAndSauces: TIngredient[];
@@ -34,18 +36,6 @@ export type TAppInitialState = {
 
   isModalIngredientOpen: boolean;
   isModalConstructorOpen: boolean;
-};
-
-export type TAppAction = {
-  type: string;
-  ingredients?: TIngredient[];
-  mainsAndSauces?: TIngredient[];
-  currentMainsAndSauces?: TIngredient[];
-  item?: TIngredient;
-  dragId?: string;
-  totalPrice?: number;
-  numberOrder?: string;
-  error?: Error;
 };
 
 export type TAuthInitialState = {

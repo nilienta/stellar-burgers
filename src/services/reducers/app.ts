@@ -1,4 +1,5 @@
-import type { TAppInitialState, TAppAction } from '../types/types';
+import type { TAppInitialState } from '../types/types';
+import { TAppAction } from '../actions/app';
 import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,
@@ -23,6 +24,7 @@ const initialState: TAppInitialState = {
   ingredients: [],
   ingredientsRequest: true,
   ingredientsFailed: false,
+  textError: '',
 
   currentBun: {},
   currentMainsAndSauces: [],
@@ -46,6 +48,7 @@ export const appReducer = (
         ...state,
         ingredientsRequest: true,
         ingredientsFailed: false,
+        textError: '',
       };
     }
     case GET_INGREDIENTS_SUCCESS: {
@@ -62,6 +65,7 @@ export const appReducer = (
         ingredients: [],
         ingredientsFailed: true,
         ingredientsRequest: false,
+        textError: action.textError,
       };
     }
     case SET_BUNS: {
@@ -139,6 +143,7 @@ export const appReducer = (
         ...state,
         postOrderRequest: true,
         postOrderFailed: false,
+        textError: '',
       };
     }
     case POST_ORDER_FAILED: {
@@ -147,6 +152,7 @@ export const appReducer = (
         numberOrder: 'XXXXXX',
         postOrderRequest: false,
         postOrderFailed: true,
+        textError: action.textError,
       };
     }
     case SET_NUMBER_ORDER: {
