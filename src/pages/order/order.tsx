@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { searchItemById } from '../../utils/order-processing';
 import { getCookie } from '../../utils/cookie';
+import Loader from '../loader/loader';
 
 import { useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
@@ -35,7 +36,7 @@ const OrderPage: FC = () => {
   return (
     <>
       {!background ? (
-        order && (
+        order ? (
           <>
             <main className={styles.main}>
               <section className={styles.container}>
@@ -48,6 +49,8 @@ const OrderPage: FC = () => {
               </section>
             </main>
           </>
+        ) : (
+          <Loader />
         )
       ) : (
         <></>
