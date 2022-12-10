@@ -5,6 +5,7 @@ import ListOrder from '../../components/list-order/list-order';
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
 import { Redirect } from 'react-router-dom';
+import { getCookie } from '../../utils/cookie';
 
 const OrderHistoryPage: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
@@ -20,9 +21,13 @@ const OrderHistoryPage: FC = () => {
 
   const { orders } = useAppSelector((state) => state.wsToken);
 
+  const accessToken = getCookie('accessToken');
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch({ type: WS_CONNECTION_START_TOKEN });
+    dispatch({
+      type: WS_CONNECTION_START_TOKEN,
+      payload: `?token=${accessToken}`,
+    });
   }, [dispatch]);
 
   return (

@@ -6,6 +6,7 @@ import { useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
 import { WS_CONNECTION_START } from '../../services/actions/web-socket';
 import { searchItemById } from '../../utils/order-processing';
+import { getCookie } from '../../utils/cookie';
 import { useParams } from 'react-router-dom';
 
 type LocationState = {
@@ -17,13 +18,18 @@ const OrderPage: FC = () => {
   const background = location.state && location.state.background;
   const { id }: { id: string } = useParams();
   const order = searchItemById(id);
+  const accessToken = getCookie('accessToken');
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch({ type: WS_CONNECTION_START });
-    dispatch({ type: WS_CONNECTION_START_TOKEN });
+    dispatch({ type: WS_CONNECTION_START, payload: '/all' });
+    dispatch({
+      type: WS_CONNECTION_START_TOKEN,
+      payload: `?token=${accessToken}`,
+    });
   }, [dispatch]);
 
+  // TODO закрыть соединение после нахождение заказа
   return (
     <>
       {!background ? (

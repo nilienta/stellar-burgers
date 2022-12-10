@@ -83,18 +83,9 @@ export type TWsInitialState = TWsPayload & {
   wsConnected: boolean;
 };
 export type TWsServerActions = {
-  wsInit: 'WS_CONNECTION_START';
-  wsSendMessage: 'WS_SEND_MESSAGE';
-  onOpen: 'WS_CONNECTION_SUCCESS';
-  onClose: 'WS_CONNECTION_CLOSED';
-  onError: 'WS_CONNECTION_ERROR';
-  onMessage: 'WS_GET_ORDERS';
-};
-export type TWsTokenServerActions = {
-  wsInit: 'WS_CONNECTION_START_TOKEN';
-  wsSendMessage: 'WS_SEND_MESSAGE_TOKEN';
-  onOpen: 'WS_CONNECTION_SUCCESS_TOKEN';
-  onClose: 'WS_CONNECTION_CLOSED_TOKEN';
-  onError: 'WS_CONNECTION_ERROR_TOKEN';
-  onMessage: 'WS_GET_ORDERS_TOKEN';
+  wsInit: string;
+  onOpen: string;
+  onClose: string;
+  onError: string;
+  onMessage: string;
 };

@@ -6,10 +6,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { rootReducer } from './services/reducers';
 import { socketMiddleware } from './services/middleware';
-import { socketMiddlewareToken } from './services/middleware/socket-middleware-token';
 import {
   WS_CONNECTION_START,
-  WS_SEND_MESSAGE,
   WS_CONNECTION_SUCCESS,
   WS_CONNECTION_CLOSED,
   WS_CONNECTION_ERROR,
@@ -17,19 +15,17 @@ import {
 } from './services/actions/web-socket';
 import {
   WS_CONNECTION_START_TOKEN,
-  WS_SEND_MESSAGE_TOKEN,
   WS_CONNECTION_SUCCESS_TOKEN,
   WS_CONNECTION_CLOSED_TOKEN,
   WS_CONNECTION_ERROR_TOKEN,
   WS_GET_ORDERS_TOKEN,
 } from './services/actions/web-socket-token';
 
-const wsUrl = 'wss://norma.nomoreparties.space/orders/all';
-const wsUrlToken = 'wss://norma.nomoreparties.space/orders';
+// FIXME взять из констант
+const wsUrl = 'wss://norma.nomoreparties.space/orders';
 
 const wsActions = {
   wsInit: WS_CONNECTION_START,
-  wsSendMessage: WS_SEND_MESSAGE,
   onOpen: WS_CONNECTION_SUCCESS,
   onClose: WS_CONNECTION_CLOSED,
   onError: WS_CONNECTION_ERROR,
@@ -37,7 +33,6 @@ const wsActions = {
 };
 const wsActionsToken = {
   wsInit: WS_CONNECTION_START_TOKEN,
-  wsSendMessage: WS_SEND_MESSAGE_TOKEN,
   onOpen: WS_CONNECTION_SUCCESS_TOKEN,
   onClose: WS_CONNECTION_CLOSED_TOKEN,
   onError: WS_CONNECTION_ERROR_TOKEN,
@@ -49,7 +44,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       socketMiddleware(wsUrl, wsActions),
-      socketMiddlewareToken(wsUrlToken, wsActionsToken)
+      socketMiddleware(wsUrl, wsActionsToken)
     ),
 });
 

@@ -1,7 +1,6 @@
 import { getData } from '../../utils/burger-api';
-import { TAuthActions } from '../types/types-auth';
-import { Dispatch } from 'react';
 import { BASE_URL } from './app';
+import { AppDispatch } from '../..';
 
 export const CHANGE_USER_DATA_REQUEST: 'CHANGE_USER_DATA_REQUEST' =
   'CHANGE_USER_DATA_REQUEST';
@@ -27,7 +26,7 @@ export type TChangeUserDataActions =
   | IChangeUserDataFailedAction;
 
 export const updateUserData = (form: { name?: string; email?: string }) => {
-  return (dispatch: Dispatch<TAuthActions>) => {
+  return (dispatch: AppDispatch) => {
     dispatch({
       type: CHANGE_USER_DATA_REQUEST,
     });

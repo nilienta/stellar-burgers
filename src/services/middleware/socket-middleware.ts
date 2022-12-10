@@ -1,22 +1,23 @@
-import { Dispatch } from 'redux';
 import { TWsAction } from '../types/types';
 import { TWsServerActions } from '../types/types';
+import { Middleware } from 'redux';
+import { MiddlewareAPI } from 'redux';
+import { AppDispatch } from '../..';
+import { RootState } from '../..';
 
-// FIXME иногда выдает ошибку при замене any на TWsServerActions,а иногда нет
 export const socketMiddleware = (
   wsUrl: string,
   wsActions: TWsServerActions
-) => {
-  return (store: { getState: Function; dispatch: Dispatch }) => {
+): Middleware => {
+  return (store: MiddlewareAPI<AppDispatch, RootState>) => {
     let socket: WebSocket | null = null;
 
     return (next: Function) => (action: TWsAction) => {
       const { dispatch } = store;
       const { type, payload } = action;
-      const { wsInit, wsSendMessage, onOpen, onClose, onError, onMessage } =
-        wsActions;
+      const { wsInit, onOpen, onClose, onError, onMessage } = wsActions;
       if (type === wsInit) {
-        socket = new WebSocket(wsUrl);
+        socket = new WebSocket(`${wsUrl}${payload}`);
       }
       if (socket) {
         socket.onopen = () => {
@@ -38,11 +39,6 @@ export const socketMiddleware = (
         socket.onclose = (event: CloseEvent) => {
           dispatch({ type: onClose, payload: event });
         };
-
-        if (type === wsSendMessage) {
-          const message = { ...payload };
-          socket.send(JSON.stringify(message));
-        }
       }
 
       next(action);

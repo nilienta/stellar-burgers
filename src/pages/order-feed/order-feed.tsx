@@ -10,7 +10,7 @@ const OrderFeedPage: FC = () => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch({ type: WS_CONNECTION_START });
+    dispatch({ type: WS_CONNECTION_START, payload: '/all' });
   }, [dispatch]);
 
   return (
