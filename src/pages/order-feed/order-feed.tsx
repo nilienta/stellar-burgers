@@ -6,7 +6,10 @@ import Stats from '../../components/stats/stats';
 import Loader from '../loader/loader';
 
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
-import { WS_CONNECTION_START } from '../../services/actions/web-socket';
+import {
+  WS_CONNECTION_CLOSED,
+  WS_CONNECTION_START,
+} from '../../services/actions/web-socket';
 
 const OrderFeedPage: FC = () => {
   const { orders } = useAppSelector((state) => state.ws);
@@ -14,6 +17,9 @@ const OrderFeedPage: FC = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch({ type: WS_CONNECTION_START, payload: '/all' });
+    return () => {
+      dispatch({ type: WS_CONNECTION_CLOSED });
+    };
   }, [dispatch]);
 
   return (

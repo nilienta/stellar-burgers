@@ -8,7 +8,10 @@ import { getCookie } from '../../utils/cookie';
 import Loader from '../loader/loader';
 
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
-import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
+import {
+  WS_CONNECTION_CLOSED_TOKEN,
+  WS_CONNECTION_START_TOKEN,
+} from '../../services/actions/web-socket-token';
 
 const OrderHistoryPage: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
@@ -31,6 +34,9 @@ const OrderHistoryPage: FC = () => {
       type: WS_CONNECTION_START_TOKEN,
       payload: `?token=${accessToken}`,
     });
+    return () => {
+      dispatch({ type: WS_CONNECTION_CLOSED_TOKEN });
+    };
   }, [dispatch]);
 
   return (
