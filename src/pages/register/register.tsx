@@ -1,8 +1,7 @@
 import { useCallback, FC, FormEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../services/types/types';
-import { Redirect } from 'react-router';
-import { register } from '../../services/actions/register';
 import styles from './register.module.css';
+
+import { Redirect } from 'react-router';
 import {
   Input,
   Button,
@@ -10,6 +9,9 @@ import {
   PasswordInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
+
+import { register } from '../../services/actions/register';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
 
 const RegisterPage: FC = () => {

@@ -1,9 +1,11 @@
 import { FC, useEffect } from 'react';
-import { useAppSelector, useAppDispatch } from '../../services/types/types';
-import { WS_CONNECTION_START } from '../../services/actions/web-socket';
 import styles from './order-feed.module.css';
+
 import ListOrder from '../../components/list-order/list-order';
 import Stats from '../../components/stats/stats';
+
+import { useAppSelector, useAppDispatch } from '../../services/types/types';
+import { WS_CONNECTION_START } from '../../services/actions/web-socket';
 
 const OrderFeedPage: FC = () => {
   const { orders } = useAppSelector((state) => state.ws);

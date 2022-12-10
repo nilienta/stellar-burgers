@@ -1,8 +1,8 @@
 import React, { useCallback, FC, MouseEventHandler } from 'react';
-import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import styles from './menu-profile.module.css';
 import { NavLink } from 'react-router-dom';
 import { signOut } from '../../services/actions/logout';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 
 const MenuProfile: FC<{ page: 'profile' | 'history' }> = ({ page }) => {
   const dispatch = useAppDispatch();

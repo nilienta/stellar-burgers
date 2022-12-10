@@ -2,25 +2,28 @@ import React, { useEffect, FC } from 'react';
 import clsx from 'clsx';
 import styles from './burger-constructor.module.css';
 
+import { useDrop } from 'react-dnd';
+import { useHistory } from 'react-router-dom';
+
+import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import Modal from '../modal/modal';
 import ConstructorIngredientsList from './constructor-ingredients-list/constructor-ingredients-list';
 import OrderDetails from './order-details/order-details';
 import ConstructorElementWrap from './constructor-element-wrap/constructor-element-wrap';
-import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
 import TotalPrice from './order-details/total-price/total-price';
 import CapConstructor from './cap-constructor/cap-constructor';
 
-import { useAppDispatch, useAppSelector } from '../../services/types/types';
-import { TIngredient } from '../../services/types/types';
-
-import { useDrop } from 'react-dnd';
+import {
+  useAppDispatch,
+  useAppSelector,
+  TIngredient,
+} from '../../services/types/types';
 import {
   SET_TOTAL_PRICE,
   MODIFY_CONSTRUCTOR_INGREDIENTS,
   SET_VISIBLE_MODAL_CONSTRUCTOR,
   SET_INVISIBLE_MODAL_CONSTRUCTOR,
 } from '../../services/actions/app';
-import { useHistory } from 'react-router-dom';
 
 const BurgerConstructor: FC = () => {
   const classForFooter = clsx(styles.footer, 'mt-10 mr-3');

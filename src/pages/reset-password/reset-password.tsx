@@ -1,7 +1,7 @@
 import { useCallback, FC, FormEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../services/types/types';
-import { Redirect } from 'react-router';
 import styles from './reset-password.module.css';
+
+import { Redirect } from 'react-router';
 import {
   Button,
   PasswordInput,
@@ -9,6 +9,8 @@ import {
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
 import { passwordSaveReset } from '../../services/actions/reset-password';
+
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
 
 const ResetPasswordPage: FC = () => {

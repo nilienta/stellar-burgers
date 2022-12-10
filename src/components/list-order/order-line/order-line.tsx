@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
 import styles from './order-line.module.css';
+
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
-import { TCurrentOrder } from '../../../services/types/types';
-import setTime from '../../../utils/date';
-import { useLocation } from 'react-router-dom';
+
+import { useLocation, Link } from 'react-router-dom';
 import {
   getStatus,
   getTotalPriceForOrder,
   getArrayOrderIngredients,
 } from '../../../utils/order-processing';
-import { TIngredient } from '../../../services/types/types';
+import setTime from '../../../utils/date';
+import { TIngredient, TCurrentOrder } from '../../../services/types/types';
 
 const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
   needStatus,

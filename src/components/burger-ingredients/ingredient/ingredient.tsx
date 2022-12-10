@@ -1,17 +1,16 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
-import { useLocation } from 'react-router-dom';
-import { useAppDispatch } from '../../../services/types/types';
-import { SET_VISIBLE_MODAL_INGREDIENT } from '../../../services/actions/app';
 import styles from './ingredient.module.css';
-import { useDrag } from 'react-dnd';
 
+import { useLocation, Link } from 'react-router-dom';
+import { useDrag } from 'react-dnd';
 import {
   Counter,
   CurrencyIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
-import type { TIngredient } from '../../../services/types/types';
+
+import { TIngredient, useAppDispatch } from '../../../services/types/types';
+import { SET_VISIBLE_MODAL_INGREDIENT } from '../../../services/actions/app';
 
 const Ingredient: FC<{ item: TIngredient }> = ({ item }) => {
   const classForPrice = clsx(styles.price, 'mt-1 mb-1');

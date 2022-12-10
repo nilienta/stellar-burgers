@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
-
 import styles from './block-ingredients.module.css';
+
 import Ingredient from '../ingredient/ingredient';
 import type { TIngredient } from '../../../services/types/types';
 

@@ -1,13 +1,15 @@
 import { FC, useEffect } from 'react';
 import styles from './order.module.css';
+
 import Order from '../../components/order/order';
 import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { searchItemById } from '../../utils/order-processing';
+import { getCookie } from '../../utils/cookie';
+
 import { useAppDispatch } from '../../services/types/types';
 import { WS_CONNECTION_START_TOKEN } from '../../services/actions/web-socket-token';
 import { WS_CONNECTION_START } from '../../services/actions/web-socket';
-import { searchItemById } from '../../utils/order-processing';
-import { getCookie } from '../../utils/cookie';
-import { useParams } from 'react-router-dom';
 
 type LocationState = {
   background?: Location;

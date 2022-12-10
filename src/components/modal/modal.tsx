@@ -1,12 +1,11 @@
 import React, { useEffect, FC } from 'react';
-import ReactDOM from 'react-dom';
-
 import clsx from 'clsx';
 import styles from './modal.module.css';
 
+import ReactDOM from 'react-dom';
+import { useParams } from 'react-router-dom';
 import ModalOverlay from './modalOverlay/modal-overlay';
 import ModalHeader from './modal-header/modal-header';
-import { useParams } from 'react-router-dom';
 import { searchItemById } from '../../utils/order-processing';
 
 type TModal = {

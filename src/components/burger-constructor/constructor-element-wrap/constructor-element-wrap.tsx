@@ -1,17 +1,15 @@
-import React, { useRef, SyntheticEvent, FC } from 'react';
-import { useAppDispatch } from '../../../services/types/types';
+import React, { useRef, FC } from 'react';
 import clsx from 'clsx';
-
 import styles from './constructor-element-wrap.module.css';
-
-import { DELETE_INGREDIENTS } from '../../../services/actions/app';
-import { useDrag, useDrop } from 'react-dnd/dist/hooks';
 
 import {
   ConstructorElement,
   DragIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { TIngredient } from '../../../services/types/types';
+import { useDrag, useDrop } from 'react-dnd/dist/hooks';
+
+import { TIngredient, useAppDispatch } from '../../../services/types/types';
+import { DELETE_INGREDIENTS } from '../../../services/actions/app';
 
 type TConstructorElementWrap = {
   index?: number;
