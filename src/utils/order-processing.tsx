@@ -38,7 +38,7 @@ export const getTotalPriceForOrder = (order: TCurrentOrder) => {
   let totalPrice: number = 0;
   if (ingredients && ingredients.length > 0) {
     const composition = order.ingredients;
-    composition.map((ID: string) => {
+    composition.map((ID) => {
       const item = ingredients.find((el) => el._id === ID);
       if (item) {
         totalPrice += item.price!;
@@ -53,7 +53,7 @@ export const getArrayOrderIngredients = (order: TCurrentOrder) => {
   const arrOrderIngredients: TIngredient[] = [];
   if (ingredients !== undefined && ingredients.length > 0) {
     const composition = order.ingredients;
-    composition.map((ID: string) => {
+    composition.map((ID) => {
       const item = ingredients.find((el) => el._id === ID);
       if (item) {
         arrOrderIngredients.push(item);

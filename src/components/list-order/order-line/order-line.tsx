@@ -49,7 +49,7 @@ const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
             </div>
             <div className={styles['data-line']}>
               <div className={styles.icons}>
-                {unique.reverse().map((src: TIngredient, index: number) => {
+                {unique.reverse().map((src, index) => {
                   const otherItem = unique.length - 5;
                   if (index < 6) {
                     return (

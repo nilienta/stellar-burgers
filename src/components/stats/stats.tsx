@@ -10,8 +10,8 @@ const Stats: FC = () => {
 
   const { done, inWork } = useMemo(
     () => ({
-      done: orders.filter((item: TCurrentOrder) => item.status === 'done'),
-      inWork: orders.filter((item: TCurrentOrder) => item.status !== 'done'),
+      done: orders.filter((item) => item.status === 'done'),
+      inWork: orders.filter((item) => item.status !== 'done'),
     }),
     [orders]
   );
@@ -22,7 +22,7 @@ const Stats: FC = () => {
         <section className={styles.column}>
           <p className="text text_type_main-medium mb-6">Готовы:</p>
           <div className={styles['list-number']}>
-            {done.map((item: TCurrentOrder, index: number) => {
+            {done.map((item, index) => {
               return (
                 <p
                   className="text text_type_digits-default text_color_success mb-2"
@@ -37,7 +37,7 @@ const Stats: FC = () => {
         <section className={styles.column}>
           <p className="text text_type_main-medium mb-6">В работе:</p>
           <div className={styles['list-number']}>
-            {inWork.map((item: TCurrentOrder) => {
+            {inWork.map((item) => {
               return (
                 <p className="text text_type_digits-default mb-2">
                   {item.number}

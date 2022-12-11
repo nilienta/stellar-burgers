@@ -10,7 +10,7 @@ const BlockIngredients: FC<{ thread: TIngredient[] }> = ({ thread }) => {
 
   return (
     <ul className={classForList}>
-      {thread.map((item: TIngredient) => {
+      {thread.map((item) => {
         return <Ingredient key={item._id} item={item} />;
       })}
     </ul>

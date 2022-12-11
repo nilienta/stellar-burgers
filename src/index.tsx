@@ -21,9 +21,7 @@ import {
   WS_GET_ORDERS_TOKEN,
 } from './services/actions/web-socket-token';
 
-// FIXME взять из констант
 const wsUrl = 'wss://norma.nomoreparties.space/orders';
-
 const wsActions = {
   wsInit: WS_CONNECTION_START,
   onOpen: WS_CONNECTION_SUCCESS,

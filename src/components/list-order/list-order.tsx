@@ -13,7 +13,7 @@ const ListOrder: FC<{ needStatus: boolean; list: TCurrentOrder[] }> = ({
     <>
       {list ? (
         <section className={classForSection}>
-          {list.map((item: TCurrentOrder) => {
+          {list.map((item) => {
             return (
               <OrderLine needStatus={needStatus} order={item} key={item._id} />
             );

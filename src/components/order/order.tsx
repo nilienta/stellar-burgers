@@ -24,7 +24,7 @@ const Order: FC = () => {
 
   const arrOrderIngredients = order ? getArrayOrderIngredients(order) : [];
   let arrCount: { [id: string]: number } = {};
-  const objNameCount = arrOrderIngredients.map((Ingredient: TIngredient) => {
+  const objNameCount = arrOrderIngredients.map((Ingredient) => {
     if (Ingredient._id && arrCount[Ingredient._id]) {
       const currentCount = arrCount[Ingredient._id] + 1;
       arrCount = { ...arrCount, [Ingredient._id]: currentCount };
@@ -44,7 +44,7 @@ const Order: FC = () => {
           <section
             className={clsx(styles.composition, 'custom-scroll', 'mb-10')}
           >
-            {unique.map((item: TIngredient) => {
+            {unique.map((item) => {
               const count = arrCount[item._id!];
               return (
                 <CompositionLine key={item._id} item={item} count={count} />
