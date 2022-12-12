@@ -1,12 +1,10 @@
 import React, { useMemo, FC } from 'react';
 import clsx from 'clsx';
-
-import { Element } from 'react-scroll';
 import styles from './ingredients-list.module.css';
 
+import { Element } from 'react-scroll';
 import BlockIngredients from '../block-ingredients/block-ingredients';
-
-import { useAppSelector, TIngredient } from '../../../utils/types';
+import { useAppSelector } from '../../../services/types/types';
 
 const IngredientsList: FC = () => {
   const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');

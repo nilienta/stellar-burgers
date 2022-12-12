@@ -6,7 +6,7 @@ export const checkResponse = (res: Response) => {
     : res.json().then((err: Error) => Promise.reject(err));
 };
 
-export const request = async (url: string, options: Object) => {
+export const request = async (url: string, options: RequestInit) => {
   const res = await fetch(url, options);
   return checkResponse(res);
 };
@@ -19,6 +19,7 @@ export const defaultOptions = (data = {}): RequestInit => {
     credentials: 'same-origin',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + getCookie('accessToken'),
     },
     redirect: 'follow',
     referrerPolicy: 'no-referrer',
@@ -29,7 +30,9 @@ export const defaultOptions = (data = {}): RequestInit => {
 export const getData = (
   URL: string,
   method: string,
-  data?: Object,
+  data?: {
+    [name: string]: string | number | (string | number | undefined)[] | null;
+  },
   token = false
 ) => {
   let query: RequestInit = {

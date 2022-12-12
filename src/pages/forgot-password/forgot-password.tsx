@@ -1,14 +1,14 @@
-import { useCallback, useState, FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
-import { Redirect } from 'react-router-dom';
+import { useCallback, FC } from 'react';
 import styles from './forgot-password.module.css';
+
+import { Redirect, Link } from 'react-router-dom';
 import {
   Button,
   EmailInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { checkingEmail } from '../../services/actions/checking-mail';
-import { useForm } from '../../components/hooks/use-form';
+import { useForm } from '../../services/hooks/use-form';
 
 const ForgotPasswordPage: FC = () => {
   const dispatch = useAppDispatch();

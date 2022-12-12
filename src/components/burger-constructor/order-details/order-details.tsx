@@ -1,11 +1,10 @@
+import React, { useEffect, FC } from 'react';
 import clsx from 'clsx';
 import styles from './order-details.module.css';
 
-import React, { useEffect, FC } from 'react';
-import { postOrder } from '../../../services/actions/app';
+import { BASE_URL, postOrder } from '../../../services/actions/app';
+import { useAppDispatch, useAppSelector } from '../../../services/types/types';
 
-import { useAppDispatch, useAppSelector } from '../../../utils/types';
-import { BASE_URL } from '../../../services/actions/app';
 import modalDone from '../../../images/modal-done.png';
 
 const OrderDetails: FC = () => {

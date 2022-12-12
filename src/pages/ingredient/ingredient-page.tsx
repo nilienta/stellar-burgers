@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styles from './ingredient.module.css';
+import styles from './ingredient-page.module.css';
 import IngredientDetails from '../../components/burger-ingredients/ingredient-details/ingredient-details';
 import { useLocation } from 'react-router-dom';
 

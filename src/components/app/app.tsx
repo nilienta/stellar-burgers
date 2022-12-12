@@ -1,30 +1,38 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+  useHistory,
+} from 'react-router-dom';
 import { useEffect } from 'react';
-import { useAppSelector, useAppDispatch, TIngredient } from '../../utils/types';
 import { getCookie } from '../../utils/cookie';
+import { ProtectedRoute } from '../protected-route';
+import { Location } from 'history';
+
 import HomePage from '../../pages/home/home';
 import LoginPage from '../../pages/login/login';
 import RegisterPage from '../../pages/register/register';
 import ForgotPasswordPage from '../../pages/forgot-password/forgot-password';
 import ResetPasswordPage from '../../pages/reset-password/reset-password';
+import OrderFeedPage from '../../pages/order-feed/order-feed';
 import ProfilePage from '../../pages/profile/profile';
 import OrderHistoryPage from '../../pages/order-history/order-history';
-import IngredientPage from '../../pages/ingredient/ingredient';
+import OrderPage from '../../pages/order/order';
+import IngredientPage from '../../pages/ingredient/ingredient-page';
 import NotFound404 from '../../pages/404/404';
-import { ProtectedRoute } from '../protected-route';
-import { getUser } from '../../services/actions/login';
-import {
-  SET_INVISIBLE_MODAL_INGREDIENT,
-  SET_VISIBLE_INGREDIENT,
-} from '../../services/actions/app';
-import { useLocation } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import Order from '../order/order';
+import Header from '../header/header';
 import Modal from '../modal/modal';
 import IngredientDetails from '../burger-ingredients/ingredient-details/ingredient-details';
-import Header from '../header/header';
-import { BASE_URL } from '../../services/actions/app';
-import { getIngredients } from '../../services/actions/app';
-import { Location } from 'history';
+
+import { useAppSelector, useAppDispatch } from '../../services/types/types';
+import { getUser } from '../../services/actions/get-user-data';
+import {
+  BASE_URL,
+  SET_INVISIBLE_MODAL_INGREDIENT,
+  getIngredients,
+} from '../../services/actions/app';
 
 type LocationState = {
   background?: Location;
@@ -52,14 +60,12 @@ export default function App() {
       dispatch({
         type: SET_INVISIBLE_MODAL_INGREDIENT,
       });
-      dispatch({
-        type: SET_VISIBLE_INGREDIENT,
-        visibleIngredient: {},
-      });
       history.goBack();
     };
 
     const { ingredients } = useAppSelector((state) => state.app);
+    const { orders } = useAppSelector((state) => state.ws);
+    const ordersToken = useAppSelector((state) => state.wsToken.orders);
 
     return (
       <>
@@ -67,6 +73,9 @@ export default function App() {
         <Switch location={background || location}>
           <Route path="/" exact={true}>
             <HomePage />
+          </Route>
+          <Route path="/ingredients/:id" exact={true}>
+            <IngredientPage />
           </Route>
           <Route path="/login" exact={true}>
             <LoginPage />
@@ -80,15 +89,21 @@ export default function App() {
           <Route path="/reset-password" exact={true}>
             <ResetPasswordPage />
           </Route>
+          <Route path="/feed" exact={true}>
+            <OrderFeedPage />
+          </Route>
+          <Route path="/feed/:id" exact={true}>
+            <OrderPage />
+          </Route>
           <ProtectedRoute path="/profile" exact={true}>
             <ProfilePage />
           </ProtectedRoute>
           <ProtectedRoute path="/profile/orders" exact={true}>
             <OrderHistoryPage />
           </ProtectedRoute>
-          <Route path="/ingredients/:id" exact={true}>
-            <IngredientPage />
-          </Route>
+          <ProtectedRoute path="/profile/orders/:id" exact={true}>
+            <OrderPage />
+          </ProtectedRoute>
           <Route>
             <NotFound404 />
           </Route>
@@ -99,10 +114,41 @@ export default function App() {
             children={
               <Modal
                 onClose={handleModalClose}
-                size="medium"
+                pSize="medium"
                 header="Детали ингредиента"
+                typeHeader="string"
               >
                 <IngredientDetails />
+              </Modal>
+            }
+          />
+        )}
+        {orders !== undefined && orders.length > 0 && background && (
+          <Route
+            path="/feed/:id"
+            children={
+              <Modal
+                onClose={handleModalClose}
+                pSize="small"
+                header="ID"
+                typeHeader="number"
+              >
+                <Order />
+              </Modal>
+            }
+          />
+        )}
+        {ordersToken !== undefined && ordersToken.length > 0 && background && (
+          <ProtectedRoute
+            path="/profile/orders/:id"
+            children={
+              <Modal
+                onClose={handleModalClose}
+                pSize="small"
+                header="ID"
+                typeHeader="number"
+              >
+                <Order />
               </Modal>
             }
           />

@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { useAppSelector } from '../utils/types';
 import { Route, Redirect, useLocation, RouteProps } from 'react-router-dom';
 import { getCookie } from '../utils/cookie';
 import Loader from '../pages/loader/loader';
+import { useAppSelector } from '../services/types/types';
 
 export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
-  const { isAuth } = useAppSelector((state) => state.auth);
+  const { isAuth, loader } = useAppSelector((state) => state.auth);
   const location = useLocation();
   const isAuthorized = getCookie('accessToken');
 
@@ -18,6 +18,10 @@ export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
   }
 
   if (!isAuth && isAuthorized) {
+    return <Loader />;
+  }
+
+  if (loader) {
     return <Loader />;
   }
 

@@ -1,17 +1,30 @@
 import { useState, useRef, FC, FocusEvent } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
 import styles from './profile.module.css';
+
 import {
   Input,
   EmailInput,
   Button,
 } from '@ya.praktikum/react-developer-burger-ui-components';
+import { Redirect } from 'react-router-dom';
 import MenuProfile from '../../components/menu-profile/menu-profile';
 import { validateForm } from '../../utils/validate-form';
-import { updateUserData } from '../../services/actions/login';
-import { useForm } from '../../components/hooks/use-form';
+
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
+import { updateUserData } from '../../services/actions/change-user-data';
+import { useForm } from '../../services/hooks/use-form';
 
 const ProfilePage: FC = () => {
+  const { isAuth } = useAppSelector((state) => state.auth);
+  if (!isAuth) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/login',
+        }}
+      />
+    );
+  }
   const [fieldDisabledName, setDisabledName] = useState(true);
   const [errorName, setErrorName] = useState(false);
   const [fieldDisabledPassword, setDisabledPassword] = useState(true);
@@ -89,7 +102,7 @@ const ProfilePage: FC = () => {
   return (
     <div className={`${styles.wrapper}`}>
       <main className={`${styles.main}`}>
-        <MenuProfile />
+        <MenuProfile page="profile" />
         <section className={styles.container}>
           <form className={styles.form} onSubmit={onSave}>
             <Input

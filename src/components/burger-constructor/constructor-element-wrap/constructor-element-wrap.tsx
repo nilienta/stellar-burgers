@@ -1,17 +1,15 @@
-import React, { useRef, SyntheticEvent, FC } from 'react';
-import { useAppDispatch } from '../../../utils/types';
+import React, { useRef, FC } from 'react';
 import clsx from 'clsx';
-
 import styles from './constructor-element-wrap.module.css';
-
-import { DELETE_INGREDIENTS } from '../../../services/actions/app';
-import { useDrag, useDrop } from 'react-dnd/dist/hooks';
 
 import {
   ConstructorElement,
   DragIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
-import { TIngredient } from '../../../utils/types';
+import { useDrag, useDrop } from 'react-dnd/dist/hooks';
+
+import { TIngredient, useAppDispatch } from '../../../services/types/types';
+import { DELETE_INGREDIENTS } from '../../../services/actions/app';
 
 type TConstructorElementWrap = {
   index?: number;
@@ -53,7 +51,7 @@ const ConstructorElementWrap: FC<TConstructorElementWrap> = ({
     },
     // Вызывается, когда перетаскиваемый элемент оказывается над ингредиентом,
     // индекс которого у нас задан в пропсах props.index
-    hover(item: any, monitor) {
+    hover(item: { id: string; index: number } | any, monitor) {
       if (!ref.current) {
         return;
       }

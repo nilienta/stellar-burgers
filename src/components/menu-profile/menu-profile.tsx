@@ -1,10 +1,10 @@
 import React, { useCallback, FC, MouseEventHandler } from 'react';
-import { useAppDispatch, useAppSelector } from '../../utils/types';
 import styles from './menu-profile.module.css';
 import { NavLink } from 'react-router-dom';
-import { signOut } from '../../services/actions/login';
+import { signOut } from '../../services/actions/logout';
+import { useAppDispatch, useAppSelector } from '../../services/types/types';
 
-const MenuProfile: FC = () => {
+const MenuProfile: FC<{ page: 'profile' | 'history' }> = ({ page }) => {
   const dispatch = useAppDispatch();
   const { refreshToken } = useAppSelector((state) => state.auth);
 
@@ -15,6 +15,17 @@ const MenuProfile: FC = () => {
     },
     [refreshToken, dispatch]
   );
+
+  const descriptionProfile =
+    'В этом разделе вы можете изменить свои персональные данные';
+  const descriptionHistory =
+    'В этом разделе вы можете просмотреть свою историю заказов';
+  const description =
+    page === 'profile'
+      ? descriptionProfile
+      : page === 'history'
+      ? descriptionHistory
+      : '';
 
   return (
     <nav className={styles.nav}>
@@ -51,7 +62,7 @@ const MenuProfile: FC = () => {
       <p
         className={`text text_type_main-default text_color_inactive mt-20 ${styles.text}`}
       >
-        В этом разделе вы можете изменить свои персональные данные
+        {description}
       </p>
     </nav>
   );

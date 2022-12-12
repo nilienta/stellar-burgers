@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
-
 import styles from './navigation-link.module.css';
 import { NavLink } from 'react-router-dom';
 

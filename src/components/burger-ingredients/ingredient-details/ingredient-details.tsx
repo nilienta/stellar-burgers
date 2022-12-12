@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import { useAppSelector, TIngredient } from '../../../utils/types';
-import clsx from 'clsx';
 import styles from './ingredient-details.module.css';
+import clsx from 'clsx';
+
+import { useAppSelector } from '../../../services/types/types';
 import { useParams } from 'react-router-dom';
 
 const Element: FC<{ name: string; count: number }> = ({ name, count }) => {

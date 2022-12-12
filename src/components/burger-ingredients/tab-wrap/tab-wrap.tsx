@@ -1,10 +1,8 @@
-import React, { FC } from 'react';
-import { useState } from 'react';
+import React, { FC, useState } from 'react';
+import styles from './tab-wrap.module.css';
 import clsx from 'clsx';
 
-import styles from './tab-wrap.module.css';
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
-
 import { Link } from 'react-scroll';
 
 type TTab = 'one' | 'two' | 'three';

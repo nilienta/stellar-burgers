@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import type { RootState, AppDispatch } from '..';
+import type { RootState, AppDispatch } from '../..';
 
 export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
@@ -19,35 +19,23 @@ export type TIngredient = {
   count?: number;
   dragId?: string;
 };
+
 export type TAppInitialState = {
-  ingredients: Array<TIngredient>;
+  ingredients: TIngredient[];
   ingredientsRequest: boolean;
   ingredientsFailed: boolean;
+  textError: string;
 
   currentBun: TIngredient;
-  currentMainsAndSauces: Array<TIngredient>;
+  currentMainsAndSauces: TIngredient[];
 
   postOrderRequest: boolean;
   postOrderFailed: boolean;
   totalPrice?: number;
   numberOrder: string;
 
-  visibleIngredient: object;
   isModalIngredientOpen: boolean;
   isModalConstructorOpen: boolean;
-};
-
-export type TAppAction = {
-  type: string;
-  ingredients?: Array<TIngredient>;
-  mainsAndSauces?: Array<TIngredient>;
-  currentMainsAndSauces?: Array<TIngredient>;
-  item?: TIngredient;
-  dragId?: string;
-  totalPrice?: number;
-  numberOrder?: string;
-  visibleIngredient?: object;
-  error?: Error;
 };
 
 export type TAuthInitialState = {
@@ -56,20 +44,39 @@ export type TAuthInitialState = {
   refreshToken: string | null;
   possibleEmail: string;
 
-  prevLocation: string;
   emailExists: boolean;
 
   isAuth: boolean;
   loader: boolean;
   fail: boolean;
+  textError: string;
 };
 
-export type TAuthAction = {
+export type TCurrentOrder = {
+  ingredients: string[];
+  name: string;
+  number: number;
+  status: string;
+  updatedAt: string;
+  createdAt: string;
+  _id: string;
+};
+export type TWsAction = {
   type: string;
-  accessToken?: string;
-  refreshToken?: string;
-  user?: { email: string; name: string };
-  possibleEmail?: string;
-  prevLocation?: string;
-  textError?: string;
+  payload: TWsPayload;
+};
+export type TWsPayload = {
+  orders: TCurrentOrder[];
+  total: number;
+  totalToday: number;
+};
+export type TWsInitialState = TWsPayload & {
+  wsConnected: boolean;
+};
+export type TWsServerActions = {
+  wsInit: string;
+  onOpen: string;
+  onClose: string;
+  onError: string;
+  onMessage: string;
 };

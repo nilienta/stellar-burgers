@@ -1,6 +1,6 @@
 .ingredient-list {
   width: 600px;
-  height: calc(100vh - 348px);
+  height: calc(100vh - 284px);
   min-height: 470px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -8,4 +8,7 @@
 .title {
   width: 100%;
   height: 30px;
+}
+.ingredient-list::-webkit-scrollbar-track {
+  margin-bottom: 52px;
 }

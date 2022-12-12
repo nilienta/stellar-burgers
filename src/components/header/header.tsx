@@ -25,7 +25,7 @@ const Header: FC = () => {
           </NavigationLink>
           <NavigationLink
             text="Лента заказов"
-            link="/changeLink"
+            link="/feed"
             exact={false}
             last={false}
           >

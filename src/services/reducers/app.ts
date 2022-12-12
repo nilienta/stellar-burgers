@@ -1,4 +1,5 @@
-import type { TAppInitialState, TAppAction } from '../../utils/types';
+import type { TAppInitialState } from '../types/types';
+import { TAppAction } from '../actions/app';
 import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,
@@ -12,7 +13,6 @@ import {
   POST_ORDER_REQUEST,
   SET_NUMBER_ORDER,
   POST_ORDER_FAILED,
-  SET_VISIBLE_INGREDIENT,
   SET_VISIBLE_MODAL_INGREDIENT,
   SET_INVISIBLE_MODAL_INGREDIENT,
   SET_VISIBLE_MODAL_CONSTRUCTOR,
@@ -24,6 +24,7 @@ const initialState: TAppInitialState = {
   ingredients: [],
   ingredientsRequest: true,
   ingredientsFailed: false,
+  textError: '',
 
   currentBun: {},
   currentMainsAndSauces: [],
@@ -33,7 +34,6 @@ const initialState: TAppInitialState = {
   totalPrice: 0,
   numberOrder: 'XXXXXX',
 
-  visibleIngredient: {},
   isModalIngredientOpen: false,
   isModalConstructorOpen: false,
 };
@@ -48,6 +48,7 @@ export const appReducer = (
         ...state,
         ingredientsRequest: true,
         ingredientsFailed: false,
+        textError: '',
       };
     }
     case GET_INGREDIENTS_SUCCESS: {
@@ -64,6 +65,7 @@ export const appReducer = (
         ingredients: [],
         ingredientsFailed: true,
         ingredientsRequest: false,
+        textError: action.textError,
       };
     }
     case SET_BUNS: {
@@ -141,6 +143,7 @@ export const appReducer = (
         ...state,
         postOrderRequest: true,
         postOrderFailed: false,
+        textError: '',
       };
     }
     case POST_ORDER_FAILED: {
@@ -149,6 +152,7 @@ export const appReducer = (
         numberOrder: 'XXXXXX',
         postOrderRequest: false,
         postOrderFailed: true,
+        textError: action.textError,
       };
     }
     case SET_NUMBER_ORDER: {
@@ -157,12 +161,6 @@ export const appReducer = (
         postOrderRequest: false,
         postOrderFailed: false,
         numberOrder: action.numberOrder!,
-      };
-    }
-    case SET_VISIBLE_INGREDIENT: {
-      return {
-        ...state,
-        visibleIngredient: action.visibleIngredient!,
       };
     }
     case SET_VISIBLE_MODAL_INGREDIENT: {
