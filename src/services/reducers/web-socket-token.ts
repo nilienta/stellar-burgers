@@ -7,7 +7,7 @@ import {
 import { TWsInitialState } from '../types/types';
 import { TWsTokenActions } from '../actions/web-socket-token';
 
-const initialState: TWsInitialState = {
+export const initialState: TWsInitialState = {
   wsConnected: false,
   orders: [],
   total: 0,

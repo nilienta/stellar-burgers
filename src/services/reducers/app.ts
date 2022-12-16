@@ -20,7 +20,7 @@ import {
   RESET_STATE,
 } from '../actions/app';
 
-const initialState: TAppInitialState = {
+export const initialState: TAppInitialState = {
   ingredients: [],
   ingredientsRequest: true,
   ingredientsFailed: false,

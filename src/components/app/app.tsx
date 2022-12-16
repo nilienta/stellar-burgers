@@ -34,6 +34,7 @@ import {
   getIngredients,
 } from '../../services/actions/app';
 
+//TODO сделать вывод ошибок на экран
 type LocationState = {
   background?: Location;
 };
