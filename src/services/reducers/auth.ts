@@ -42,7 +42,7 @@ import {
 
 import { setCookie, deleteCookie } from '../../utils/cookie';
 
-const authInitialState: TAuthInitialState = {
+export const authInitialState: TAuthInitialState = {
   user: null,
   accessToken: null,
   refreshToken: null,
