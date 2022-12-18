@@ -16,7 +16,11 @@ const ModalHeader: FC<{
       <span>
         <h1 className={classForTitle}>{children}</h1>
       </span>
-      <div className={styles.cross} onClick={onClose}>
+      <div
+        className={styles.cross}
+        onClick={onClose}
+        data-test-id="test-close-modal"
+      >
         <CloseIcon type="primary" />
       </div>
     </div>

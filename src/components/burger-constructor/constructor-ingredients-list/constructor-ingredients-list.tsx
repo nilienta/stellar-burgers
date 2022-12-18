@@ -44,7 +44,7 @@ const ConstructorIngredientsList: FC = () => {
   );
 
   return (
-    <ul className={classForList}>
+    <ul className={classForList} data-test-id="test-constructor">
       {currentMainsAndSauces.length > 0 &&
         currentMainsAndSauces.map((item, index) => {
           if (item.type !== 'bun') {

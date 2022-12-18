@@ -10,7 +10,7 @@ const CapConstructor: FC = () => {
 
   return (
     <section className={classForWrapper}>
-      <div className={styles['burger-row']}>
+      <div className={styles['burger-row']} data-test-id="test-constructor">
         <IconBurger color="white" size={80} />
         <IconBurger color="var(--colors-interface-success)" size={80} />
         <IconBurger color="var(--colors-interface-accent)" size={80} />
