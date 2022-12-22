@@ -32,7 +32,6 @@ export type TGetUserDataActions =
   | IGetUserDataFailedAction;
 
 const saveTokens = (refreshToken: string, accessToken: string) => {
-  deleteCookie('accessToken');
   setCookie('accessToken', accessToken);
   localStorage.setItem('refreshToken', refreshToken);
 };
