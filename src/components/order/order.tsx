@@ -34,6 +34,31 @@ const Order: FC = () => {
   });
   const unique = Array.from(new Set(arrOrderIngredients));
 
+  const CompositionList = () => {
+    return (
+      <section className={clsx(styles.composition, 'custom-scroll', 'mb-10')}>
+        {unique.map((item) => {
+          const count = arrCount[item._id!];
+          return <CompositionLine key={item._id} item={item} count={count} />;
+        })}
+      </section>
+    );
+  };
+
+  const DateAndTotalPrice = () => {
+    return (
+      <div className={styles['data-line']}>
+        <p className="text text_type_main-default text_color_inactive">
+          {setTime(order!.createdAt)}
+        </p>
+        <div className={styles.price}>
+          <p className="text text_type_digits-default">{totalPrice}</p>
+          <CurrencyIcon type="primary" />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
       {order ? (
@@ -41,25 +66,9 @@ const Order: FC = () => {
           <p className="text text_type_main-medium mb-3">{order.name}</p>
           {status}
           <p className="text text_type_main-medium mt-15 mb-6">Состав:</p>
-          <section
-            className={clsx(styles.composition, 'custom-scroll', 'mb-10')}
-          >
-            {unique.map((item) => {
-              const count = arrCount[item._id!];
-              return (
-                <CompositionLine key={item._id} item={item} count={count} />
-              );
-            })}
-          </section>
-          <div className={styles['data-line']}>
-            <p className="text text_type_main-default text_color_inactive">
-              {setTime(order.createdAt)}
-            </p>
-            <div className={styles.price}>
-              <p className="text text_type_digits-default">{totalPrice}</p>
-              <CurrencyIcon type="primary" />
-            </div>
-          </div>
+
+          <CompositionList />
+          <DateAndTotalPrice />
         </section>
       ) : (
         <></>
