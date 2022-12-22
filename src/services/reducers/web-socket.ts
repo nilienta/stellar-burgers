@@ -5,7 +5,8 @@ import {
   WS_GET_ORDERS,
 } from '../actions/web-socket';
 import { TWsInitialState } from '../types/types';
-import { TWsActions } from '../actions/web-socket';
+import { createReducer, createAction } from '@reduxjs/toolkit';
+import { TListOrders } from '../types/types';
 
 export const initialState: TWsInitialState = {
   wsConnected: false,
@@ -14,36 +15,23 @@ export const initialState: TWsInitialState = {
   totalToday: 0,
 };
 
-export const wsReducer = (
-  state = initialState,
-  action: TWsActions
-): TWsInitialState => {
-  switch (action.type) {
-    case WS_CONNECTION_SUCCESS:
-      return {
-        ...state,
-        wsConnected: true,
-      };
-    case WS_CONNECTION_ERROR:
-      return {
-        ...state,
-        wsConnected: false,
-      };
+const isActionWithGetOrdersPayload = createAction<TListOrders>('WS_GET_ORDERS');
 
-    case WS_CONNECTION_CLOSED:
-      return {
-        ...state,
-        wsConnected: false,
-      };
-
-    case WS_GET_ORDERS:
-      return {
-        ...state,
-        orders: action.payload.orders,
-        total: action.payload.total,
-        totalToday: action.payload.totalToday,
-      };
-    default:
-      return state;
-  }
-};
+export const wsReducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(WS_CONNECTION_SUCCESS, (state) => {
+      state.wsConnected = true;
+    })
+    .addCase(WS_CONNECTION_ERROR, (state) => {
+      state.wsConnected = false;
+    })
+    .addCase(WS_CONNECTION_CLOSED, (state) => {
+      state.wsConnected = false;
+    })
+    .addCase(isActionWithGetOrdersPayload, (state, action) => {
+      const listOrders = action.payload;
+      (state.orders = listOrders.orders),
+        (state.total = listOrders.total),
+        (state.totalToday = listOrders.totalToday);
+    });
+});
