@@ -80,3 +80,8 @@ export type TWsServerActions = {
   onError: string;
   onMessage: string;
 };
+export type TListOrders = {
+  orders: TCurrentOrder[];
+  total: number;
+  totalToday: number;
+};
