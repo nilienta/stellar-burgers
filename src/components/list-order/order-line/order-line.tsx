@@ -25,6 +25,63 @@ const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
 
   const location = useLocation();
 
+  const NumberAndDate = () => {
+    return (
+      <div className={styles['data-line']}>
+        <p className="text text_type_digits-default">{`#${order.number}`}</p>
+        <p className="text text_type_main-default text_color_inactive">
+          {setTime(order.createdAt)}
+        </p>
+      </div>
+    );
+  };
+  const TitleAndStatus = () => {
+    return (
+      <div className={styles.info}>
+        <p className="text text_type_main-medium">{order.name}</p>
+        {needStatus ? status : <></>}
+      </div>
+    );
+  };
+  const Icons = () => {
+    return (
+      <div className={styles.icons}>
+        {unique.reverse().map((src, index) => {
+          const otherItem = unique.length - 5;
+          if (index < 6) {
+            return (
+              <span
+                className={
+                  index === 0
+                    ? clsx(styles.icon, styles['icon-last'])
+                    : styles.icon
+                }
+                key={index}
+              >
+                {unique.length > 6 && index === 0 ? (
+                  <>
+                    <span>{`+${otherItem}`}</span>
+                    <img src={src.image_mobile} />
+                  </>
+                ) : (
+                  <img src={src.image_mobile} />
+                )}
+              </span>
+            );
+          }
+        })}
+      </div>
+    );
+  };
+  const TotalPrice = () => {
+    return (
+      <div className={styles.price}>
+        <p className="text text_type_digits-default">{totalPrice}</p>
+        <CurrencyIcon type="primary" />
+      </div>
+    );
+  };
+
   return (
     <>
       {unique.length > 0 ? (
@@ -37,47 +94,11 @@ const OrderLine: FC<{ needStatus: boolean; order: TCurrentOrder }> = ({
           className={styles.link}
         >
           <section className={styles.container}>
+            <NumberAndDate />
+            <TitleAndStatus />
             <div className={styles['data-line']}>
-              <p className="text text_type_digits-default">{`#${order.number}`}</p>
-              <p className="text text_type_main-default text_color_inactive">
-                {setTime(order.createdAt)}
-              </p>
-            </div>
-            <div className={styles.info}>
-              <p className="text text_type_main-medium">{order.name}</p>
-              {needStatus ? status : <></>}
-            </div>
-            <div className={styles['data-line']}>
-              <div className={styles.icons}>
-                {unique.reverse().map((src, index) => {
-                  const otherItem = unique.length - 5;
-                  if (index < 6) {
-                    return (
-                      <span
-                        className={
-                          index === 0
-                            ? clsx(styles.icon, styles['icon-last'])
-                            : styles.icon
-                        }
-                        key={index}
-                      >
-                        {unique.length > 6 && index === 0 ? (
-                          <>
-                            <span>{`+${otherItem}`}</span>
-                            <img src={src.image_mobile} />
-                          </>
-                        ) : (
-                          <img src={src.image_mobile} />
-                        )}
-                      </span>
-                    );
-                  }
-                })}
-              </div>
-              <div className={styles.price}>
-                <p className="text text_type_digits-default">{totalPrice}</p>
-                <CurrencyIcon type="primary" />
-              </div>
+              <Icons />
+              <TotalPrice />
             </div>
           </section>
         </Link>

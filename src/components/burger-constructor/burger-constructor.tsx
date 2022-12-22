@@ -95,6 +95,30 @@ const BurgerConstructor: FC = () => {
       </section>
     );
   };
+
+  const BlockWithTotalPrice = () => {
+    if (
+      Object.keys(currentBun).length !== 0 ||
+      currentMainsAndSauces.length !== 0
+    ) {
+      return (
+        <section className={classForFooter}>
+          <TotalPrice />
+          <Button
+            type="primary"
+            size="large"
+            htmlType="submit"
+            onClick={handleOpenModal}
+            disabled={isDisableButton}
+          >
+            Оформить заказ
+          </Button>
+        </section>
+      );
+    }
+    return null;
+  };
+
   return (
     <article className={styles['burger-constructor']}>
       <section
@@ -118,6 +142,7 @@ const BurgerConstructor: FC = () => {
             )}
 
             <ConstructorIngredientsList />
+
             {Object.keys(currentBun).length !== 0 ? (
               <ConstructorElementWrap
                 item={currentBun}
@@ -131,23 +156,7 @@ const BurgerConstructor: FC = () => {
           </>
         )}
       </section>
-      {Object.keys(currentBun).length !== 0 ||
-      currentMainsAndSauces.length !== 0 ? (
-        <section className={classForFooter}>
-          <TotalPrice />
-          <Button
-            type="primary"
-            size="large"
-            htmlType="submit"
-            onClick={handleOpenModal}
-            disabled={isDisableButton}
-          >
-            Оформить заказ
-          </Button>
-        </section>
-      ) : (
-        ''
-      )}
+      <BlockWithTotalPrice />
       {isModalConstructorOpen && (
         <Modal
           pSize="large"

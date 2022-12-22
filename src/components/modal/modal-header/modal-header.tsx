@@ -11,6 +11,7 @@ const ModalHeader: FC<{
     typeHeader === 'string'
       ? 'text text_type_main-large'
       : 'text text_type_digits-default';
+
   return (
     <div className={styles.header}>
       <span>
