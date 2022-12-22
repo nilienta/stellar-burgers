@@ -7,9 +7,9 @@ import { useAppSelector } from '../services/types/types';
 export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
   const { isAuth, loader } = useAppSelector((state) => state.auth);
   const location = useLocation();
-  const isAuthorized = getCookie('accessToken');
+  const isAccessToken = getCookie('accessToken');
 
-  if (!isAuth && !isAuthorized) {
+  if (!isAuth && !isAccessToken) {
     return (
       <Route {...rest}>
         <Redirect to={{ pathname: '/login', state: { from: location } }} />
@@ -17,7 +17,7 @@ export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {
     );
   }
 
-  if (!isAuth && isAuthorized) {
+  if (!isAuth && isAccessToken) {
     return <Loader />;
   }
 

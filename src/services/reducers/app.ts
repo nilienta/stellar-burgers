@@ -83,13 +83,13 @@ export const appReducer = (
       };
     }
     case MODIFY_CONSTRUCTOR_INGREDIENTS: {
-      if (action.item!.type === 'bun') {
-        if (state.currentBun._id !== action.item!._id) {
+      if (action.item.type === 'bun') {
+        if (state.currentBun._id !== action.item._id) {
           const oldBun = [...state.ingredients].map((item) =>
             item._id === state.currentBun._id ? { ...item, count: 0 } : item
           );
           const newBun = [...oldBun].map((item) =>
-            item._id === action.item!._id ? { ...item, count: 1 } : item
+            item._id === action.item._id ? { ...item, count: 1 } : item
           );
           return {
             ...state,
@@ -104,9 +104,9 @@ export const appReducer = (
       } else {
         return {
           ...state,
-          currentMainsAndSauces: [...state.currentMainsAndSauces, action.item!],
+          currentMainsAndSauces: [...state.currentMainsAndSauces, action.item],
           ingredients: [...state.ingredients].map((item) =>
-            item._id === action.item!._id
+            item._id === action.item._id
               ? { ...item, count: item.count! > 0 ? item.count! + 1 : 1 }
               : item
           ),

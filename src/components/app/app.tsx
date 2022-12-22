@@ -65,7 +65,7 @@ export default function App() {
     };
 
     const { ingredients } = useAppSelector((state) => state.app);
-    const { orders } = useAppSelector((state) => state.ws);
+    const orders = useAppSelector((state) => state.ws.orders);
     const ordersToken = useAppSelector((state) => state.wsToken.orders);
 
     return (

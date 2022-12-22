@@ -11,6 +11,7 @@ export const getCookie = (name: string): string | undefined => {
 
 type TCookieProps = {
   expires?: string | number | boolean;
+  path?: '/';
 } & { [propName: number]: string | number | boolean };
 
 export const setCookie = (
@@ -18,7 +19,6 @@ export const setCookie = (
   value: string | null,
   props: TCookieProps = {}
 ) => {
-  document.cookie = '';
   let exp = props.expires;
   // для удаление cookie
   if (typeof exp == 'number' && exp) {
@@ -32,7 +32,7 @@ export const setCookie = (
   }
   let updatedCookie = name + '=' + value;
   for (const propName in props) {
-    updatedCookie += '; ' + propName;
+    updatedCookie += '; ' + 'path=/;' + propName;
     const propValue = props[propName];
     if (propValue !== true) {
       updatedCookie += '=' + propValue;
