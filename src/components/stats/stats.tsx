@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { TCurrentOrder, useAppSelector } from '../../services/types/types';
 
 const Stats: FC = () => {
-  const { totalToday, total, orders } = useAppSelector((state) => state.ws);
+  const { totalToday, total, orders } = useAppSelector((state) => state.wsFeed);
   const completedToday = totalToday;
   const completedAllTime = total;
 

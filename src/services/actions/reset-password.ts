@@ -3,12 +3,12 @@ import { getData } from '../../utils/burger-api';
 import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
 
-export const RESET_PASSWORD_REQUEST: 'RESET_PASSWORD_REQUEST' =
-  'RESET_PASSWORD_REQUEST';
-export const RESET_PASSWORD_SUCCESS: 'RESET_PASSWORD_SUCCESS' =
-  'RESET_PASSWORD_SUCCESS';
-export const RESET_PASSWORD_FAILED: 'RESET_PASSWORD_FAILED' =
-  'RESET_PASSWORD_FAILED';
+export const RESET_PASSWORD_REQUEST: 'RESET_PASSWORD/REQUEST' =
+  'RESET_PASSWORD/REQUEST';
+export const RESET_PASSWORD_SUCCESS: 'RESET_PASSWORD/SUCCESS' =
+  'RESET_PASSWORD/SUCCESS';
+export const RESET_PASSWORD_FAILED: 'RESET_PASSWORD/FAILED' =
+  'RESET_PASSWORD/FAILED';
 
 export interface IResetPassRequestAction {
   readonly type: typeof RESET_PASSWORD_REQUEST;

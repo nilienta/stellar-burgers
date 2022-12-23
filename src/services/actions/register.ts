@@ -3,9 +3,9 @@ import { getData } from '../../utils/burger-api';
 import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
 
-export const REGISTER_REQUEST: 'REGISTER_REQUEST' = 'REGISTER_REQUEST';
-export const REGISTER_SUCCESS: 'REGISTER_SUCCESS' = 'REGISTER_SUCCESS';
-export const REGISTER_FAILED: 'REGISTER_FAILED' = 'REGISTER_FAILED';
+export const REGISTER_REQUEST: 'REGISTER/REQUEST' = 'REGISTER/REQUEST';
+export const REGISTER_SUCCESS: 'REGISTER/SUCCESS' = 'REGISTER/SUCCESS';
+export const REGISTER_FAILED: 'REGISTER/FAILED' = 'REGISTER/FAILED';
 
 export interface IRegisterRequestAction {
   readonly type: typeof REGISTER_REQUEST;

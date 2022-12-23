@@ -65,8 +65,8 @@ export default function App() {
     };
 
     const { ingredients } = useAppSelector((state) => state.app);
-    const orders = useAppSelector((state) => state.ws.orders);
-    const ordersToken = useAppSelector((state) => state.wsToken.orders);
+    const ordersFeed = useAppSelector((state) => state.wsFeed.orders);
+    const ordersHistory = useAppSelector((state) => state.wsHistory.orders);
 
     return (
       <>
@@ -124,7 +124,7 @@ export default function App() {
             }
           />
         )}
-        {orders !== undefined && orders.length > 0 && background && (
+        {ordersFeed !== undefined && ordersFeed.length > 0 && background && (
           <Route
             path="/feed/:id"
             children={
@@ -139,21 +139,23 @@ export default function App() {
             }
           />
         )}
-        {ordersToken !== undefined && ordersToken.length > 0 && background && (
-          <ProtectedRoute
-            path="/profile/orders/:id"
-            children={
-              <Modal
-                onClose={handleModalClose}
-                pSize="small"
-                header="ID"
-                typeHeader="number"
-              >
-                <Order />
-              </Modal>
-            }
-          />
-        )}
+        {ordersHistory !== undefined &&
+          ordersHistory.length > 0 &&
+          background && (
+            <ProtectedRoute
+              path="/profile/orders/:id"
+              children={
+                <Modal
+                  onClose={handleModalClose}
+                  pSize="small"
+                  header="ID"
+                  typeHeader="number"
+                >
+                  <Order />
+                </Modal>
+              }
+            />
+          )}
       </>
     );
   };

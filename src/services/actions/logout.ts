@@ -3,9 +3,9 @@ import { TAuthActions } from '../types/types-auth';
 import { Dispatch } from 'react';
 import { BASE_URL } from './app';
 
-export const LOGOUT_REQUEST: 'LOGOUT_REQUEST' = 'LOGOUT_REQUEST';
-export const LOGOUT_SUCCESS: 'LOGOUT_SUCCESS' = 'LOGOUT_SUCCESS';
-export const LOGOUT_FAILED: 'LOGOUT_FAILED' = 'LOGOUT_FAILED';
+export const LOGOUT_REQUEST: 'LOGOUT/REQUEST' = 'LOGOUT/REQUEST';
+export const LOGOUT_SUCCESS: 'LOGOUT/SUCCESS' = 'LOGOUT/SUCCESS';
+export const LOGOUT_FAILED: 'LOGOUT/FAILED' = 'LOGOUT/FAILED';
 
 export interface ILogoutRequestAction {
   readonly type: typeof LOGOUT_REQUEST;

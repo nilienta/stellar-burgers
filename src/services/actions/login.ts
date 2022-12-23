@@ -3,9 +3,9 @@ import { getData } from '../../utils/burger-api';
 import { TAuthActions } from '../types/types-auth';
 import { Dispatch } from 'react';
 
-export const LOGIN_REQUEST: 'LOGIN_REQUEST' = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS: 'LOGIN_SUCCESS' = 'LOGIN_SUCCESS';
-export const LOGIN_FAILED: 'LOGIN_FAILED' = 'LOGIN_FAILED';
+export const LOGIN_REQUEST: 'LOGIN/REQUEST' = 'LOGIN/REQUEST';
+export const LOGIN_SUCCESS: 'LOGIN/SUCCESS' = 'LOGIN/SUCCESS';
+export const LOGIN_FAILED: 'LOGIN/FAILED' = 'LOGIN/FAILED';
 export const SET_POSSIBLE_EMAIL: 'SET_POSSIBLE_EMAIL' = 'SET_POSSIBLE_EMAIL';
 
 export interface ILoginRequestAction {

@@ -10,13 +10,13 @@ import Loader from '../loader/loader';
 
 import { useAppDispatch } from '../../services/types/types';
 import {
-  WS_CONNECTION_CLOSED_TOKEN,
-  WS_CONNECTION_START_TOKEN,
-} from '../../services/actions/web-socket-token';
+  WS_HISTORY_CONNECTION_CLOSED,
+  WS_HISTORY_CONNECTION_START,
+} from '../../services/actions/web-socket-history';
 import {
-  WS_CONNECTION_CLOSED,
-  WS_CONNECTION_START,
-} from '../../services/actions/web-socket';
+  WS_FEED_CONNECTION_CLOSED,
+  WS_FEED_CONNECTION_START,
+} from '../../services/actions/web-socket-feed';
 
 type LocationState = {
   background?: Location;
@@ -31,14 +31,14 @@ const OrderPage: FC = () => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch({ type: WS_CONNECTION_START, payload: '/all' });
+    dispatch({ type: WS_FEED_CONNECTION_START, payload: '/all' });
     dispatch({
-      type: WS_CONNECTION_START_TOKEN,
+      type: WS_HISTORY_CONNECTION_START,
       payload: `?token=${accessToken}`,
     });
     return () => {
-      dispatch({ type: WS_CONNECTION_CLOSED });
-      dispatch({ type: WS_CONNECTION_CLOSED_TOKEN });
+      dispatch({ type: WS_FEED_CONNECTION_CLOSED });
+      dispatch({ type: WS_HISTORY_CONNECTION_CLOSED });
     };
   }, [dispatch]);
 
