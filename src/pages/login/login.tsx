@@ -23,9 +23,9 @@ const LoginPage: FC = () => {
   const location = useLocation<LocationState>();
 
   const { values, handleChange } = useForm({
-    email: 'anml@yandex.ru',
-    password: 'password1!',
-    name: 'Username',
+    email: '',
+    password: '',
+    name: '',
   });
 
   const { isAuth, loader } = useAppSelector((state) => state.auth);
