@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { appReducer } from './app';
 import { authReducer } from './auth';
-import { wsReducer } from './web-socket';
-import { wsReducerToken } from './web-socket-token';
+import { wsFeedReducer } from './web-socket-feed';
+import { wsHistoryReducer } from './web-socket-history';
 
 export const rootReducer = combineReducers({
   app: appReducer,
   auth: authReducer,
-  ws: wsReducer,
-  wsToken: wsReducerToken,
+  wsFeed: wsFeedReducer,
+  wsHistory: wsHistoryReducer,
 });

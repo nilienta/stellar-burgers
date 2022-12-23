@@ -2,12 +2,12 @@ import { getData } from '../../utils/burger-api';
 import { BASE_URL } from './app';
 import { AppDispatch } from '../..';
 
-export const CHANGE_USER_DATA_REQUEST: 'CHANGE_USER_DATA_REQUEST' =
-  'CHANGE_USER_DATA_REQUEST';
-export const CHANGE_USER_DATA_SUCCESS: 'CHANGE_USER_DATA_SUCCESS' =
-  'CHANGE_USER_DATA_SUCCESS';
-export const CHANGE_USER_DATA_FAILED: 'CHANGE_USER_DATA_FAILED' =
-  'CHANGE_USER_DATA_FAILED';
+export const CHANGE_USER_DATA_REQUEST: 'CHANGE_USER_DATA/REQUEST' =
+  'CHANGE_USER_DATA/REQUEST';
+export const CHANGE_USER_DATA_SUCCESS: 'CHANGE_USER_DATA/SUCCESS' =
+  'CHANGE_USER_DATA/SUCCESS';
+export const CHANGE_USER_DATA_FAILED: 'CHANGE_USER_DATA/FAILED' =
+  'CHANGE_USER_DATA/FAILED';
 
 export interface IChangeUserDataRequestAction {
   readonly type: typeof CHANGE_USER_DATA_REQUEST;

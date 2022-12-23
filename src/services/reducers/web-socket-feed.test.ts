@@ -1,24 +1,24 @@
-import { initialState, wsReducerToken } from './web-socket-token';
-import * as t from '../actions/web-socket-token';
+import { initialState, wsFeedReducer } from './web-socket-feed';
+import * as t from '../actions/web-socket-feed';
 import { testDataOrders } from '../../utils/mocks';
 
 describe('connection installation with webSocket', () => {
-  it('WS_CONNECTION_SUCCESS_TOKEN', () => {
+  it('WS_FEED_CONNECTION_SUCCESS', () => {
     const state = {
       ...initialState,
       wsConnected: false,
     };
     const action = {
-      type: t.WS_CONNECTION_SUCCESS_TOKEN,
+      type: t.WS_FEED_CONNECTION_SUCCESS,
     };
 
-    expect(wsReducerToken(state, action)).toEqual({
+    expect(wsFeedReducer(state, action)).toEqual({
       ...state,
       wsConnected: true,
     });
   });
 
-  it('WS_GET_ORDERS_TOKEN', () => {
+  it('WS_FEED_GET_ORDERS', () => {
     const state = {
       ...initialState,
       orders: [],
@@ -26,7 +26,7 @@ describe('connection installation with webSocket', () => {
       totalToday: 0,
     };
     const action = {
-      type: t.WS_GET_ORDERS_TOKEN,
+      type: t.WS_FEED_GET_ORDERS,
       payload: {
         orders: testDataOrders,
         total: 111111,
@@ -34,7 +34,7 @@ describe('connection installation with webSocket', () => {
       },
     };
 
-    expect(wsReducerToken(state, action)).toEqual({
+    expect(wsFeedReducer(state, action)).toEqual({
       ...state,
       orders: action.payload.orders,
       total: action.payload.total,
@@ -42,31 +42,31 @@ describe('connection installation with webSocket', () => {
     });
   });
 
-  it('WS_CONNECTION_CLOSED_TOKEN', () => {
+  it('WS_FEED_CONNECTION_CLOSED', () => {
     const state = {
       ...initialState,
       wsConnected: true,
     };
     const action = {
-      type: t.WS_CONNECTION_CLOSED_TOKEN,
+      type: t.WS_FEED_CONNECTION_CLOSED,
     };
 
-    expect(wsReducerToken(state, action)).toEqual({
+    expect(wsFeedReducer(state, action)).toEqual({
       ...state,
       wsConnected: false,
     });
   });
 
-  it('WS_CONNECTION_ERROR_TOKEN', () => {
+  it('WS_FEED_CONNECTION_ERROR', () => {
     const state = {
       ...initialState,
       wsConnected: true,
     };
     const action = {
-      type: t.WS_CONNECTION_ERROR_TOKEN,
+      type: t.WS_FEED_CONNECTION_ERROR,
     };
 
-    expect(wsReducerToken(state, action)).toEqual({
+    expect(wsFeedReducer(state, action)).toEqual({
       ...state,
       wsConnected: false,
     });

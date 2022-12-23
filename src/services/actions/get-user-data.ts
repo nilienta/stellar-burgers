@@ -5,12 +5,12 @@ import { TAuthActions } from '../types/types-auth';
 import { setCookie, getCookie, deleteCookie } from '../../utils/cookie';
 import { AppDispatch } from '../..';
 
-export const GET_USER_DATA_REQUEST: 'GET_USER_DATA_REQUEST' =
-  'GET_USER_DATA_REQUEST';
-export const GET_USER_DATA_SUCCESS: 'GET_USER_DATA_SUCCESS' =
-  'GET_USER_DATA_SUCCESS';
-export const GET_USER_DATA_FAILED: 'GET_USER_DATA_FAILED' =
-  'GET_USER_DATA_FAILED';
+export const GET_USER_DATA_REQUEST: 'GET_USER_DATA/REQUEST' =
+  'GET_USER_DATA/REQUEST';
+export const GET_USER_DATA_SUCCESS: 'GET_USER_DATA/SUCCESS' =
+  'GET_USER_DATA/SUCCESS';
+export const GET_USER_DATA_FAILED: 'GET_USER_DATA/FAILED' =
+  'GET_USER_DATA/FAILED';
 
 export interface IGetUserDataRequestAction {
   readonly type: typeof GET_USER_DATA_REQUEST;

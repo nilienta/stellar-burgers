@@ -20,14 +20,14 @@ export const getStatus = (status: string) => {
   }
 };
 export const searchItemById = (id: string) => {
-  const ordersHistory = useAppSelector((state) => state.wsToken.orders);
-  const orders = useAppSelector((state) => state.ws.orders);
+  const ordersHistory = useAppSelector((state) => state.wsHistory.orders);
+  const ordersFeed = useAppSelector((state) => state.wsFeed.orders);
 
   const historySearch = ordersHistory
     ? ordersHistory!.find((el: TCurrentOrder) => el._id === id)
     : undefined;
-  const feedSearch = orders
-    ? orders!.find((el: TCurrentOrder) => el._id === id)
+  const feedSearch = ordersFeed
+    ? ordersFeed!.find((el: TCurrentOrder) => el._id === id)
     : undefined;
 
   return feedSearch ? feedSearch : historySearch;

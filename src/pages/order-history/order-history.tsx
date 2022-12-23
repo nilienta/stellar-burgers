@@ -9,9 +9,9 @@ import Loader from '../loader/loader';
 
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import {
-  WS_CONNECTION_CLOSED_TOKEN,
-  WS_CONNECTION_START_TOKEN,
-} from '../../services/actions/web-socket-token';
+  WS_HISTORY_CONNECTION_CLOSED,
+  WS_HISTORY_CONNECTION_START,
+} from '../../services/actions/web-socket-history';
 
 const OrderHistoryPage: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
@@ -25,17 +25,17 @@ const OrderHistoryPage: FC = () => {
     );
   }
 
-  const { orders } = useAppSelector((state) => state.wsToken);
+  const { orders } = useAppSelector((state) => state.wsHistory);
 
   const accessToken = getCookie('accessToken');
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch({
-      type: WS_CONNECTION_START_TOKEN,
+      type: WS_HISTORY_CONNECTION_START,
       payload: `?token=${accessToken}`,
     });
     return () => {
-      dispatch({ type: WS_CONNECTION_CLOSED_TOKEN });
+      dispatch({ type: WS_HISTORY_CONNECTION_CLOSED });
     };
   }, [dispatch]);
 
