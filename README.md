@@ -1,3 +1,8 @@
+Для входа на сервер используйте логин: nilienta
+и ай-пи: 158.160.47.175
+
+<code>ssh nilienta@158.160.47.175</code>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
