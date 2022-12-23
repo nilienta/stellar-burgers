@@ -298,7 +298,7 @@ describe('change user data', () => {
 });
 
 describe('verification of mail existence', () => {
-  it('SEND_EMAIL_FOR_PASSWORD_REQUEST', () => {
+  it('CHECKING_EMAIL_REQUEST', () => {
     const state = {
       ...authInitialState,
       loader: false,
@@ -306,7 +306,7 @@ describe('verification of mail existence', () => {
       textError: 'Error text',
     };
     const action = {
-      type: checkingMail.SEND_EMAIL_FOR_PASSWORD_REQUEST,
+      type: checkingMail.CHECKING_EMAIL_REQUEST,
     };
 
     expect(authReducer(state, action)).toEqual({
@@ -317,7 +317,7 @@ describe('verification of mail existence', () => {
     });
   });
 
-  it('SEND_EMAIL_FOR_PASSWORD_SUCCESS', () => {
+  it('CHECKING_EMAIL_SUCCESS', () => {
     const state = {
       ...authInitialState,
       loader: true,
@@ -325,7 +325,7 @@ describe('verification of mail existence', () => {
       emailExists: false,
     };
     const action = {
-      type: checkingMail.SEND_EMAIL_FOR_PASSWORD_SUCCESS,
+      type: checkingMail.CHECKING_EMAIL_SUCCESS,
     };
 
     expect(authReducer(state, action)).toEqual({
@@ -336,7 +336,7 @@ describe('verification of mail existence', () => {
     });
   });
 
-  it('SEND_EMAIL_FOR_PASSWORD_FAILED', () => {
+  it('CHECKING_EMAIL_FAILED', () => {
     const state = {
       ...authInitialState,
       fail: false,
@@ -344,7 +344,7 @@ describe('verification of mail existence', () => {
       loader: true,
     };
     const action = {
-      type: checkingMail.SEND_EMAIL_FOR_PASSWORD_FAILED,
+      type: checkingMail.CHECKING_EMAIL_FAILED,
       textError: 'Error',
     };
 

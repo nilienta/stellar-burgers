@@ -11,9 +11,9 @@ import {
 } from '../actions/register';
 
 import {
-  SEND_EMAIL_FOR_PASSWORD_REQUEST,
-  SEND_EMAIL_FOR_PASSWORD_SUCCESS,
-  SEND_EMAIL_FOR_PASSWORD_FAILED,
+  CHECKING_EMAIL_REQUEST,
+  CHECKING_EMAIL_SUCCESS,
+  CHECKING_EMAIL_FAILED,
 } from '../actions/checking-mail';
 
 import {
@@ -179,7 +179,7 @@ export const authReducer = (
         textError: action.textError,
       };
     }
-    case SEND_EMAIL_FOR_PASSWORD_REQUEST: {
+    case CHECKING_EMAIL_REQUEST: {
       return {
         ...state,
         loader: true,
@@ -187,7 +187,7 @@ export const authReducer = (
         textError: '',
       };
     }
-    case SEND_EMAIL_FOR_PASSWORD_SUCCESS: {
+    case CHECKING_EMAIL_SUCCESS: {
       return {
         ...state,
         loader: false,
@@ -195,7 +195,7 @@ export const authReducer = (
         fail: false,
       };
     }
-    case SEND_EMAIL_FOR_PASSWORD_FAILED: {
+    case CHECKING_EMAIL_FAILED: {
       return {
         ...state,
         fail: true,

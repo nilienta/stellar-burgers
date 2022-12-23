@@ -3,21 +3,21 @@ import { getData } from '../../utils/burger-api';
 import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
 
-export const SEND_EMAIL_FOR_PASSWORD_REQUEST: 'SEND_EMAIL_FOR_PASSWORD_REQUEST' =
-  'SEND_EMAIL_FOR_PASSWORD_REQUEST';
-export const SEND_EMAIL_FOR_PASSWORD_SUCCESS: 'SEND_EMAIL_FOR_PASSWORD_SUCCESS' =
-  'SEND_EMAIL_FOR_PASSWORD_SUCCESS';
-export const SEND_EMAIL_FOR_PASSWORD_FAILED: 'SEND_EMAIL_FOR_PASSWORD_FAILED' =
-  'SEND_EMAIL_FOR_PASSWORD_FAILED';
+export const CHECKING_EMAIL_REQUEST: 'CHECKING_EMAIL/REQUEST' =
+  'CHECKING_EMAIL/REQUEST';
+export const CHECKING_EMAIL_SUCCESS: 'CHECKING_EMAIL/SUCCESS' =
+  'CHECKING_EMAIL/SUCCESS';
+export const CHECKING_EMAIL_FAILED: 'CHECKING_EMAIL/FAILED' =
+  'CHECKING_EMAIL/FAILED';
 
 export interface ISendEmailRequestAction {
-  readonly type: typeof SEND_EMAIL_FOR_PASSWORD_REQUEST;
+  readonly type: typeof CHECKING_EMAIL_REQUEST;
 }
 export interface ISendEmailSuccessAction {
-  readonly type: typeof SEND_EMAIL_FOR_PASSWORD_SUCCESS;
+  readonly type: typeof CHECKING_EMAIL_SUCCESS;
 }
 export interface ISendEmailFailedAction {
-  readonly type: typeof SEND_EMAIL_FOR_PASSWORD_FAILED;
+  readonly type: typeof CHECKING_EMAIL_FAILED;
   readonly textError: string;
 }
 
@@ -29,19 +29,19 @@ export type TSendEmailActions =
 export const checkingEmail = (email: { email?: string }) => {
   return (dispatch: Dispatch<TAuthActions>) => {
     dispatch({
-      type: SEND_EMAIL_FOR_PASSWORD_REQUEST,
+      type: CHECKING_EMAIL_REQUEST,
     });
     getData(`${BASE_URL}/password-reset`, 'POST', email)
       .then((res) => {
         if (res && res.success) {
           dispatch({
-            type: SEND_EMAIL_FOR_PASSWORD_SUCCESS,
+            type: CHECKING_EMAIL_SUCCESS,
           });
         }
       })
       .catch((error) => {
         dispatch({
-          type: SEND_EMAIL_FOR_PASSWORD_FAILED,
+          type: CHECKING_EMAIL_FAILED,
           textError: error.message,
         });
       });
