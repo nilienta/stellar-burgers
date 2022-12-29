@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 import App from './components/app/app';
 import reportWebVitals from './reportWebVitals';
@@ -55,7 +56,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <App />
+    <Router basename="/stellar-burgers">
+      <App />
+    </Router>
   </Provider>
 );
 
