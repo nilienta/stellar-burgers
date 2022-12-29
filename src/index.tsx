@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
@@ -55,11 +56,11 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <Provider store={store}>
-    <Router basename="/stellar-burgers">
+  <React.StrictMode>
+    <Provider store={store}>
       <App />
-    </Router>
-  </Provider>
+    </Provider>
+  </React.StrictMode>
 );
 
 reportWebVitals();
