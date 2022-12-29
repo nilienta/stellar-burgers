@@ -26,6 +26,14 @@ describe('Order Forming', () => {
     });
 
     cy.get('button').contains('Оформить заказ').click();
+
+    cy.get('input[name="email"]')
+      .type('anml@yandex.ru')
+      .should('have.value', 'anml@yandex.ru')
+      .get('input[name="password"]')
+      .type('password1!')
+      .should('have.value', 'password1!');
+
     cy.get('button').contains('Войти').click();
     cy.get('button').contains('Оформить заказ').click();
     cy.contains('Ваш заказ начали готовить');
