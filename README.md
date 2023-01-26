@@ -11,18 +11,9 @@
 <details>
   <summary>🛠Стек</summary>
   <br/>
-<img
-		alt="react version"
-		src="https://img.shields.io/badge/react-18.2-4C4CFF">
- <img
-		alt="redux version"
-		src="https://img.shields.io/badge/redux-4.2-4C4CFF">
-     <img
-		alt="typescript version"
-		src="https://img.shields.io/badge/typescript-4.8.4-4C4CFF">
-         <img
-		alt="typescript version"
-		src="https://img.shields.io/badge/typescript-4.8.4-4C4CFF">
+  <img alt="react version" src="https://img.shields.io/badge/react-18.2-4C4CFF">
+  <img alt="redux version" src="https://img.shields.io/badge/redux-4.2-4C4CFF">
+  <img alt="typescript version" src="https://img.shields.io/badge/typescript-4.8.4-4C4CFF">
 </details>
 
 <details>
