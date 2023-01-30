@@ -8,31 +8,25 @@
   <img alt="site preview" src="https://user-images.githubusercontent.com/97403514/214694167-2c11ae7e-248d-4fb7-b307-7e9e6ca61c55.PNG">
 </details>
 
-<details>
-  <summary>🛠&nbsp;Стек</summary>
-  <br>
-  &emsp;<img alt="react version" src="https://img.shields.io/badge/react-18.2-4C4CFF">
-  <img alt="redux version" src="https://img.shields.io/badge/redux-4.2-4C4CFF">
-  <img alt="typescript version" src="https://img.shields.io/badge/typescript-4.8.4-4C4CFF">
-</details>
+<h3>🛠&nbsp;Стек</h3>
+  <span>
+    &emsp;&emsp;<img alt="react version" src="https://img.shields.io/badge/react-18.2-4C4CFF">
+    <img alt="redux version" src="https://img.shields.io/badge/redux-4.2-4C4CFF">
+    <img alt="typescript version" src="https://img.shields.io/badge/typescript-4.8.4-4C4CFF"> 
+  </span>
 
-<details>
-  <summary>📝&nbsp;Планы</summary>
+<h3>📝&nbsp;Планы</h3>
+  &emsp;&emsp;🍔 Минимально, сделать мобильную версию сайта;
   <br>
-  &emsp; 🍔 Минимально, сделать мобильную версию сайта;
-  <br>
-  &emsp; 🍔 Максимально, сделать адаптивную версию сайта под различные устройства
-</details>
+  &emsp;&emsp;🍔 Максимально, сделать адаптивную версию сайта под различные устройства
 
-<details>
-  <summary>▶&nbsp;Доступные сценарии</summary>
+
+<h3>▶&nbsp;Доступные сценарии</h3>
+  &emsp;&emsp;<code>npm start</code> <code>npm run build</code>
   <br>
-  &emsp; <code>npm start</code> <code>npm run build</code>
+  &emsp;&emsp;<b>Диплой на гитхаб:</b> <code>npm run deploy</code>
   <br>
-  &emsp;<b>Диплой на гитхаб:</b> <code>npm run deploy</code>
-  <br>
-  &emsp;<b>Тестирование:</b> jest - <code>npm test</code>, cypress -  <code>npm run cypress:open</code>
-</details>
+  &emsp;&emsp;<b>Тестирование:</b> jest - <code>npm test</code>, cypress -  <code>npm run cypress:open</code>
 
 
 
