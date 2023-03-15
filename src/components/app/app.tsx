@@ -5,7 +5,7 @@ import {
   useLocation,
   useHistory,
 } from 'react-router-dom';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { getCookie } from '../../utils/cookie';
 import { ProtectedRoute } from '../protected-route';
 import { Location } from 'history';
@@ -162,7 +162,9 @@ export default function App() {
 
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <ModalSwitch />
+      <React.StrictMode>
+        <ModalSwitch />
+      </React.StrictMode>
     </Router>
   );
 }
