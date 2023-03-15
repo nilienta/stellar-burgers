@@ -1,6 +1,4 @@
 .burger-constructor {
-  margin: calc(var(--offset-base-size) * 25) auto
-    calc(var(--offset-base-size) * 10) auto;
   width: 600px;
   box-sizing: border-box;
 }

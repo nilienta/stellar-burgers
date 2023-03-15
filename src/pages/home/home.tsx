@@ -11,14 +11,19 @@ const HomePage: FC = () => {
   const { ingredients } = useAppSelector((state) => state.app);
 
   return (
-    <main className={styles.main}>
+    <>
       {ingredients.length > 0 && (
-        <DndProvider backend={HTML5Backend}>
-          <BurgerIngredients />
-          <BurgerConstructor />
-        </DndProvider>
+        <main className={styles.main}>
+          <h1 className="text text_type_main-large mb-5">Соберите бургер</h1>
+          <div className={styles.wrap}>
+            <DndProvider backend={HTML5Backend}>
+              <BurgerIngredients />
+              <BurgerConstructor />
+            </DndProvider>
+          </div>
+        </main>
       )}
-    </main>
+    </>
   );
 };
 

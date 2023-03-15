@@ -1,13 +1,13 @@
 .wrapper {
-  width: 1240px;
+  width: 1280px;
   margin: 0px auto;
   margin-top: 208px;
 }
 .main {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
-  max-width: 860px;
+  gap: calc(var(--offset-base-size) * 15);
+  width: 1240px;
 }
 .container {
   display: flex;

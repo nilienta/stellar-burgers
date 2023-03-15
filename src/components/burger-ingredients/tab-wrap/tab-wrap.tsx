@@ -8,7 +8,7 @@ import { Link } from 'react-scroll';
 type TTab = 'one' | 'two' | 'three';
 
 const TabWrap: FC = () => {
-  const classForTab = clsx(styles['tab-wrap'], 'mt-5 mb-10');
+  const classForTab = clsx(styles['tab-wrap'], 'mb-10');
   const [current, setCurrent] = useState('one');
 
   const onSetActive = (tab: TTab) => {

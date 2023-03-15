@@ -26,7 +26,7 @@ const OrderFeedPage: FC = () => {
     <>
       {orders.length > 0 ? (
         <main className={styles.main}>
-          <h1 className="text text_type_main-large">Лента заказов</h1>
+          <h1 className="text text_type_main-large mb-5">Лента заказов</h1>
           <div className={styles.wrap}>
             <ListOrder needStatus={false} list={orders} />
             <Stats />

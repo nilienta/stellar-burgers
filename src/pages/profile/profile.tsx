@@ -101,7 +101,7 @@ const ProfilePage: FC = () => {
 
   return (
     <div className={`${styles.wrapper}`}>
-      <main className={`${styles.main}`}>
+      <main className={`${styles.main} mr-5 ml-5`}>
         <MenuProfile page="profile" />
         <section className={styles.container}>
           <form className={styles.form} onSubmit={onSave}>
