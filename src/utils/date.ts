@@ -1,4 +1,4 @@
-const setTime = (dateOrder: string) => {
+export const setTime = (dateOrder: string) => {
   const data = new Date();
   const createdAt = new Date(`${dateOrder}`);
   const dataHours = createdAt.getHours();
@@ -16,4 +16,3 @@ const setTime = (dateOrder: string) => {
       : `${dataDay} дн. назад`;
   return `${dataDayDef},${dataTime}`;
 };
-export default setTime;

@@ -1,18 +1,15 @@
 import React, { useEffect, FC } from 'react';
 import clsx from 'clsx';
-import styles from './burger-constructor.module.css';
-
 import { useDrop } from 'react-dnd';
 import { useHistory } from 'react-router-dom';
-
 import { Button } from '@ya.praktikum/react-developer-burger-ui-components';
-import Modal from '../modal/modal';
-import ConstructorIngredientsList from './constructor-ingredients-list/constructor-ingredients-list';
-import OrderDetails from './order-details/order-details';
-import ConstructorElementWrap from './constructor-element-wrap/constructor-element-wrap';
-import TotalPrice from './order-details/total-price/total-price';
-import CapConstructor from './cap-constructor/cap-constructor';
 
+import { Modal } from '../modal/modal';
+import { ConstructorIngredientsList } from './constructor-ingredients-list/constructor-ingredients-list';
+import { OrderDetails } from './order-details/order-details';
+import { ConstructorElementWrap } from './constructor-element-wrap/constructor-element-wrap';
+import { TotalPrice } from './order-details/total-price/total-price';
+import { CapConstructor } from './cap-constructor/cap-constructor';
 import {
   useAppDispatch,
   useAppSelector,
@@ -24,8 +21,9 @@ import {
   SET_VISIBLE_MODAL_CONSTRUCTOR,
   SET_INVISIBLE_MODAL_CONSTRUCTOR,
 } from '../../services/actions/app';
+import styles from './burger-constructor.module.css';
 
-const BurgerConstructor: FC = () => {
+export const BurgerConstructor: FC = React.memo(() => {
   const classForFooter = clsx(styles.footer, 'mt-10 mr-3');
   const classForBuns = clsx(styles.buns, 'text text_type_main-medium');
 
@@ -169,6 +167,4 @@ const BurgerConstructor: FC = () => {
       )}
     </article>
   );
-};
-
-export default React.memo(BurgerConstructor);
+});

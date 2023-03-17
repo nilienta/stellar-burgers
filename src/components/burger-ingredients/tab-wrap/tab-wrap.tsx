@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react';
-import styles from './tab-wrap.module.css';
 import clsx from 'clsx';
-
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-scroll';
 
+import styles from './tab-wrap.module.css';
+
 type TTab = 'one' | 'two' | 'three';
 
-const TabWrap: FC = () => {
+export const TabWrap: FC = React.memo(() => {
   const classForTab = clsx(styles['tab-wrap'], 'mb-10');
   const [current, setCurrent] = useState('one');
 
@@ -60,6 +60,4 @@ const TabWrap: FC = () => {
       </Link>
     </ul>
   );
-};
-
-export default React.memo(TabWrap);
+});

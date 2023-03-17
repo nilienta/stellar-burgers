@@ -1,7 +1,8 @@
+import { Dispatch } from 'react';
+
 import { BASE_URL } from './app';
 import { getData } from '../../utils/burger-api';
 import { TAuthActions } from '../types/types-auth';
-import { Dispatch } from 'react';
 
 export const LOGIN_REQUEST: 'LOGIN/REQUEST' = 'LOGIN/REQUEST';
 export const LOGIN_SUCCESS: 'LOGIN/SUCCESS' = 'LOGIN/SUCCESS';

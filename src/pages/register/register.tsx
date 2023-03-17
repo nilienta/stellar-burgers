@@ -1,6 +1,4 @@
 import { useCallback, FC, FormEvent } from 'react';
-import styles from './register.module.css';
-
 import { Redirect } from 'react-router';
 import {
   Input,
@@ -13,8 +11,9 @@ import { Link } from 'react-router-dom';
 import { register } from '../../services/actions/register';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
+import styles from './register.module.css';
 
-const RegisterPage: FC = () => {
+export const RegisterPage: FC = () => {
   const dispatch = useAppDispatch();
   const { values, handleChange } = useForm({
     email: '',
@@ -82,5 +81,3 @@ const RegisterPage: FC = () => {
     </div>
   );
 };
-
-export default RegisterPage;

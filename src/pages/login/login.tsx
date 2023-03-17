@@ -1,24 +1,23 @@
 import { useCallback, FC } from 'react';
-import styles from './login.module.css';
-
 import { Redirect, useLocation, Link } from 'react-router-dom';
-import Loader from '../loader/loader';
 import {
   EmailInput,
   PasswordInput,
   Button,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 
+import { Loader } from '../loader/loader';
 import { SET_POSSIBLE_EMAIL, signIn } from '../../services/actions/login';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
+import styles from './login.module.css';
 
 type LocationState = {
   background?: Location;
   from?: string;
 };
 
-const LoginPage: FC = () => {
+export const LoginPage: FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation<LocationState>();
 
@@ -99,5 +98,3 @@ const LoginPage: FC = () => {
     </>
   );
 };
-
-export default LoginPage;

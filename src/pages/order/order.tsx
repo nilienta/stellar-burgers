@@ -1,13 +1,10 @@
 import { FC, useEffect } from 'react';
-import styles from './order.module.css';
+import { useLocation, useParams } from 'react-router-dom';
 
-import Order from '../../components/order/order';
-import { useLocation } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { Order } from '../../components/order/order';
 import { searchItemById } from '../../utils/order-processing';
 import { getCookie } from '../../utils/cookie';
-import Loader from '../loader/loader';
-
+import { Loader } from '../loader/loader';
 import { useAppDispatch } from '../../services/types/types';
 import {
   WS_HISTORY_CONNECTION_CLOSED,
@@ -17,12 +14,13 @@ import {
   WS_FEED_CONNECTION_CLOSED,
   WS_FEED_CONNECTION_START,
 } from '../../services/actions/web-socket-feed';
+import styles from './order.module.css';
 
 type LocationState = {
   background?: Location;
 };
 
-const OrderPage: FC = () => {
+export const OrderPage: FC = () => {
   const location = useLocation<LocationState>();
   const background = location.state && location.state.background;
   const { id }: { id: string } = useParams();
@@ -67,5 +65,3 @@ const OrderPage: FC = () => {
     </>
   );
 };
-
-export default OrderPage;

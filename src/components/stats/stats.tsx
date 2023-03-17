@@ -1,9 +1,10 @@
 import React, { FC, useMemo } from 'react';
-import styles from './stats.module.css';
 import clsx from 'clsx';
-import { TCurrentOrder, useAppSelector } from '../../services/types/types';
 
-const Stats: FC = () => {
+import { useAppSelector } from '../../services/types/types';
+import styles from './stats.module.css';
+
+export const Stats: FC = React.memo(() => {
   const { totalToday, total, orders } = useAppSelector((state) => state.wsFeed);
   const completedToday = totalToday;
   const completedAllTime = total;
@@ -84,6 +85,4 @@ const Stats: FC = () => {
       <OrdersForToday />
     </article>
   );
-};
-
-export default React.memo(Stats);
+});

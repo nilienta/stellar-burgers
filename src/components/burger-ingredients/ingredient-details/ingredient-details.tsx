@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import styles from './ingredient-details.module.css';
 import clsx from 'clsx';
+import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from '../../../services/types/types';
-import { useParams } from 'react-router-dom';
+import styles from './ingredient-details.module.css';
 
 const Element: FC<{ name: string; count: number }> = ({ name, count }) => {
   const classForElement = clsx(
@@ -18,7 +18,7 @@ const Element: FC<{ name: string; count: number }> = ({ name, count }) => {
   );
 };
 
-const IngredientDetails: FC = () => {
+export const IngredientDetails: FC = React.memo(() => {
   const classForDescription = clsx(styles.description, 'mt-4 mb-8');
 
   const { ingredients } = useAppSelector((state) => state.app);
@@ -51,6 +51,4 @@ const IngredientDetails: FC = () => {
       )}
     </>
   );
-};
-
-export default React.memo(IngredientDetails);
+});

@@ -1,6 +1,7 @@
+import { Dispatch } from 'react';
+
 import { getData } from '../../utils/burger-api';
 import { TAuthActions } from '../types/types-auth';
-import { Dispatch } from 'react';
 import { BASE_URL } from './app';
 
 export const LOGOUT_REQUEST: 'LOGOUT/REQUEST' = 'LOGOUT/REQUEST';

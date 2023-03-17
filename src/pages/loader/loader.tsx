@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import styles from './loader.module.css';
 import ReactLoading from 'react-loading';
 
-const Loader: FC = () => {
+import styles from './loader.module.css';
+
+export const Loader: FC = () => {
   return (
     <section className={styles.main}>
       <ReactLoading
@@ -15,5 +16,3 @@ const Loader: FC = () => {
     </section>
   );
 };
-
-export default Loader;

@@ -1,6 +1,7 @@
+import { Dispatch } from 'react';
+
 import { BASE_URL } from './app';
 import { getData } from '../../utils/burger-api';
-import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
 
 export const REGISTER_REQUEST: 'REGISTER/REQUEST' = 'REGISTER/REQUEST';

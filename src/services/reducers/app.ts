@@ -1,5 +1,4 @@
 import type { TAppInitialState } from '../types/types';
-import { TAppAction } from '../actions/app';
 import {
   GET_INGREDIENTS_REQUEST,
   GET_INGREDIENTS_SUCCESS,
@@ -18,6 +17,7 @@ import {
   SET_VISIBLE_MODAL_CONSTRUCTOR,
   SET_INVISIBLE_MODAL_CONSTRUCTOR,
   RESET_STATE,
+  TAppAction,
 } from '../actions/app';
 
 export const initialState: TAppInitialState = {

@@ -1,12 +1,12 @@
+import { createReducer, createAction } from '@reduxjs/toolkit';
+
 import {
   WS_HISTORY_CONNECTION_SUCCESS,
   WS_HISTORY_CONNECTION_ERROR,
   WS_HISTORY_CONNECTION_CLOSED,
   WS_HISTORY_GET_ORDERS,
 } from '../actions/web-socket-history';
-import { TWsInitialState } from '../types/types';
-import { createReducer, createAction } from '@reduxjs/toolkit';
-import { TListOrders } from '../types/types';
+import { TWsInitialState, TListOrders } from '../types/types';
 
 export const initialState: TWsInitialState = {
   wsConnected: false,

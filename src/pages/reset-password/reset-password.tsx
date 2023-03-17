@@ -1,6 +1,4 @@
 import { useCallback, FC, FormEvent } from 'react';
-import styles from './reset-password.module.css';
-
 import { Redirect } from 'react-router';
 import {
   Button,
@@ -8,12 +6,13 @@ import {
   Input,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
-import { passwordSaveReset } from '../../services/actions/reset-password';
 
+import { passwordSaveReset } from '../../services/actions/reset-password';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
+import styles from './reset-password.module.css';
 
-const ResetPasswordPage: FC = () => {
+export const ResetPasswordPage: FC = () => {
   const dispatch = useAppDispatch();
 
   const { values, handleChange } = useForm({
@@ -83,5 +82,3 @@ const ResetPasswordPage: FC = () => {
     </div>
   );
 };
-
-export default ResetPasswordPage;

@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Route, Redirect, useLocation, RouteProps } from 'react-router-dom';
+
 import { getCookie } from '../utils/cookie';
-import Loader from '../pages/loader/loader';
+import { Loader } from '../pages/loader/loader';
 import { useAppSelector } from '../services/types/types';
 
 export const ProtectedRoute: FC<RouteProps> = ({ children, ...rest }) => {

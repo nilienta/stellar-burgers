@@ -1,11 +1,12 @@
 import React, { FC } from 'react';
-import styles from './modal-overlay.module.css';
 import clsx from 'clsx';
 
-const ModalOverlay: FC<{ onClose: () => void }> = ({ onClose }) => {
-  const classForOverlay = clsx(styles['module-overlay']);
+import styles from './modal-overlay.module.css';
 
-  return <div className={classForOverlay} onClick={onClose}></div>;
-};
+export const ModalOverlay: FC<{ onClose: () => void }> = React.memo(
+  ({ onClose }) => {
+    const classForOverlay = clsx(styles['module-overlay']);
 
-export default React.memo(ModalOverlay);
+    return <div className={classForOverlay} onClick={onClose}></div>;
+  }
+);

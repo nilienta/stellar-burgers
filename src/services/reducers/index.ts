@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import { appReducer } from './app';
 import { authReducer } from './auth';
 import { wsFeedReducer } from './web-socket-feed';

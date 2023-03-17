@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import styles from './404.module.css';
-import IconBurger from '../../components/burger-constructor/cap-constructor/icon-burger/icon-burger';
 
-const NotFound404: FC = () => {
+import { IconBurger } from '../../components/burger-constructor/cap-constructor/icon-burger/icon-burger';
+import styles from './404.module.css';
+
+export const NotFound404: FC = () => {
   return (
     <article className={styles.wrap}>
       <section className={styles.main}>
@@ -26,5 +27,3 @@ const NotFound404: FC = () => {
     </article>
   );
 };
-
-export default NotFound404;

@@ -1,9 +1,7 @@
-import { TWsAction } from '../types/types';
-import { TWsServerActions } from '../types/types';
-import { Middleware } from 'redux';
-import { MiddlewareAPI } from 'redux';
-import { AppDispatch } from '../..';
-import { RootState } from '../..';
+import { Middleware, MiddlewareAPI } from 'redux';
+
+import { TWsAction, TWsServerActions } from '../types/types';
+import { AppDispatch, RootState } from '../..';
 
 export const socketMiddleware = (
   wsUrl: string,

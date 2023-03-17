@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import styles from './cap-constructor.module.css';
 import clsx from 'clsx';
 
-import IconBurger from './icon-burger/icon-burger';
+import { IconBurger } from './icon-burger/icon-burger';
+import styles from './cap-constructor.module.css';
 
-const CapConstructor: FC = () => {
+export const CapConstructor: FC = React.memo(() => {
   const classForWrapper = clsx(styles.wrapper, 'pt-10 pr-10 pb-10 pl-10');
   const classForTitle = clsx(styles.title, 'text text_type_main-large');
 
@@ -20,6 +20,4 @@ const CapConstructor: FC = () => {
       </h1>
     </section>
   );
-};
-
-export default React.memo(CapConstructor);
+});

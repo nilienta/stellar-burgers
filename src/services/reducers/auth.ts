@@ -1,45 +1,41 @@
 import { TAuthInitialState } from '../types/types';
 import { TAuthActions } from '../types/types-auth';
-
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILED } from '../actions/login';
-import { SET_POSSIBLE_EMAIL } from '../actions/login';
-
+import {
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  SET_POSSIBLE_EMAIL,
+} from '../actions/login';
 import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILED,
 } from '../actions/register';
-
 import {
   CHECKING_EMAIL_REQUEST,
   CHECKING_EMAIL_SUCCESS,
   CHECKING_EMAIL_FAILED,
 } from '../actions/checking-mail';
-
 import {
   RESET_PASSWORD_REQUEST,
   RESET_PASSWORD_SUCCESS,
   RESET_PASSWORD_FAILED,
 } from '../actions/reset-password';
-
 import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
 } from '../actions/logout';
-
 import {
   GET_USER_DATA_REQUEST,
   GET_USER_DATA_SUCCESS,
   GET_USER_DATA_FAILED,
 } from '../actions/get-user-data';
-
 import {
   CHANGE_USER_DATA_REQUEST,
   CHANGE_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_FAILED,
 } from '../actions/change-user-data';
-
 import { setCookie, deleteCookie } from '../../utils/cookie';
 
 export const authInitialState: TAuthInitialState = {

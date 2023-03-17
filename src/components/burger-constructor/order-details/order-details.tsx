@@ -1,13 +1,12 @@
 import React, { useEffect, FC } from 'react';
 import clsx from 'clsx';
-import styles from './order-details.module.css';
 
 import { BASE_URL, postOrder } from '../../../services/actions/app';
 import { useAppDispatch, useAppSelector } from '../../../services/types/types';
-
 import modalDone from '../../../images/modal-done.png';
+import styles from './order-details.module.css';
 
-const OrderDetails: FC = () => {
+export const OrderDetails: FC = React.memo(() => {
   const classForOrder = clsx(styles['order-details'], 'mt-9');
   const classForNumber = clsx(
     styles['order-number'],
@@ -54,6 +53,4 @@ const OrderDetails: FC = () => {
       </p>
     </section>
   );
-};
-
-export default React.memo(OrderDetails);
+});

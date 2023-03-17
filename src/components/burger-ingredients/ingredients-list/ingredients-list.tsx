@@ -1,12 +1,12 @@
 import React, { useMemo, FC } from 'react';
 import clsx from 'clsx';
+import { Element } from 'react-scroll';
+
+import { BlockIngredients } from '../block-ingredients/block-ingredients';
+import { useAppSelector } from '../../../services/types/types';
 import styles from './ingredients-list.module.css';
 
-import { Element } from 'react-scroll';
-import BlockIngredients from '../block-ingredients/block-ingredients';
-import { useAppSelector } from '../../../services/types/types';
-
-const IngredientsList: FC = () => {
+export const IngredientsList: FC = React.memo(() => {
   const classForSection = clsx(styles['ingredient-list'], 'custom-scroll');
 
   const { ingredients } = useAppSelector((state) => state.app);
@@ -44,6 +44,4 @@ const IngredientsList: FC = () => {
       </Element>
     </section>
   );
-};
-
-export default React.memo(IngredientsList);
+});

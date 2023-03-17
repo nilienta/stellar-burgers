@@ -1,19 +1,18 @@
 import { FC, useEffect } from 'react';
-import styles from './order-history.module.css';
-
-import MenuProfile from '../../components/menu-profile/menu-profile';
-import ListOrder from '../../components/list-order/list-order';
 import { Redirect } from 'react-router-dom';
-import { getCookie } from '../../utils/cookie';
-import Loader from '../loader/loader';
 
+import { MenuProfile } from '../../components/menu-profile/menu-profile';
+import { ListOrder } from '../../components/list-order/list-order';
+import { getCookie } from '../../utils/cookie';
+import { Loader } from '../loader/loader';
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import {
   WS_HISTORY_CONNECTION_CLOSED,
   WS_HISTORY_CONNECTION_START,
 } from '../../services/actions/web-socket-history';
+import styles from './order-history.module.css';
 
-const OrderHistoryPage: FC = () => {
+export const OrderHistoryPage: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
   if (!isAuth) {
     return (
@@ -56,5 +55,3 @@ const OrderHistoryPage: FC = () => {
     </>
   );
 };
-
-export default OrderHistoryPage;

@@ -1,21 +1,19 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
-import styles from './order.module.css';
-
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import CompositionLine from './composition-line/composition-line';
 import { useParams } from 'react-router-dom';
 
-import setTime from '../../utils/date';
+import { CompositionLine } from './composition-line/composition-line';
+import { setTime } from '../../utils/date';
 import {
   getArrayOrderIngredients,
   getStatus,
   getTotalPriceForOrder,
   searchItemById,
 } from '../../utils/order-processing';
-import { TIngredient } from '../../services/types/types';
+import styles from './order.module.css';
 
-const Order: FC = () => {
+export const Order: FC = React.memo(() => {
   const { id }: { id: string } = useParams();
   const order = searchItemById(id);
 
@@ -75,6 +73,4 @@ const Order: FC = () => {
       )}
     </>
   );
-};
-
-export default React.memo(Order);
+});

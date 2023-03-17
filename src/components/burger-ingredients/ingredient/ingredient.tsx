@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
 import clsx from 'clsx';
-import styles from './ingredient.module.css';
-
 import { useLocation, Link } from 'react-router-dom';
 import { useDrag } from 'react-dnd';
 import {
@@ -11,8 +9,9 @@ import {
 
 import { TIngredient, useAppDispatch } from '../../../services/types/types';
 import { SET_VISIBLE_MODAL_INGREDIENT } from '../../../services/actions/app';
+import styles from './ingredient.module.css';
 
-const Ingredient: FC<{ item: TIngredient }> = ({ item }) => {
+export const Ingredient: FC<{ item: TIngredient }> = React.memo(({ item }) => {
   const classForPrice = clsx(styles.price, 'mt-1 mb-1');
 
   const handleOpenModal = () => {
@@ -61,6 +60,4 @@ const Ingredient: FC<{ item: TIngredient }> = ({ item }) => {
       </li>
     </Link>
   );
-};
-
-export default React.memo(Ingredient);
+});

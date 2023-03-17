@@ -6,26 +6,25 @@ import {
   useHistory,
 } from 'react-router-dom';
 import React, { useEffect } from 'react';
-import { getCookie } from '../../utils/cookie';
-import { ProtectedRoute } from '../protected-route';
 import { Location } from 'history';
 
-import HomePage from '../../pages/home/home';
-import LoginPage from '../../pages/login/login';
-import RegisterPage from '../../pages/register/register';
-import ForgotPasswordPage from '../../pages/forgot-password/forgot-password';
-import ResetPasswordPage from '../../pages/reset-password/reset-password';
-import OrderFeedPage from '../../pages/order-feed/order-feed';
-import ProfilePage from '../../pages/profile/profile';
-import OrderHistoryPage from '../../pages/order-history/order-history';
-import OrderPage from '../../pages/order/order';
-import IngredientPage from '../../pages/ingredient/ingredient-page';
-import NotFound404 from '../../pages/404/404';
-import Order from '../order/order';
-import Header from '../header/header';
-import Modal from '../modal/modal';
-import IngredientDetails from '../burger-ingredients/ingredient-details/ingredient-details';
-
+import { getCookie } from '../../utils/cookie';
+import { ProtectedRoute } from '../protected-route';
+import { HomePage } from '../../pages/home/home';
+import { LoginPage } from '../../pages/login/login';
+import { RegisterPage } from '../../pages/register/register';
+import { ForgotPasswordPage } from '../../pages/forgot-password/forgot-password';
+import { ResetPasswordPage } from '../../pages/reset-password/reset-password';
+import { OrderFeedPage } from '../../pages/order-feed/order-feed';
+import { ProfilePage } from '../../pages/profile/profile';
+import { OrderHistoryPage } from '../../pages/order-history/order-history';
+import { OrderPage } from '../../pages/order/order';
+import { IngredientPage } from '../../pages/ingredient/ingredient-page';
+import { NotFound404 } from '../../pages/404/404';
+import { Order } from '../order/order';
+import { Header } from '../header/header';
+import { Modal } from '../modal/modal';
+import { IngredientDetails } from '../burger-ingredients/ingredient-details/ingredient-details';
 import { useAppSelector, useAppDispatch } from '../../services/types/types';
 import { getUser } from '../../services/actions/get-user-data';
 import {
@@ -39,7 +38,7 @@ type LocationState = {
   background?: Location;
 };
 
-export default function App() {
+export const App = () => {
   const NORMA_API = BASE_URL + '/ingredients';
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -167,4 +166,4 @@ export default function App() {
       </React.StrictMode>
     </Router>
   );
-}
+};

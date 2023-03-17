@@ -1,20 +1,19 @@
 import { useState, useRef, FC, FocusEvent } from 'react';
-import styles from './profile.module.css';
-
 import {
   Input,
   EmailInput,
   Button,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Redirect } from 'react-router-dom';
-import MenuProfile from '../../components/menu-profile/menu-profile';
-import { validateForm } from '../../utils/validate-form';
 
+import { MenuProfile } from '../../components/menu-profile/menu-profile';
+import { validateForm } from '../../utils/validate-form';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { updateUserData } from '../../services/actions/change-user-data';
 import { useForm } from '../../services/hooks/use-form';
+import styles from './profile.module.css';
 
-const ProfilePage: FC = () => {
+export const ProfilePage: FC = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
   if (!isAuth) {
     return (
@@ -168,5 +167,3 @@ const ProfilePage: FC = () => {
     </div>
   );
 };
-
-export default ProfilePage;

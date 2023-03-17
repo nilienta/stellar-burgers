@@ -3,6 +3,9 @@
 	"plugins": [
 		"@typescript-eslint"
 	],
+	"extends": [
+		"plugin:import/recommended"
+	],
 	"rules": {
 		"semi": 0,
 		"quotes": [
@@ -14,6 +17,7 @@
 		],
 		"no-param-reassign": 0,
 		"no-console": "off",
+		"import/named": "off",
 		"import/prefer-default-export": "off",
 		"import/no-default-export": "error",
 		"import/no-cycle": "off",

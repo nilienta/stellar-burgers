@@ -1,9 +1,9 @@
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './components/app/app';
-import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+
+import { reportWebVitals } from './reportWebVitals';
+import { App } from './components/app/app';
 import { rootReducer } from './services/reducers';
 import { socketMiddleware } from './services/middleware';
 import {
@@ -20,6 +20,7 @@ import {
   WS_HISTORY_CONNECTION_ERROR,
   WS_HISTORY_GET_ORDERS,
 } from './services/actions/web-socket-history';
+import './index.css';
 
 const wsUrl = 'wss://norma.nomoreparties.space/orders';
 const wsFeedActions = {

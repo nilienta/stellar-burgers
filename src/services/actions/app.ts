@@ -1,6 +1,7 @@
+import { Dispatch } from 'react';
+
 import { getData } from '../../utils/burger-api';
 import { TIngredient } from '../types/types';
-import { Dispatch } from 'react';
 
 export const GET_INGREDIENTS_REQUEST: 'GET_INGREDIENTS_REQUEST' =
   'GET_INGREDIENTS_REQUEST';

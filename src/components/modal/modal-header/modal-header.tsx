@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
-import styles from './modal-header.module.css';
 import { CloseIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-const ModalHeader: FC<{
+import styles from './modal-header.module.css';
+
+export const ModalHeader: FC<{
   onClose: () => void;
   children: string;
   typeHeader: 'string' | 'number';
-}> = ({ onClose, children, typeHeader }) => {
+}> = React.memo(({ onClose, children, typeHeader }) => {
   const classForTitle =
     typeHeader === 'string'
       ? 'text text_type_main-large'
@@ -26,6 +27,4 @@ const ModalHeader: FC<{
       </div>
     </div>
   );
-};
-
-export default React.memo(ModalHeader);
+});

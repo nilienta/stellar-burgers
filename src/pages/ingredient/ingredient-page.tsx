@@ -1,13 +1,14 @@
 import { FC } from 'react';
-import styles from './ingredient-page.module.css';
-import IngredientDetails from '../../components/burger-ingredients/ingredient-details/ingredient-details';
 import { useLocation } from 'react-router-dom';
+
+import { IngredientDetails } from '../../components/burger-ingredients/ingredient-details/ingredient-details';
+import styles from './ingredient-page.module.css';
 
 type LocationState = {
   background?: Location;
 };
 
-const IngredientPage: FC = () => {
+export const IngredientPage: FC = () => {
   const location = useLocation<LocationState>();
   const background = location.state && location.state.background;
   return (
@@ -25,5 +26,3 @@ const IngredientPage: FC = () => {
     </>
   );
 };
-
-export default IngredientPage;

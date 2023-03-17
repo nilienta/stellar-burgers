@@ -1,17 +1,16 @@
 import React, { useCallback, FC } from 'react';
 import clsx from 'clsx';
-import styles from './constructor-ingredients-list.module.css';
 
-import ConstructorElementWrap from '../constructor-element-wrap/constructor-element-wrap';
-
+import { ConstructorElementWrap } from '../constructor-element-wrap/constructor-element-wrap';
 import {
   useAppSelector,
   useAppDispatch,
   TIngredient,
 } from '../../../services/types/types';
 import { UPDATE_CONSTRUCTOR_LIST } from '../../../services/actions/app';
+import styles from './constructor-ingredients-list.module.css';
 
-const ConstructorIngredientsList: FC = () => {
+export const ConstructorIngredientsList: FC = React.memo(() => {
   const classForList = clsx(styles.list, 'custom-scroll', 'mt-4 mb-4');
 
   const dispatch = useAppDispatch();
@@ -60,6 +59,4 @@ const ConstructorIngredientsList: FC = () => {
         })}
     </ul>
   );
-};
-
-export default React.memo(ConstructorIngredientsList);
+});

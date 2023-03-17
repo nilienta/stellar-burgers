@@ -1,6 +1,7 @@
+import { Dispatch } from 'react';
+
 import { BASE_URL } from './app';
 import { getData } from '../../utils/burger-api';
-import { Dispatch } from 'react';
 import { TAuthActions } from '../types/types-auth';
 
 export const RESET_PASSWORD_REQUEST: 'RESET_PASSWORD/REQUEST' =

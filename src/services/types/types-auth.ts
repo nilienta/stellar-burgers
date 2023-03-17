@@ -4,8 +4,7 @@ import { TLogoutActions } from '../actions/logout';
 import { TResetPassActions } from '../actions/reset-password';
 import { TChangeUserDataActions } from '../actions/change-user-data';
 import { TGetUserDataActions } from '../actions/get-user-data';
-import { TLoginActions } from '../actions/login';
-import { TPossibleEmail } from '../actions/login';
+import { TLoginActions, TPossibleEmail } from '../actions/login';
 
 export type TAuthActions =
   | TRegisterActions

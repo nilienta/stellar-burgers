@@ -1,16 +1,16 @@
 import { useCallback, FC } from 'react';
-import styles from './forgot-password.module.css';
-
 import { Redirect, Link } from 'react-router-dom';
 import {
   Button,
   EmailInput,
 } from '@ya.praktikum/react-developer-burger-ui-components';
+
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { checkingEmail } from '../../services/actions/checking-mail';
 import { useForm } from '../../services/hooks/use-form';
+import styles from './forgot-password.module.css';
 
-const ForgotPasswordPage: FC = () => {
+export const ForgotPasswordPage: FC = () => {
   const dispatch = useAppDispatch();
 
   const { emailExists, possibleEmail, isAuth } = useAppSelector(
@@ -74,5 +74,3 @@ const ForgotPasswordPage: FC = () => {
     </div>
   );
 };
-
-export default ForgotPasswordPage;

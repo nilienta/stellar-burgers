@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-import styles from './header.module.css';
-
 import {
   Logo,
   BurgerIcon,
@@ -8,9 +6,11 @@ import {
   ProfileIcon,
 } from '@ya.praktikum/react-developer-burger-ui-components';
 import { Link } from 'react-router-dom';
-import NavigationLink from './navigation-link/navigation-link';
 
-const Header: FC = () => {
+import { NavigationLink } from './navigation-link/navigation-link';
+import styles from './header.module.css';
+
+export const Header: FC = React.memo(() => {
   return (
     <header className={styles.header}>
       <nav className={styles.inner}>
@@ -43,6 +43,4 @@ const Header: FC = () => {
       </nav>
     </header>
   );
-};
-
-export default React.memo(Header);
+});
