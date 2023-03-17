@@ -8,6 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { checkingEmail } from '../../services/actions/checking-mail';
 import { useForm } from '../../services/hooks/use-form';
+import { Head } from '../../components/head/head';
 import styles from './forgot-password.module.css';
 
 export const ForgotPasswordPage: FC = () => {
@@ -49,28 +50,33 @@ export const ForgotPasswordPage: FC = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <form className={styles.form} onSubmit={forgotPassword}>
-          <h1 className="text text_type_main-medium">Восстановление пароля</h1>
-          <EmailInput
-            placeholder="Укажите e-mail"
-            onChange={handleChange}
-            value={values.email!}
-            name={'email'}
-            autoComplete="on"
-          />
-          <Button type="primary" size="large" htmlType="submit">
-            Восстановить
-          </Button>
-        </form>
-        <p className="text text_type_main-default text_color_inactive mt-20">
-          Вспомнили пароль?{' '}
-          <Link to="/login" className={styles.link}>
-            Войти
-          </Link>
-        </p>
+    <>
+      <Head title="Восстановление пароля - Stellar-Burgers" />
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <form className={styles.form} onSubmit={forgotPassword}>
+            <h1 className="text text_type_main-medium">
+              Восстановление пароля
+            </h1>
+            <EmailInput
+              placeholder="Укажите e-mail"
+              onChange={handleChange}
+              value={values.email!}
+              name={'email'}
+              autoComplete="on"
+            />
+            <Button type="primary" size="large" htmlType="submit">
+              Восстановить
+            </Button>
+          </form>
+          <p className="text text_type_main-default text_color_inactive mt-20">
+            Вспомнили пароль?{' '}
+            <Link to="/login" className={styles.link}>
+              Войти
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

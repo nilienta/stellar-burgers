@@ -4,6 +4,7 @@ import clsx from 'clsx';
 import { BASE_URL, postOrder } from '../../../services/actions/app';
 import { useAppDispatch, useAppSelector } from '../../../services/types/types';
 import modalDone from '../../../images/modal-done.png';
+import { Head } from '../../head/head';
 import styles from './order-details.module.css';
 
 export const OrderDetails: FC = React.memo(() => {
@@ -15,9 +16,8 @@ export const OrderDetails: FC = React.memo(() => {
   );
 
   const dispatch = useAppDispatch();
-  const { currentBun, currentMainsAndSauces, numberOrder } = useAppSelector(
-    (state) => state.app
-  );
+  const { currentBun, currentMainsAndSauces, numberOrder, postOrderRequest } =
+    useAppSelector((state) => state.app);
 
   const idIngredients = [
     currentBun._id,
@@ -35,22 +35,28 @@ export const OrderDetails: FC = React.memo(() => {
   const URL_POST = BASE_URL + '/orders';
 
   return (
-    <section className={classForOrder}>
-      <h1 className={classForNumber}>{numberOrder}</h1>
-      <h2 className="text text_type_main-medium">идентификатор заказа</h2>
-      <img
-        className="mt-15 mb-15"
-        src={modalDone}
-        alt="Order accepted"
-        width="122px"
-        height="122px"
+    <>
+      <Head
+        title={` Номер заказа: ${numberOrder} - Stellar-Burgers`}
+        isLoading={postOrderRequest}
       />
-      <p className="text text_type_main-default mb-2">
-        Ваш заказ начали готовить
-      </p>
-      <p className="text text_type_main-default text_color_inactive">
-        Дождитесь готовности на орбитальной станции
-      </p>
-    </section>
+      <section className={classForOrder}>
+        <h1 className={classForNumber}>{numberOrder}</h1>
+        <h2 className="text text_type_main-medium">идентификатор заказа</h2>
+        <img
+          className="mt-15 mb-15"
+          src={modalDone}
+          alt="Order accepted"
+          width="122px"
+          height="122px"
+        />
+        <p className="text text_type_main-default mb-2">
+          Ваш заказ начали готовить
+        </p>
+        <p className="text text_type_main-default text_color_inactive">
+          Дождитесь готовности на орбитальной станции
+        </p>
+      </section>
+    </>
   );
 });

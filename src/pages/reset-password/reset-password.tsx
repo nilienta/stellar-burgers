@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { passwordSaveReset } from '../../services/actions/reset-password';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
+import { Head } from '../../components/head/head';
 import styles from './reset-password.module.css';
 
 export const ResetPasswordPage: FC = () => {
@@ -49,36 +50,41 @@ export const ResetPasswordPage: FC = () => {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.container}>
-        <form className={styles.form} onSubmit={resetPassword}>
-          <h1 className="text text_type_main-medium">Восстановление пароля</h1>
-          <PasswordInput
-            placeholder="Введите новый пароль"
-            onChange={handleChange}
-            value={values.password!}
-            name={'password'}
-            autoComplete="on"
-          />
-          <Input
-            placeholder="Введите код из письма"
-            type={'text'}
-            value={values.token!}
-            name={'token'}
-            onChange={handleChange}
-            autoComplete="on"
-          />
-          <Button type="primary" size="large" htmlType="submit">
-            Сохранить
-          </Button>
-        </form>
-        <p className="text text_type_main-default text_color_inactive mt-20">
-          Вспомнили пароль?{' '}
-          <Link to="/login" className={styles.link}>
-            Войти
-          </Link>
-        </p>
+    <>
+      <Head title="Восстановление пароля - Stellar-Burgers" />
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <form className={styles.form} onSubmit={resetPassword}>
+            <h1 className="text text_type_main-medium">
+              Восстановление пароля
+            </h1>
+            <PasswordInput
+              placeholder="Введите новый пароль"
+              onChange={handleChange}
+              value={values.password!}
+              name={'password'}
+              autoComplete="on"
+            />
+            <Input
+              placeholder="Введите код из письма"
+              type={'text'}
+              value={values.token!}
+              name={'token'}
+              onChange={handleChange}
+              autoComplete="on"
+            />
+            <Button type="primary" size="large" htmlType="submit">
+              Сохранить
+            </Button>
+          </form>
+          <p className="text text_type_main-default text_color_inactive mt-20">
+            Вспомнили пароль?{' '}
+            <Link to="/login" className={styles.link}>
+              Войти
+            </Link>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

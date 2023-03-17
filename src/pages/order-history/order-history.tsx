@@ -10,6 +10,7 @@ import {
   WS_HISTORY_CONNECTION_CLOSED,
   WS_HISTORY_CONNECTION_START,
 } from '../../services/actions/web-socket-history';
+import { Head } from '../../components/head/head';
 import styles from './order-history.module.css';
 
 export const OrderHistoryPage: FC = () => {
@@ -40,6 +41,7 @@ export const OrderHistoryPage: FC = () => {
 
   return (
     <>
+      <Head title="История заказов  - Stellar-Burgers" />
       {orders !== undefined && orders.length > 0 ? (
         <div className={styles.wrapper}>
           <div className={styles.main}>

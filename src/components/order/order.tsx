@@ -11,6 +11,7 @@ import {
   getTotalPriceForOrder,
   searchItemById,
 } from '../../utils/order-processing';
+import { Head } from '../head/head';
 import styles from './order.module.css';
 
 export const Order: FC = React.memo(() => {
@@ -60,14 +61,17 @@ export const Order: FC = React.memo(() => {
   return (
     <>
       {order ? (
-        <section className={styles.container}>
-          <p className="text text_type_main-medium mb-3">{order.name}</p>
-          {status}
-          <p className="text text_type_main-medium mt-15 mb-6">Состав:</p>
+        <>
+          <Head title={`${order.name} - Stellar-Burgers`} />
+          <section className={styles.container}>
+            <p className="text text_type_main-medium mb-3">{order.name}</p>
+            {status}
+            <p className="text text_type_main-medium mt-15 mb-6">Состав:</p>
 
-          <CompositionList />
-          <DateAndTotalPrice />
-        </section>
+            <CompositionList />
+            <DateAndTotalPrice />
+          </section>
+        </>
       ) : (
         <></>
       )}

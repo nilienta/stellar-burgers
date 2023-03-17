@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { Location } from 'history';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { getCookie } from '../../utils/cookie';
 import { ProtectedRoute } from '../protected-route';
@@ -162,7 +163,9 @@ export const App = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <React.StrictMode>
-        <ModalSwitch />
+        <HelmetProvider>
+          <ModalSwitch />
+        </HelmetProvider>
       </React.StrictMode>
     </Router>
   );

@@ -10,6 +10,7 @@ import { Loader } from '../loader/loader';
 import { SET_POSSIBLE_EMAIL, signIn } from '../../services/actions/login';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { useForm } from '../../services/hooks/use-form';
+import { Head } from '../../components/head/head';
 import styles from './login.module.css';
 
 type LocationState = {
@@ -43,6 +44,7 @@ export const LoginPage: FC = () => {
   const LinkSignInAndRecoveryPassword = () => {
     return (
       <>
+        <Head title="Вход - Stellar-Burgers" />
         <p className="text text_type_main-default text_color_inactive mt-20">
           Вы — новый пользователь?{' '}
           <Link to="/register" className={styles.link}>

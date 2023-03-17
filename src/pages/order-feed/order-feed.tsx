@@ -8,6 +8,7 @@ import {
   WS_FEED_CONNECTION_CLOSED,
   WS_FEED_CONNECTION_START,
 } from '../../services/actions/web-socket-feed';
+import { Head } from '../../components/head/head';
 import styles from './order-feed.module.css';
 
 export const OrderFeedPage: FC = () => {
@@ -23,6 +24,7 @@ export const OrderFeedPage: FC = () => {
 
   return (
     <>
+      <Head title="Лента заказов - Stellar-Burgers" />
       {orders.length > 0 ? (
         <main className={styles.main}>
           <h1 className="text text_type_main-large mb-5">Лента заказов</h1>

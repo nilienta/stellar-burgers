@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useParams } from 'react-router-dom';
 
 import { useAppSelector } from '../../../services/types/types';
+import { Head } from '../../head/head';
 import styles from './ingredient-details.module.css';
 
 const Element: FC<{ name: string; count: number }> = ({ name, count }) => {
@@ -29,25 +30,31 @@ export const IngredientDetails: FC = React.memo(() => {
   return (
     <>
       {ingredients.length > 0 && currentItem !== undefined && (
-        <section className={styles['ingredient-details']}>
-          <img
-            src={currentItem.image_large}
-            alt={currentItem.name}
-            width="480"
-            height="240"
-          ></img>
-          <div className={classForDescription}>
-            <h2 className="text text_type_main-medium">{currentItem.name}</h2>
-          </div>
-          <div className="composition">
-            <ul className={styles['composition-list']}>
-              <Element name="Калории,ккал" count={currentItem.calories!} />
-              <Element name="Белки, г" count={currentItem.proteins!} />
-              <Element name="Жиры, г" count={currentItem.fat!} />
-              <Element name="Углеводы, г" count={currentItem.carbohydrates!} />
-            </ul>
-          </div>
-        </section>
+        <>
+          <Head title={`${currentItem.name} - Stellar-Burgers`} />
+          <section className={styles['ingredient-details']}>
+            <img
+              src={currentItem.image_large}
+              alt={currentItem.name}
+              width="480"
+              height="240"
+            ></img>
+            <div className={classForDescription}>
+              <h2 className="text text_type_main-medium">{currentItem.name}</h2>
+            </div>
+            <div className="composition">
+              <ul className={styles['composition-list']}>
+                <Element name="Калории,ккал" count={currentItem.calories!} />
+                <Element name="Белки, г" count={currentItem.proteins!} />
+                <Element name="Жиры, г" count={currentItem.fat!} />
+                <Element
+                  name="Углеводы, г"
+                  count={currentItem.carbohydrates!}
+                />
+              </ul>
+            </div>
+          </section>
+        </>
       )}
     </>
   );

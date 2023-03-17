@@ -11,6 +11,7 @@ import { validateForm } from '../../utils/validate-form';
 import { useAppDispatch, useAppSelector } from '../../services/types/types';
 import { updateUserData } from '../../services/actions/change-user-data';
 import { useForm } from '../../services/hooks/use-form';
+import { Head } from '../../components/head/head';
 import styles from './profile.module.css';
 
 export const ProfilePage: FC = () => {
@@ -99,71 +100,74 @@ export const ProfilePage: FC = () => {
   };
 
   return (
-    <div className={`${styles.wrapper}`}>
-      <main className={`${styles.main} mr-5 ml-5`}>
-        <MenuProfile page="profile" />
-        <section className={styles.container}>
-          <form className={styles.form} onSubmit={onSave}>
-            <Input
-              placeholder="Имя"
-              onChange={handleChange}
-              value={values.name!}
-              name={'name'}
-              autoComplete="on"
-              type={'text'}
-              icon={'EditIcon'}
-              ref={nameRef}
-              onBlur={onBlurName}
-              onFocus={onFocusName}
-              error={errorName}
-              disabled={fieldDisabledName}
-              onIconClick={onIconClickName}
-              errorText={'Ой, произошла ошибка!'}
-              extraClass={styles.input}
-            />
-            <EmailInput
-              placeholder="Логин"
-              onChange={handleChange}
-              value={values.email!}
-              name={'email'}
-              isIcon={true}
-              autoComplete="on"
-            />
-            <Input
-              placeholder="Пароль"
-              onChange={handleChange}
-              value={values.password!}
-              name={'password'}
-              autoComplete="on"
-              type={'password'}
-              icon={'EditIcon'}
-              ref={passwordRef}
-              onBlur={() => {
-                onBlurPassword;
-              }}
-              onFocus={onFocusPassword}
-              error={errorPassword}
-              disabled={fieldDisabledPassword}
-              onIconClick={onIconClickPassword}
-              errorText={'Ой, произошла ошибка!'}
-              extraClass={styles.input}
-            />
-            <section className={styles.footer}>
-              <Button
-                onClick={onReset}
-                type="secondary"
-                size="large"
-                htmlType="reset"
-              >
-                Отмена
-              </Button>
-              <Button type="primary" size="large" htmlType="submit">
-                Сохранить
-              </Button>
-            </section>
-          </form>
-        </section>
-      </main>
-    </div>
+    <>
+      <Head title="Профиль - Stellar-Burgers" />
+      <div className={`${styles.wrapper}`}>
+        <main className={`${styles.main} mr-5 ml-5`}>
+          <MenuProfile page="profile" />
+          <section className={styles.container}>
+            <form className={styles.form} onSubmit={onSave}>
+              <Input
+                placeholder="Имя"
+                onChange={handleChange}
+                value={values.name!}
+                name={'name'}
+                autoComplete="on"
+                type={'text'}
+                icon={'EditIcon'}
+                ref={nameRef}
+                onBlur={onBlurName}
+                onFocus={onFocusName}
+                error={errorName}
+                disabled={fieldDisabledName}
+                onIconClick={onIconClickName}
+                errorText={'Ой, произошла ошибка!'}
+                extraClass={styles.input}
+              />
+              <EmailInput
+                placeholder="Логин"
+                onChange={handleChange}
+                value={values.email!}
+                name={'email'}
+                isIcon={true}
+                autoComplete="on"
+              />
+              <Input
+                placeholder="Пароль"
+                onChange={handleChange}
+                value={values.password!}
+                name={'password'}
+                autoComplete="on"
+                type={'password'}
+                icon={'EditIcon'}
+                ref={passwordRef}
+                onBlur={() => {
+                  onBlurPassword;
+                }}
+                onFocus={onFocusPassword}
+                error={errorPassword}
+                disabled={fieldDisabledPassword}
+                onIconClick={onIconClickPassword}
+                errorText={'Ой, произошла ошибка!'}
+                extraClass={styles.input}
+              />
+              <section className={styles.footer}>
+                <Button
+                  onClick={onReset}
+                  type="secondary"
+                  size="large"
+                  htmlType="reset"
+                >
+                  Отмена
+                </Button>
+                <Button type="primary" size="large" htmlType="submit">
+                  Сохранить
+                </Button>
+              </section>
+            </form>
+          </section>
+        </main>
+      </div>
+    </>
   );
 };

@@ -14,6 +14,7 @@ import {
   WS_FEED_CONNECTION_CLOSED,
   WS_FEED_CONNECTION_START,
 } from '../../services/actions/web-socket-feed';
+import { Head } from '../../components/head/head';
 import styles from './order.module.css';
 
 type LocationState = {
@@ -45,6 +46,7 @@ export const OrderPage: FC = () => {
       {!background ? (
         order ? (
           <>
+            <Head title={`Заказ номер: ${order.number} - Stellar-Burgers`} />
             <main className={styles.main}>
               <section className={styles.container}>
                 <div className={styles['order-number']}>
